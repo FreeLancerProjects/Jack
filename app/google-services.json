@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "991261803508",
+    "firebase_url": "https://jack-b2e8d.firebaseio.com",
+    "project_id": "jack-b2e8d",
+    "storage_bucket": "jack-b2e8d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:991261803508:android:5ffb67a8dd9491d1762fa1",
+        "android_client_info": {
+          "package_name": "com.endpoint.Jack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "991261803508-lum5k20rod2a2540vc2ndu330mqkfb5r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.endpoint.Jack",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "991261803508-ep630jh6p4c2dc6hi6nqm76jo6hdkrvj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxYFJa2hiAS0sd-Dbxgl5qUS9N4yulQdY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "991261803508-ep630jh6p4c2dc6hi6nqm76jo6hdkrvj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

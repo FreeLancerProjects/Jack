@@ -264,7 +264,7 @@ public class SignInActivity extends AppCompatActivity {
         this.phone = m_phone;
         this.countrycode = country_code;
         this.phone_code = phone_code.replace("+","00");
-
+Log.e("llllll",";llllll");
         final ProgressDialog dialog = Common.createProgressDialog(this,getString(R.string.wait));
         dialog.show();
         Api.getService(Tags.base_url)

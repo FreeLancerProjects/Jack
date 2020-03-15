@@ -59,21 +59,32 @@
 <!--            android:layout_marginTop="25dp"-->
 
 <!--            />-->
-        <com.alimuzaffar.lib.pin.PinEntryEditText
-            android:id="@+id/edt_code"
+        <FrameLayout
+            android:id="@+id/frsms"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:cursorVisible="false"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sms"
             android:layout_marginTop="25dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:textColor="@color/black"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:padding="8dp"
+            android:background="@color/white"
+            >
+        <com.alimuzaffar.lib.pin.PinEntryEditText
+            android:id="@+id/edt_code"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:cursorVisible="false"
+
+            android:textColor="@color/colorPrimary"
             android:maxLength="6"
+            android:textSize="15sp"
             app:pinBackgroundDrawable="@drawable/edit_shape"
+            android:layoutDirection="ltr"
         />
+        </FrameLayout>
         <LinearLayout
             android:id="@+id/ll"
             android:layout_width="match_parent"
@@ -81,7 +92,7 @@
             android:layout_marginTop="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edt_code"
+            app:layout_constraintTop_toBottomOf="@+id/frsms"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:orientation="horizontal"

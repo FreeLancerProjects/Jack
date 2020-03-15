@@ -230,6 +230,10 @@ public class Fragment_Code_Verification extends Fragment {
                     activity.signIn(phone_number, country_code, phone_code);
 
                 }
+                else {
+                    Log.e("llllll",";llllll"+task.getResult());
+
+                }
 
 
             }
