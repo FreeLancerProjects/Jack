@@ -1,4 +1,4 @@
-package com.creativeshare.Jack.activities_fragments.activity_splash;
+package com.endpoint.Jack.activities_fragments.activity_splash;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,15 +7,15 @@ import android.widget.FrameLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.creativeshare.Jack.R;
-import com.creativeshare.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity;
-import com.creativeshare.Jack.activities_fragments.activity_sign_in.activity.SignInActivity;
+import com.endpoint.Jack.R;
+import com.endpoint.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity;
+import com.endpoint.Jack.activities_fragments.activity_sign_in.activity.SignInActivity;
 import com.endpoint.Jack.activities_fragments.intro_slider.MainScreen;
-import com.creativeshare.Jack.language.Language_Helper;
-import com.creativeshare.Jack.models.UserModel;
-import com.creativeshare.Jack.preferences.Preferences;
-import com.creativeshare.Jack.singletone.UserSingleTone;
-import com.creativeshare.Jack.tags.Tags;
+import com.endpoint.Jack.language.Language_Helper;
+import com.endpoint.Jack.models.UserModel;
+import com.endpoint.Jack.preferences.Preferences;
+import com.endpoint.Jack.singletone.UserSingleTone;
+import com.endpoint.Jack.tags.Tags;
 
 public class SplashActivity extends AppCompatActivity {
 
