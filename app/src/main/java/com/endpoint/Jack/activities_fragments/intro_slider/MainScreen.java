@@ -102,7 +102,7 @@ public class MainScreen extends AppCompatActivity {
         public void onPageSelected(int position) {
             ColoredBars(position);
             if (position == screens.length - 1) {
-                Next.setText("start");
+                Next.setText(R.string.start);
                 Skip.setVisibility(View.GONE);
             } else {
                 Next.setText(getString(R.string.next));

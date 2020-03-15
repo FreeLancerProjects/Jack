@@ -75,7 +75,7 @@ public interface Service {
                                       @Query(value = "key") String key);
 
     @FormUrlEncoded
-    @POST("/Api/signup")
+    @POST("/api/signup")
     Call<UserModel> signUpWithoutImage(@Field("user_email") String user_email,
                                        @Field("user_phone") String user_phone,
                                        @Field("user_phone_code") String user_phone_code,
@@ -88,7 +88,7 @@ public interface Service {
 
 
     @Multipart
-    @POST("/Api/signup")
+    @POST("/api/signup")
     Call<UserModel> signUpWithImage(@Part("user_email") RequestBody user_email,
                                     @Part("user_phone") RequestBody user_phone,
                                     @Part("user_phone_code") RequestBody user_phone_code,
@@ -101,41 +101,41 @@ public interface Service {
 
 
     @FormUrlEncoded
-    @POST("/Api/login")
+    @POST("/api/login")
     Call<UserModel> signIn(@Field("user_phone") String user_phone,
                            @Field("user_phone_code") String user_phone_code
 
     );
 
-    @GET("/Api/appDetails")
+    @GET("/api/appDetails")
     Call<AppDataModel> getAppData(@Query("type") int type);
 
     @FormUrlEncoded
-    @POST("/Api/updateLocation")
+    @POST("/api/updateLocation")
     Call<ResponseBody> updateLocation(@Field("user_id") String user_id,
                                       @Field("user_google_lat") double user_google_lat,
                                       @Field("user_google_long") double user_google_long
     );
 
     @FormUrlEncoded
-    @POST("/Api/updateToken")
+    @POST("/api/updateToken")
     Call<ResponseBody> updateToken(@Field("user_id") String user_id,
                                    @Field("user_token_id") String user_token_id
 
     );
 
-    @GET("/Api/slider")
+    @GET("/api/slider")
     Call<SliderModel> getAds();
 
-    @GET("/Api/driverList")
+    @GET("/api/driverList")
     Call<NearDelegateDataModel> getDelegate(@Query("mylat") double lat, @Query("mylong") double lng, @Query("page") int page_index);
 
     @FormUrlEncoded
-    @POST("/Api/logout")
+    @POST("/api/logout")
     Call<ResponseBody> logOut(@Field("user_id") String user_id);
 
     @FormUrlEncoded
-    @POST("/Api/addOrder")
+    @POST("/api/addOrder")
     Call<OrderIdDataModel> sendOrder(@Field("client_id") String client_id,
                                      @Field("client_address") String client_address,
                                      @Field("client_lat") double client_lat,
@@ -150,7 +150,7 @@ public interface Service {
     );
 
     @Multipart
-    @POST("/Api/addOrder")
+    @POST("/api/addOrder")
     Call<OrderIdDataModel> sendOrderWithImage(@Part("client_id") RequestBody client_id,
                                               @Part("client_address") RequestBody client_address,
                                               @Part("client_lat") RequestBody client_lat,
@@ -166,11 +166,11 @@ public interface Service {
     );
 
     @FormUrlEncoded
-    @POST("/Api/visit")
+    @POST("/api/visit")
     Call<ResponseBody> updateVisit(@Field("type") String type, @Field("day_date") String day_date);
 
     @Multipart
-    @POST("/Api/beDriver")
+    @POST("/api/beDriver")
     Call<UserModel> registerDelegate(@Part("user_id") RequestBody user_id,
                                      @Part("user_card_id") RequestBody user_card_id,
                                      @Part("user_address") RequestBody user_address,
@@ -182,7 +182,7 @@ public interface Service {
     );
 
     @Multipart
-    @POST("/Api/profile")
+    @POST("/api/profile")
     Call<UserModel> updateImage(@Part("user_id") RequestBody user_id,
                                 @Part("user_email") RequestBody user_email,
                                 @Part("user_full_name") RequestBody user_full_name,
@@ -197,7 +197,7 @@ public interface Service {
     );
 
     @Multipart
-    @POST("/Api/profile")
+    @POST("/api/profile")
     Call<UserModel> updateProfile(@Part("user_id") RequestBody user_id,
                                   @Part("user_email") RequestBody user_email,
                                   @Part("user_full_name") RequestBody user_full_name,
@@ -209,31 +209,31 @@ public interface Service {
                                   @Part("user_phone") RequestBody user_phone
     );
 
-    @GET("/Api/placeOrders")
+    @GET("/api/placeOrders")
     Call<WatingOrderData> getWaitingOrders(@Query("place_id") String place_id, @Query("page") int page);
 
-    @GET("/Api/clientOrders")
+    @GET("/api/clientOrders")
     Call<OrderDataModel> getClientOrders(@Query("user_id") String user_id, @Query("order_type") String order_type, @Query("page") int page);
 
 
-    @GET("/Api/driverOrders")
+    @GET("/api/driverOrders")
     Call<OrderDataModel> getDelegateOrders(@Query("user_id") String user_id, @Query("order_type") String order_type, @Query("page") int page);
 
     @FormUrlEncoded
-    @POST("/Api/alerts")
+    @POST("/api/alerts")
     Call<NotificationCountModel> getNotificationCount(@Field("user_id") String user_id, @Field("type") String type);
 
     @FormUrlEncoded
-    @POST("/Api/alerts")
+    @POST("/api/alerts")
     Call<ResponseBody> readNotification(@Field("user_id") String user_id, @Field("type") String type);
 
 
-    @GET("/Api/notification")
+    @GET("/api/notification")
     Call<NotificationDataModel> getNotification(@Query("user_id") String user_id, @Query("user_type") String user_type, @Query("page") int page);
 
 
     @FormUrlEncoded
-    @POST("/Api/driverAction")
+    @POST("/api/driverAction")
     Call<ResponseBody> delegateAccept(@Field("driver_id") String driver_id,
                                       @Field("client_id") String client_id,
                                       @Field("order_id") String order_id,
@@ -242,7 +242,7 @@ public interface Service {
     );
 
     @FormUrlEncoded
-    @POST("/Api/driverAction")
+    @POST("/api/driverAction")
     Call<ResponseBody> delegateRefuse_Finish(@Field("driver_id") String driver_id,
                                              @Field("client_id") String client_id,
                                              @Field("order_id") String order_id,
@@ -250,7 +250,7 @@ public interface Service {
     );
 
     @FormUrlEncoded
-    @POST("/Api/clientAction")
+    @POST("/api/clientAction")
     Call<ResponseBody> clientAccept_Refuse(@Field("client_id") String client_id,
                                            @Field("driver_id") String driver_id,
                                            @Field("order_id") String order_id,
@@ -259,7 +259,7 @@ public interface Service {
     );
 
     @FormUrlEncoded
-    @POST("/Api/clientAction")
+    @POST("/api/clientAction")
     Call<ResponseBody> addRate(@Field("client_id") String client_id,
                                @Field("driver_id") String driver_id,
                                @Field("order_id") String order_id,
@@ -268,33 +268,33 @@ public interface Service {
                                @Field("client_comment") String client_comment
     );
 
-    @GET("/Api/comment")
+    @GET("/api/comment")
     Call<CommentDataModel> getDelegateComment(@Query("user_id") String user_id, @Query("user_type") String user_type, @Query("page") int page);
 
     @FormUrlEncoded
-    @POST("/Api/cancelOrder")
+    @POST("/api/cancelOrder")
     Call<ResponseBody> clientCancelOrder(@Field("order_id") String order_id
     );
 
     @FormUrlEncoded
-    @POST("/Api/changeDriver")
+    @POST("/api/changeDriver")
     Call<ResponseBody> resendOrderToDifferentDelegate(@Field("client_id") String client_id,
                                                       @Field("driver_id") String driver_id,
                                                       @Field("order_id") String order_id
     );
 
     @FormUrlEncoded
-    @POST("/Api/moveOrder")
+    @POST("/api/moveOrder")
     Call<ResponseBody> movementDelegate(@Field("order_id") String order_id,
                                         @Field("order_movement") String order_movement
     );
 
-    @GET("/Api/chat")
+    @GET("/api/chat")
     Call<MessageDataModel> getChatMessages(@Query("room_id") String room_id, @Query("page") int page);
 
 
     @FormUrlEncoded
-    @POST("/Api/chating")
+    @POST("/api/chating")
     Call<MessageModel> sendMessage(@Field("room_id_fk") String room_id_fk,
                                    @Field("from_user") String from_user_id,
                                    @Field("to_user") String to_user_id,
@@ -305,7 +305,7 @@ public interface Service {
 
 
     @Multipart
-    @POST("/Api/chating")
+    @POST("/api/chating")
     Call<MessageModel> sendMessageWithImage(@Part("room_id_fk") RequestBody room_id_fk,
                                             @Part("from_user") RequestBody from_user_id,
                                             @Part("to_user") RequestBody to_user_id,
@@ -317,7 +317,7 @@ public interface Service {
     );
 
     @FormUrlEncoded
-    @POST("/Api/Typing")
+    @POST("/api/Typing")
     Call<MessageModel> typing(@Field("room_id_fk") String room_id_fk,
                               @Field("from_user") String from_user_id,
                               @Field("to_user") String to_user_id,
@@ -326,20 +326,20 @@ public interface Service {
     );
 
     @FormUrlEncoded
-    @POST("/Api/confirmCode")
+    @POST("/api/confirmCode")
     Call<ResponseBody> validateCode(@Field("user_phone_code") String user_phone_code,
                                     @Field("user_phone") String user_phone,
                                     @Field("confirm_code") String confirm_code
     );
 
     @FormUrlEncoded
-    @POST("/Api/resendSms")
+    @POST("/api/resendSms")
     Call<ResponseBody> getSmsCode(@Field("user_phone_code") String user_phone_code,
                                   @Field("user_phone") String user_phone
     );
 
     @FormUrlEncoded
-    @POST("/Api/coupon")
+    @POST("/api/coupon")
     Call<UserModel> getCouponValue(@Field("user_id") String user_id,
                                    @Field("type") String type,
                                    @Field("coupon_code") String coupon_code
@@ -347,17 +347,17 @@ public interface Service {
     );
 
     @FormUrlEncoded
-    @POST("/Api/deleteNote")
+    @POST("/api/deleteNote")
     Call<ResponseBody> clientRefuseDelegateOffer(@Field("id_notification") String id_notification);
 
-    @GET("/Api/socialMedia")
+    @GET("/api/socialMedia")
     Call<SocialMediaModel> getSocialMedia();
 
-    @GET("/Api/profile")
+    @GET("/api/profile")
     Call<UserModel> getUserDataById(@Query("user_id") String user_id);
 
     @FormUrlEncoded
-    @POST("/Api/availableStatus")
+    @POST("/api/availableStatus")
     Call<UserModel> updateDelegateAvailable(@Field("user_id") String  user_id,
                                             @Field("available") String  available
                                             );
@@ -371,13 +371,13 @@ public interface Service {
 
 
     @FormUrlEncoded
-    @POST("/Api/followingDriver")
+    @POST("/api/followingDriver")
     Call<FollowModel> getFollowData(@Field("order_id")String order_id,
                                     @Field("driver_id")String driver_id,
                                     @Field("client_id")String client_id
                                     );
 
-    @GET("/Api/banks")
+    @GET("/api/banks")
     Call<BankDataModel> getBankAccount();
 }
 

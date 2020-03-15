@@ -42,10 +42,10 @@ import retrofit2.Response;
 
 public class Fragment_Client_Profile extends Fragment {
 
-    private ImageView image_setting, image, arrow, arrow2, image_instagram, image_facebook, image_twitter, img_certified;
+    private ImageView image_logout, image, arrow, arrow2, image_instagram, image_facebook, image_twitter, img_certified;
     private TextView tv_name, tv_balance, tv_order_count, tv_feedback, tv_certified, tv_coupons;
     private SimpleRatingBar rateBar;
-    private ConstraintLayout cons_logout, cons_register_delegate, cons_comment, cons_add_coupon;
+    private ConstraintLayout cons_setting, cons_register_delegate, cons_comment, cons_add_coupon;
     private LinearLayout ll_telegram, ll_certification;
     private String current_language;
     private ClientHomeActivity activity;
@@ -94,7 +94,7 @@ public class Fragment_Client_Profile extends Fragment {
 
         tv_certified = view.findViewById(R.id.tv_certified);
 
-    //    image_setting = view.findViewById(R.id.image_setting);
+        image_logout = view.findViewById(R.id.image_logout);
         image = view.findViewById(R.id.image);
         tv_name = view.findViewById(R.id.tv_name);
         tv_balance = view.findViewById(R.id.tv_balance);
@@ -106,24 +106,26 @@ public class Fragment_Client_Profile extends Fragment {
 
         cons_register_delegate = view.findViewById(R.id.cons_register_delegate);
         cons_comment = view.findViewById(R.id.cons_comment);
-        cons_logout = view.findViewById(R.id.cons_logout);
+        cons_setting = view.findViewById(R.id.cons_setting);
 
       //  ll_certification = view.findViewById(R.id.ll_certification);
 
         ll_telegram = view.findViewById(R.id.ll_telegram);
 
-        image_setting.setOnClickListener(new View.OnClickListener() {
+        image_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                activity.DisplayFragmentSettings();
+                activity.Logout();
+
             }
         });
 
 
-        cons_logout.setOnClickListener(new View.OnClickListener() {
+        cons_setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                activity.Logout();
+
+                activity.DisplayFragmentSettings();
             }
         });
 

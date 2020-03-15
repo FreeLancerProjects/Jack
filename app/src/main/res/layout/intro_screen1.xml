@@ -16,9 +16,10 @@
         android:text="@string/all_products"
         android:id="@+id/tv1"
         android:textColor="@color/screen1"
-        android:textSize="35dp"
+        android:textSize="20dp"
         android:textStyle="bold"
         android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="32dp" />
 
@@ -31,5 +32,6 @@
         android:textStyle="bold"
         android:layout_below="@+id/tv1"
         android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="20dp"/>
 </RelativeLayout>

@@ -87,6 +87,7 @@
 <ImageView
     android:layout_width="40dp"
     android:layout_height="40dp"
+    android:id="@+id/image_logout"
     android:src="@drawable/logout"
     android:tint="@color/colorPrimary"
     android:layout_marginTop="20dp"
@@ -421,7 +422,7 @@
                 android:background="@color/gray5"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cons_logout"
+                android:id="@+id/cons_setting"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:paddingStart="16dp"
@@ -434,7 +435,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     android:textColor="@color/black"
                     android:textSize="15sp"
-                    android:text="@string/logout"
+                    android:text="@string/settings"
                     android:clickable="false"
                     android:longClickable="false"
                     />

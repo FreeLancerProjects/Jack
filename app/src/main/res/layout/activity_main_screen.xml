@@ -26,17 +26,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@null"
-        android:text="next"
+        android:text="@string/next"
         android:onClick="next"
         android:textSize="20dp"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorPrimary"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:alpha=".4"
-        android:background="@android:color/white"
+        android:background="@color/rating"
         android:layout_above="@+id/next"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true" />
@@ -45,13 +45,13 @@
         android:onClick="skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@null"
         android:text="@string/skip1"
         android:textSize="20sp"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorPrimary"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="15dp"
+        android:shadowRadius="5"
         tools:ignore="RtlCompat" />
 
 </RelativeLayout>
