@@ -281,4 +281,6 @@
     <string name="account_iban">Account IBAN</string>
     <string name="account_number">Account Number</string>
     <string name="account_name">Account Name</string>
+
+
 </resources>
