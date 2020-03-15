@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.creativeshare.Jack.R;
 import com.creativeshare.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity;
 import com.creativeshare.Jack.activities_fragments.activity_sign_in.activity.SignInActivity;
+import com.creativeshare.Jack.activities_fragments.intro_slider.MainScreen;
 import com.creativeshare.Jack.language.Language_Helper;
 import com.creativeshare.Jack.models.UserModel;
 import com.creativeshare.Jack.preferences.Preferences;
@@ -33,10 +34,29 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        preferences = Preferences.getInstance();
+
+        Thread myThread = new Thread()
+        {
+            @Override
+            public void run() {
+                try {
+                    sleep(1200);
+                    Intent intent = new Intent(getApplicationContext(), MainScreen.class);
+                    startActivity(intent);
+                    finish();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        myThread.start();
+
+
+
+       /* preferences = Preferences.getInstance();
         fl = findViewById(R.id.fl);
-        Animation animation = AnimationUtils.loadAnimation(this,R.anim.fade);
-        fl.startAnimation(animation);
+        Animation animation = AnimationUtils.loadAnimation(this,R.anim.fade);*/
+      /*  fl.startAnimation(animation);
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
@@ -69,6 +89,6 @@ public class SplashActivity extends AppCompatActivity {
             public void onAnimationRepeat(Animation animation) {
 
             }
-        });
+        });*/
     }
 }

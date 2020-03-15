@@ -66,6 +66,11 @@
             android:name="com.creativeshare.Jack.activities_fragments.terms_conditions.TermsConditionsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.creativeshare.Jack.activities_fragments.intro_slider.MainScreen"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.creativeshare.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"

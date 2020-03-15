@@ -278,6 +278,12 @@
     <string name="account_iban">الايبان</string>
     <string name="account_number">رقم الحساب</string>
     <string name="account_name">إسم الحساب</string>
+    <string name="all_products">كل المنتجات</string>
+    <string name="Just_decide">فقط حدد مكان استلام المنتج ومكان التسليم ودع الامر الينا</string>
+    <string name="Welcome_to_Jack">اهلا بك فى جاك</string>
+    <string name="We_deliver_orders_anytime_anywhere">نقوم بتوصيل الطلبات فى اى وقت والى اى مكان</string>
+    <string name="best_offer">افضل العروض</string>
+    <string name="We_show">نعرض لك افضل العروض على العديد من المنتجات وفى كثير من التصنيفات</string>
 
 
 </resources>

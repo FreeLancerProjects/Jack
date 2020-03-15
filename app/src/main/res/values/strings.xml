@@ -281,6 +281,12 @@
     <string name="account_iban">Account IBAN</string>
     <string name="account_number">Account Number</string>
     <string name="account_name">Account Name</string>
+    <string name="all_products">All products</string>
+    <string name="Just_decide">Just decide where to receive the product and where to deliver and leave it to us</string>
+    <string name="Welcome_to_Jack">Welcome to Jack</string>
+    <string name="We_deliver_orders_anytime_anywhere">We deliver orders anytime, anywhere</string>
+    <string name="best_offer">Best Offer</string>
+    <string name="We_show">We show you the best offers on many products and in many categories</string>
 
 
 </resources>
