@@ -18,6 +18,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.endpoint.Jack.R;
 import com.endpoint.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity;
+import com.endpoint.Jack.activities_fragments.activity_sign_in.activity.SignInActivity;
 
 
 public class MainScreen extends AppCompatActivity {
@@ -91,7 +92,7 @@ public class MainScreen extends AppCompatActivity {
 
     private void launchMain() {
         preferenceManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(MainScreen.this, ClientHomeActivity.class));
+        startActivity(new Intent(MainScreen.this, SignInActivity.class));
         finish();
     }
 
