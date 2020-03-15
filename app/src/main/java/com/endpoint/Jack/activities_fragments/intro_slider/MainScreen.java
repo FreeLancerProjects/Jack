@@ -16,8 +16,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.creativeshare.Jack.R;
-import com.creativeshare.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity;
+import com.endpoint.Jack.R;
+import com.endpoint.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity;
+
 
 public class MainScreen extends AppCompatActivity {
 

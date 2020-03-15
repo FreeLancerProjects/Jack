@@ -169,8 +169,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_camera" />
-                            <entry key="sourceFile" value="C:\Users\Delta\Desktop\camera.svg" />
+                            <entry key="outputName" value="ic_turn_off" />
+                            <entry key="sourceFile" value="C:\Users\moham\Downloads\turn-off.svg" />
                           </map>
                         </option>
                       </PersistentState>

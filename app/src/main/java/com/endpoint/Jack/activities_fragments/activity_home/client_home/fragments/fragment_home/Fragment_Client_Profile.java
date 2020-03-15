@@ -87,14 +87,14 @@ public class Fragment_Client_Profile extends Fragment {
 
         }
 
-        image_facebook = view.findViewById(R.id.image_facebook);
+     /*   image_facebook = view.findViewById(R.id.image_facebook);
         image_twitter = view.findViewById(R.id.image_twitter);
         image_instagram = view.findViewById(R.id.image_instagram);
-        img_certified = view.findViewById(R.id.img_certified);
+        img_certified = view.findViewById(R.id.img_certified);*/
 
         tv_certified = view.findViewById(R.id.tv_certified);
 
-        image_setting = view.findViewById(R.id.image_setting);
+    //    image_setting = view.findViewById(R.id.image_setting);
         image = view.findViewById(R.id.image);
         tv_name = view.findViewById(R.id.tv_name);
         tv_balance = view.findViewById(R.id.tv_balance);
@@ -108,7 +108,7 @@ public class Fragment_Client_Profile extends Fragment {
         cons_comment = view.findViewById(R.id.cons_comment);
         cons_logout = view.findViewById(R.id.cons_logout);
 
-        ll_certification = view.findViewById(R.id.ll_certification);
+      //  ll_certification = view.findViewById(R.id.ll_certification);
 
         ll_telegram = view.findViewById(R.id.ll_telegram);
 
