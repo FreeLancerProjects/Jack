@@ -68,7 +68,7 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.creativeshare.Jack.activities_fragments.intro_slider.MainScreen"
+            android:name=".activities_fragments.intro_slider.MainScreen"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity

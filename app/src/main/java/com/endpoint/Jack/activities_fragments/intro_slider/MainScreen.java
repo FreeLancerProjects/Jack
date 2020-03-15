@@ -1,4 +1,4 @@
-package com.creativeshare.Jack.activities_fragments.intro_slider;
+package com.endpoint.Jack.activities_fragments.intro_slider;
 
 import android.content.Context;
 import android.content.Intent;

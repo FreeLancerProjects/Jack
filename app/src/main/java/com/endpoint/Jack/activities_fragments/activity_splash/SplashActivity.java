@@ -3,8 +3,6 @@ package com.creativeshare.Jack.activities_fragments.activity_splash;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.creativeshare.Jack.R;
 import com.creativeshare.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity;
 import com.creativeshare.Jack.activities_fragments.activity_sign_in.activity.SignInActivity;
-import com.creativeshare.Jack.activities_fragments.intro_slider.MainScreen;
+import com.endpoint.Jack.activities_fragments.intro_slider.MainScreen;
 import com.creativeshare.Jack.language.Language_Helper;
 import com.creativeshare.Jack.models.UserModel;
 import com.creativeshare.Jack.preferences.Preferences;
