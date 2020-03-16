@@ -1,6 +1,9 @@
 package com.endpoint.Jack.activities_fragments.activity_home.client_home.fragments.fragment_home;
 
+import android.graphics.Bitmap;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +19,9 @@ import androidx.fragment.app.Fragment;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.aurelhubert.ahbottomnavigation.notification.AHNotification;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.endpoint.Jack.R;
 import com.endpoint.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity;
 import com.endpoint.Jack.models.UserModel;
@@ -23,6 +29,7 @@ import com.endpoint.Jack.preferences.Preferences;
 import com.endpoint.Jack.share.Common;
 import com.endpoint.Jack.singletone.UserSingleTone;
 import com.endpoint.Jack.tags.Tags;
+import com.squareup.picasso.Picasso;
 
 public class Fragment_Home extends Fragment {
 
@@ -142,13 +149,11 @@ public class Fragment_Home extends Fragment {
         ah_bottom_nav.setForceTint(true);
         ah_bottom_nav.setAccentColor(ContextCompat.getColor(activity,R.color.colorPrimary));
         ah_bottom_nav.setInactiveColor(ContextCompat.getColor(activity,R.color.gray4));
-
         ah_bottom_nav.addItem(item1);
         ah_bottom_nav.addItem(item2);
         ah_bottom_nav.addItem(item3);
         ah_bottom_nav.addItem(item4);
         ah_bottom_nav.addItem(item5);
-
 
     }
 

@@ -2,6 +2,7 @@ package com.endpoint.Jack.activities_fragments.intro_slider;
 
 import android.content.Context;
 import android.content.Intent;
+import android.preference.Preference;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.View;
@@ -19,6 +20,11 @@ import androidx.viewpager.widget.ViewPager;
 import com.endpoint.Jack.R;
 import com.endpoint.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity;
 import com.endpoint.Jack.activities_fragments.activity_sign_in.activity.SignInActivity;
+import com.endpoint.Jack.activities_fragments.activity_splash.SplashActivity;
+import com.endpoint.Jack.models.UserModel;
+import com.endpoint.Jack.preferences.Preferences;
+import com.endpoint.Jack.singletone.UserSingleTone;
+import com.endpoint.Jack.tags.Tags;
 
 
 public class MainScreen extends AppCompatActivity {
@@ -30,12 +36,12 @@ public class MainScreen extends AppCompatActivity {
     Button Skip, Next;
     ViewPager vp;
     MyViewPagerAdapter myvpAdapter;
-
-
+private Preferences preferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
+        preferences=Preferences.getInstance();
         vp = (ViewPager) findViewById(R.id.view_pager);
         Layout_bars = (LinearLayout) findViewById(R.id.layoutBars);
         Skip = (Button) findViewById(R.id.skip);
@@ -92,8 +98,23 @@ public class MainScreen extends AppCompatActivity {
 
     private void launchMain() {
         preferenceManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(MainScreen.this, SignInActivity.class));
-        finish();
+        String session = preferences.getSession(MainScreen.this);
+
+        if (session.equals(Tags.session_login))
+        {
+            UserModel userModel = preferences.getUserData(MainScreen.this);
+            UserSingleTone userSingleTone = UserSingleTone.getInstance();
+            userSingleTone.setUserModel(userModel);
+
+            Intent intent = new Intent(MainScreen.this, ClientHomeActivity.class);
+            startActivity(intent);
+            finish();
+        }else
+        {
+            Intent intent = new Intent(MainScreen.this, SignInActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {

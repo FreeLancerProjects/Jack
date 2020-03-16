@@ -286,6 +286,8 @@
     <string name="We_show">نعرض لك افضل العروض على العديد من المنتجات وفى كثير من التصنيفات</string>
     <string name="skip1">تخطى</string>
     <string name="start">ابدا</string>
+    <string name="active1">نشط</string>
+    <string name="inactive1">غير نشط</string>
 
 
 </resources>

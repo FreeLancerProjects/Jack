@@ -182,8 +182,9 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
         initView();
 
         if (savedInstanceState == null) {
-            CheckPermission();
             DisplayFragmentHome();
+
+            CheckPermission();
         }
         getDataFromIntent();
 
