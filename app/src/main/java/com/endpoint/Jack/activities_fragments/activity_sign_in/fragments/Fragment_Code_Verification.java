@@ -95,6 +95,7 @@ public class Fragment_Code_Verification extends Fragment {
                 if (canResend) {
                     // sendSMSCode(phone_code,phone_number);
                     sendverficationcode(phone_number, phone_code.replace("00", "+"));
+                    startCounter();
                 }
             }
         });

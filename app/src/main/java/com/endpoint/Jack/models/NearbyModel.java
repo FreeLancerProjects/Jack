@@ -12,6 +12,7 @@ public class NearbyModel implements Serializable {
     private float rating;
     private String vicinity;
     private Opening_Hours opening_hours;
+    private double distance;
 
 
     public Geometry getGeometry() {
@@ -78,5 +79,13 @@ public class NearbyModel implements Serializable {
         public boolean isOpen_now() {
             return open_now;
         }
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">جاك</string>
-    <string name="map_api_key">AIzaSyDz07XWgRsDTQtmA4IOvx-fSIc1d_Wrk9c</string>
+    <string name="map_api_key">AIzaSyAeyMUJgKAhnNXbILHONb1um72CNzELFRY</string>
     <string name="notifications">الإشعارات</string>
     <string name="si_su">قم بتسجيل الدخول أو إنشاء حساب جديد .</string>
     <string name="ok">حسنا</string>
@@ -288,6 +288,8 @@
     <string name="start">ابدا</string>
     <string name="active1">نشط</string>
     <string name="inactive1">غير نشط</string>
+    <string name="all">All</string>
+    <string name="pharmacies">Pharmacies</string>
 
 
 </resources>

@@ -163,16 +163,16 @@ public class Fragment_Client_Store extends Fragment {
                         {
                             updateSliderData(response.body());
                         }else
-                            {
+                        {
 
-                                try {
-                                    Log.e("error_code",response.code()+"_"+response.errorBody().string());
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-                                fl_slider.setVisibility(View.GONE);
-
+                            try {
+                                Log.e("error_code",response.code()+"_"+response.errorBody().string());
+                            } catch (IOException e) {
+                                e.printStackTrace();
                             }
+                            fl_slider.setVisibility(View.GONE);
+
+                        }
                     }
 
                     @Override
@@ -215,10 +215,10 @@ public class Fragment_Client_Store extends Fragment {
 
 
         }else
-            {
-                fl_slider.setVisibility(View.GONE);
+        {
+            fl_slider.setVisibility(View.GONE);
 
-            }
+        }
 
 
 
@@ -261,16 +261,16 @@ public class Fragment_Client_Store extends Fragment {
 
                                 }
                             }else
-                                {
+                            {
 
-                                    progBar.setVisibility(View.GONE);
+                                progBar.setVisibility(View.GONE);
 
-                                    try {
-                                        Log.e("error_code",response.errorBody().string());
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
+                                try {
+                                    Log.e("error_code",response.errorBody().string());
+                                } catch (IOException e) {
+                                    e.printStackTrace();
                                 }
+                            }
 
 
                         }
@@ -314,11 +314,11 @@ public class Fragment_Client_Store extends Fragment {
             recView.setAdapter(adapter);
 
         }else
-            {
-                adapter.notifyDataSetChanged();
-            }
+        {
+            adapter.notifyDataSetChanged();
+        }
 
-            activity.DisplayFragmentHomeView();
+        activity.DisplayFragmentHomeView();
 
     }
 
@@ -337,11 +337,11 @@ public class Fragment_Client_Store extends Fragment {
                 placeModel.setOpenNow(nearbyModel.getOpening_hours().isOpen_now());
 
             }else
-                {
-                    placeModel.setOpenNow(false);
+            {
+                placeModel.setOpenNow(false);
 
 
-                }
+            }
             returnedList.add(placeModel);
         }
         return returnedList;
@@ -368,11 +368,11 @@ public class Fragment_Client_Store extends Fragment {
                 adapter.notifyDataSetChanged();
             }
         }else
-            {
-                String query = queriesList.get(pos);
-                getNearbyPlaces(location,query);
+        {
+            String query = queriesList.get(pos);
+            getNearbyPlaces(location,query);
 
-            }
+        }
     }
 
     private class MyTimerTask extends TimerTask {
@@ -386,9 +386,9 @@ public class Fragment_Client_Store extends Fragment {
                     {
                         pager.setCurrentItem(pager.getCurrentItem()+1,true);
                     }else
-                        {
-                            pager.setCurrentItem(0);
-                        }
+                    {
+                        pager.setCurrentItem(0);
+                    }
                 }
             });
         }

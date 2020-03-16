@@ -2,7 +2,7 @@
     <string name="app_name">Jack</string>
     <!--AIzaSyArjmbYWTWZhDFFtPOLRLKYwjtBDkOEGrY-->
 
-    <string name="map_api_key">AIzaSyDz07XWgRsDTQtmA4IOvx-fSIc1d_Wrk9c</string>
+    <string name="map_api_key">AIzaSyAeyMUJgKAhnNXbILHONb1um72CNzELFRY</string>
     <string name="notifications">Notifications</string>
     <string name="si_su">Please Sign in or sign up .</string>
     <string name="ok">Ok</string>
@@ -291,6 +291,8 @@
     <string name="start">start</string>
     <string name="active1">Active</string>
     <string name="inactive1">Inactive</string>
+    <string name="all">All</string>
+    <string name="pharmacies">Pharmacies</string>
 
 
 </resources>

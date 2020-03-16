@@ -160,7 +160,7 @@ public class Fragment_Client_Profile extends Fragment {
         });*/
 
 
-        image_twitter.setOnClickListener(new View.OnClickListener() {
+       /* image_twitter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!twitter.equals("0")) {
@@ -209,7 +209,7 @@ public class Fragment_Client_Profile extends Fragment {
                 }
             }
         });
-
+*/
         updateUI(userModel);
 
         getSocialMedia();
@@ -266,7 +266,7 @@ public class Fragment_Client_Profile extends Fragment {
             this.userModel = userModel;
 
             if (userModel.getData().getUser_type().equals(Tags.TYPE_CLIENT)) {
-                ll_certification.setVisibility(View.GONE);
+//                ll_certification.setVisibility(View.GONE);
             } else {
                 if (userModel.getData().getNum_orders() > 0) {
                     tv_certified.setText(getString(R.string.certified_account));

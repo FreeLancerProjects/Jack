@@ -433,7 +433,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
         googleApiClient.connect();
     }
     ///////////////////////////////////
-    private void LocationListener(final Location location)
+   /* private void LocationListener(final Location location)
     {
 
         if (location!=null)
@@ -456,14 +456,14 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
                                 fragment_client_store.getNearbyPlaces(location,"restaurant");
 
                             }
-                            /*if (intentService!=null)
+                            *//*if (intentService!=null)
                             {
                                 stopService(intentService);
-                            }*/
+                            }*//*
                         }
                     },1);
         }
-    }
+    }*/
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void LocationErrorListener(final LocationError locationError)
     {
@@ -2395,7 +2395,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
 
     @Override
     public void onLocationChanged(Location location) {
-        LocationListener(location);
+        //LocationListener(location);
     }
     /////////////////////////////////////////////////////////////////
     public void DisplayFragmentHomeView()
