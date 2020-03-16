@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.endpoint.Jack.R;
 import com.endpoint.Jack.activities_fragments.activity_home.client_home.fragments.fragment_orders.Fragment_Client_Current_Orders;
 import com.endpoint.Jack.activities_fragments.activity_home.client_home.fragments.fragment_orders.Fragment_Client_New_Orders;
+import com.endpoint.Jack.activities_fragments.activity_home.client_home.fragments.fragment_orders.Fragment_Client_Orders;
 import com.endpoint.Jack.models.OrderDataModel;
 import com.endpoint.Jack.share.TimeAgo;
 import com.endpoint.Jack.tags.Tags;
@@ -83,6 +84,10 @@ public class OrdersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     {
                         Fragment_Client_New_Orders fragment_client_new_orders = (Fragment_Client_New_Orders) fragment;
                         fragment_client_new_orders.setItemData(orderModel);
+                    }
+                    else if(fragment instanceof Fragment_Client_Orders &&!orderModel.getOrder_status().equals("8")){
+                        Fragment_Client_Orders fragment_client_orders = (Fragment_Client_Orders) fragment;
+                        fragment_client_orders.setItemData(orderModel);
                     }
                 }
             });

@@ -333,5 +333,15 @@ ordersAdapteradapter.notifyDataSetChanged();
 
 
     }
+    public void setItemData(OrderDataModel.OrderModel orderModel) {
 
+        if (userModel.getData().getUser_type().equals(Tags.TYPE_CLIENT))
+        {
+            activity.DisplayFragmentClientOrderDetails(orderModel);
+
+        }else
+        {
+            activity.DisplayFragmentDelegateCurrentOrderDetails(orderModel);
+        }
+    }
 }

@@ -24,9 +24,11 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.endpoint.Jack.R;
 import com.endpoint.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity;
+import com.endpoint.Jack.adapters.CategoryAdapter;
 import com.endpoint.Jack.adapters.NearbyAdapter;
 import com.endpoint.Jack.adapters.QueryAdapter;
 import com.endpoint.Jack.adapters.SliderAdapter;
+import com.endpoint.Jack.models.CategoryModel;
 import com.endpoint.Jack.models.NearbyModel;
 import com.endpoint.Jack.models.NearbyStoreDataModel;
 import com.endpoint.Jack.models.PlaceModel;
@@ -53,9 +55,10 @@ public class Fragment_Client_Store extends Fragment {
     private LinearLayout ll_search,ll_no_store;
     private CardView cardView;
     private ProgressBar progBar,progBarSlider;
-    private RecyclerView recView,recViewQueries;
-    private RecyclerView.LayoutManager manager,managerQueries;
+    private RecyclerView recView,recViewQueries,recviewcat;
+    private LinearLayoutManager manager,managerQueries,managercat;
     private NearbyAdapter adapter;
+    private CategoryAdapter categoryAdapter;
     private List<PlaceModel> nearbyModelList,mainNearbyModelList;
     private ViewPager pager;
     private TabLayout tab;
@@ -68,8 +71,9 @@ public class Fragment_Client_Store extends Fragment {
     private TimerTask timerTask;
     private SliderAdapter sliderAdapter;
     private String current_language;
-
-
+private List<CategoryModel.Data>categoryModels;
+    private int current_page = 1;
+    private boolean isLoading = false;
 
 
     @Nullable
@@ -90,6 +94,7 @@ public class Fragment_Client_Store extends Fragment {
         current_language = Paper.book().read("lang", Locale.getDefault().getLanguage());
         nearbyModelList = new ArrayList<>();
         mainNearbyModelList = new ArrayList<>();
+        categoryModels = new ArrayList<>();
         queriesList = new ArrayList<>();
         queriesList.add("restaurant");
         queriesList.add("bakery");
@@ -125,7 +130,13 @@ public class Fragment_Client_Store extends Fragment {
         progBar = view.findViewById(R.id.progBar);
         progBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(activity,R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
         recView = view.findViewById(R.id.recView);
+        recviewcat=view.findViewById(R.id.reccat);
         manager = new LinearLayoutManager(activity);
+        managercat=new LinearLayoutManager(activity,RecyclerView.HORIZONTAL,false);
+        recviewcat.setLayoutManager(managercat);
+        recviewcat.setDrawingCacheEnabled(true);
+        recviewcat.setItemViewCacheSize(20);
+        recviewcat.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_LOW);
         recView.setLayoutManager(manager);
         recView.setDrawingCacheEnabled(true);
         recView.setItemViewCacheSize(20);
@@ -136,7 +147,8 @@ public class Fragment_Client_Store extends Fragment {
         recViewQueries.setLayoutManager(managerQueries);
         queryAdapter = new QueryAdapter(en_ar_queriesList,activity,this);
         recViewQueries.setAdapter(queryAdapter);
-
+categoryAdapter=new CategoryAdapter(categoryModels,activity,this);
+recviewcat.setAdapter(categoryAdapter);
         ll_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -147,6 +159,81 @@ public class Fragment_Client_Store extends Fragment {
 
 
 
+
+
+//       recviewcat .addOnScrollListener(new RecyclerView.OnScrollListener() {
+//        @Override
+//        public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+//            super.onScrolled(recyclerView, dx, dy);
+//            int total_items = categoryAdapter.getItemCount();
+//            int last_item_pos = managercat.findLastCompletelyVisibleItemPosition();
+//
+//            if (dy>0)
+//            {
+//                if ((total_items-last_item_pos)==5&&!isLoading)
+//                {
+//                    categoryModels.add(null);
+//                    categoryAdapter.notifyItemInserted(categoryModels.size()-1);
+//                    int page = current_page+1;
+//                    loadMore(page);
+//
+//                }
+//            }
+//
+//        }
+//    });
+        getCatogries();
+}
+
+    public void getCatogries() {
+        //   Common.CloseKeyBoard(homeActivity, edt_name);
+
+        // rec_sent.setVisibility(View.GONE);
+       // progBar.setVisibility(View.VISIBLE);
+        Api.getService(Tags.base_url)
+                .getcatogries(current_language)
+                .enqueue(new Callback<CategoryModel>() {
+                    @Override
+                    public void onResponse(Call<CategoryModel>  call, Response<CategoryModel> response) {
+                      //  progBar.setVisibility(View.GONE);
+                        if (response.isSuccessful() && response.body() != null && response.body().getData() != null) {
+                            categoryModels.clear();
+                            categoryModels.addAll(response.body().getData());
+                       //     Log.e("lllll",response.body().getData().size()+"");
+                            if (response.body().getData().size() > 0) {
+                                // rec_sent.setVisibility(View.VISIBLE);
+
+                             //   ll_no_store.setVisibility(View.GONE);
+                                categoryAdapter.notifyDataSetChanged();
+                                //   total_page = response.body().getMeta().getLast_page();
+
+                            } else {
+                               // ll_no_store.setVisibility(View.VISIBLE);
+
+                            }
+                        } else {
+                           // ll_no_store.setVisibility(View.VISIBLE);
+
+                            //  Toast.makeText(activity, getString(R.string.failed), Toast.LENGTH_SHORT).show();
+                            try {
+                                Log.e("Error_code", response.code() + "_" + response.errorBody().string());
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<CategoryModel> call, Throwable t) {
+                        try {
+
+                          //  progBar.setVisibility(View.GONE);
+                            //    Toast.makeText(activity, getString(R.string.something), Toast.LENGTH_SHORT).show();
+                            Log.e("error", t.getMessage());
+                        } catch (Exception e) {
+                        }
+                    }
+                });
 
     }
 
@@ -165,6 +252,12 @@ public class Fragment_Client_Store extends Fragment {
                         }else
                         {
 
+                                try {
+                                    Log.e("error_code",response.code()+"_"+response.errorBody().string());
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                                pager.setVisibility(View.GONE);
                             try {
                                 Log.e("error_code",response.code()+"_"+response.errorBody().string());
                             } catch (IOException e) {
@@ -182,7 +275,7 @@ public class Fragment_Client_Store extends Fragment {
                         try {
                             progBarSlider.setVisibility(View.GONE);
 
-                            fl_slider.setVisibility(View.GONE);
+                            pager.setVisibility(View.GONE);
                             Log.e("Error",t.getMessage());
 
                         }catch (Exception e){}
@@ -194,7 +287,7 @@ public class Fragment_Client_Store extends Fragment {
 
         if (sliderModel.getData().size()>0)
         {
-            fl_slider.setVisibility(View.VISIBLE);
+            pager.setVisibility(View.VISIBLE);
 
             if (sliderModel.getData().size()>1)
             {
@@ -215,6 +308,8 @@ public class Fragment_Client_Store extends Fragment {
 
 
         }else
+
+                pager.setVisibility(View.GONE);
         {
             fl_slider.setVisibility(View.GONE);
 

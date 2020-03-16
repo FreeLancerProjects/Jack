@@ -2,6 +2,7 @@ package com.endpoint.Jack.services;
 
 import com.endpoint.Jack.models.AppDataModel;
 import com.endpoint.Jack.models.BankDataModel;
+import com.endpoint.Jack.models.CategoryModel;
 import com.endpoint.Jack.models.CommentDataModel;
 import com.endpoint.Jack.models.FollowModel;
 import com.endpoint.Jack.models.MessageDataModel;
@@ -29,6 +30,7 @@ import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -379,6 +381,8 @@ public interface Service {
 
     @GET("/api/banks")
     Call<BankDataModel> getBankAccount();
+    @GET("/app/place/categories")
+    Call<CategoryModel> getcatogries(@Header("lang") String lang);
 }
 
 

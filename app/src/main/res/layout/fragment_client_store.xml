@@ -121,6 +121,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="160dp"
                             android:layout_marginBottom="8dp"
+                            android:visibility="gone"
                             >
 
                         </androidx.viewpager.widget.ViewPager>
@@ -135,22 +136,31 @@
                             app:tabMinWidth="6dp"
                             app:tabMaxWidth="6dp"
                             app:tabBackground="@drawable/tab_circle_indicator"
-
+android:visibility="gone"
                             >
 
                         </com.google.android.material.tabs.TabLayout>
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/reccat"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+
+                        </androidx.recyclerview.widget.RecyclerView>
                     </LinearLayout>
                     <ProgressBar
                         android:id="@+id/progBarSlider"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="center"
-                        android:visibility="visible"
+                        android:visibility="gone"
+
                         />
                 </FrameLayout>
 
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recViewQueries"
                 android:layout_width="match_parent"

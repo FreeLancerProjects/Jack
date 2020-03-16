@@ -4,7 +4,9 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -139,6 +141,7 @@ public class Fragment_Code_Verification extends Fragment {
                 if (phoneAuthCredential.getSmsCode() != null) {
                     code = phoneAuthCredential.getSmsCode();
                     edt_code.setText(code);
+                    edt_code.setBackground(activity.getResources().getDrawable(R.drawable.edit_shape2));
                     siginwithcredental(phoneAuthCredential);
                 } else {
                     siginwithcredental(phoneAuthCredential);
@@ -154,6 +157,23 @@ public class Fragment_Code_Verification extends Fragment {
 
 
         };
+        edt_code.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                edt_code.setBackground(activity.getResources().getDrawable(R.drawable.edit_shape));
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
     }
 
