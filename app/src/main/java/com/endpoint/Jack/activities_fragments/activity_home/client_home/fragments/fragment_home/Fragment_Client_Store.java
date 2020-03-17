@@ -1,6 +1,7 @@
 package com.endpoint.Jack.activities_fragments.activity_home.client_home.fragments.fragment_home;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.location.Location;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.endpoint.Jack.R;
+import com.endpoint.Jack.activities_fragments.activity_catogry.CatogryActivity;
 import com.endpoint.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity;
 import com.endpoint.Jack.adapters.CategoryAdapter;
 import com.endpoint.Jack.adapters.NearbyAdapter;
@@ -468,6 +470,12 @@ recviewcat.setAdapter(categoryAdapter);
             getNearbyPlaces(location,query);
 
         }
+    }
+
+    public void Displaycatogry(CategoryModel.Data data) {
+        Intent intent=new Intent(activity, CatogryActivity.class);
+        intent.putExtra("data",data);
+        startActivity(intent);
     }
 
     private class MyTimerTask extends TimerTask {

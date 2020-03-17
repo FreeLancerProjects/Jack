@@ -11,9 +11,9 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.GET_TASKS"
-        tools:ignore="ProtectedPermissions"
-        />
+    <uses-permission
+        android:name="android.permission.GET_TASKS"
+        tools:ignore="ProtectedPermissions" />
 
     <application
         android:name=".share.App"
@@ -25,13 +25,12 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
-        tools:targetApi="m"
+        tools:targetApi="m">
+        <activity android:name=".activities_fragments.activity_catogry.CatogryActivity"></activity>
 
-
-        >
         <uses-library
             android:name="org.apache.http.legacy"
-            android:required="false"/>
+            android:required="false" />
 
         <service
             android:name=".notifications.FireBaseMessaging"
@@ -48,7 +47,13 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+        <meta-data android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"/>
 
+        <activity android:name="com.facebook.FacebookActivity"
+            android:configChanges=
+                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
         <activity
             android:name=".activities_fragments.activity_splash.SplashActivity"
             android:configChanges="orientation|screenSize|keyboardHidden">
@@ -63,10 +68,13 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
+            android:name=".activities_fragments.activity_map.MapActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
             android:name=".activities_fragments.terms_conditions.TermsConditionsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activities_fragments.intro_slider.MainScreen"
             android:configChanges="orientation|screenSize|keyboardHidden"
@@ -76,17 +84,14 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:excludeFromRecents="true"
             android:launchMode="singleTask"
-            android:taskAffinity=""
-             />
-        <activity android:name=".activities_fragments.activity_chat.ChatActivity"
+            android:taskAffinity="" />
+        <activity
+            android:name=".activities_fragments.activity_chat.ChatActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:windowSoftInputMode="stateAlwaysHidden"
             android:excludeFromRecents="true"
             android:launchMode="singleTask"
             android:taskAffinity=""
-            >
-
-        </activity>
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
     </application>
 
 </manifest>

@@ -18,6 +18,7 @@ import com.endpoint.Jack.models.PlaceDirectionModel;
 import com.endpoint.Jack.models.PlaceGeocodeData;
 import com.endpoint.Jack.models.PlaceMapDetailsData;
 import com.endpoint.Jack.models.SearchDataModel;
+import com.endpoint.Jack.models.SingleCategoryModel;
 import com.endpoint.Jack.models.SliderModel;
 import com.endpoint.Jack.models.SocialMediaModel;
 import com.endpoint.Jack.models.UserModel;
@@ -383,6 +384,14 @@ public interface Service {
     Call<BankDataModel> getBankAccount();
     @GET("/app/place/categories")
     Call<CategoryModel> getcatogries(@Header("lang") String lang);
+    @GET("/app/place/show")
+    Call<SingleCategoryModel> getsinglecat(
+            @Header("lang") String lang,
+            @Query("category_id") String category_id,
+            @Query("page") int page,
+            @Query("limit_per_page") int limit_per_page
+
+    );
 }
 
 

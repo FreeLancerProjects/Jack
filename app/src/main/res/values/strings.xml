@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">Jack</string>
+<!--    AIzaSyAeyMUJgKAhnNXbILHONb1um72CNzELFRY-->
     <!--AIzaSyArjmbYWTWZhDFFtPOLRLKYwjtBDkOEGrY-->
-
-    <string name="map_api_key">AIzaSyAeyMUJgKAhnNXbILHONb1um72CNzELFRY</string>
+    <string name="facebook_app_id">[APP_ID]</string>
+    <string name="fb_login_protocol_scheme">fb[APP_ID]</string>
+    <string name="map_api_key">AIzaSyArjmbYWTWZhDFFtPOLRLKYwjtBDkOEGrY</string>
     <string name="notifications">Notifications</string>
     <string name="si_su">Please Sign in or sign up .</string>
     <string name="ok">Ok</string>
@@ -293,6 +295,14 @@
     <string name="inactive1">Inactive</string>
     <string name="all">All</string>
     <string name="pharmacies">Pharmacies</string>
+    <string name="change">change</string>
+    <string name="display_times">Display Times</string>
+    <string name="user_reviews">User reviews</string>
+    <string name="user_opinions">User opinions</string>
+    <string name="select_location_on_map">Select Location On Map</string>
+    <string name="select_location">Select Location</string>
+    <string name="signup_with_google">Signup With Google</string>
+    <string name="signup_with_facebook">Signup With Facebook</string>
 
 
 </resources>

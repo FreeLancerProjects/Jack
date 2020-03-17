@@ -231,8 +231,13 @@ public class Fragment_Code_Verification extends Fragment {
         Log.e("ccc", code);
         if (id != null) {
 
-            PhoneAuthCredential credential = PhoneAuthProvider.getCredential(id, code);
-            siginwithcredental(credential);
+try {
+    PhoneAuthCredential credential = PhoneAuthProvider.getCredential(id, code);
+    siginwithcredental(credential);
+
+}catch (Exception e){
+
+}
         }
     }
 

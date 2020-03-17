@@ -41,8 +41,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyHolder holder, int position) {
-        CategoryModel.Data categoryModel=categoryModelList.get(position);
+    public void onBindViewHolder(@NonNull final MyHolder holder, int position) {
+        final CategoryModel.Data categoryModel=categoryModelList.get(position);
 tv_title.setText(categoryModel.getWord().getTitle());
 if(categoryModel.getWord().getContent()!=null&&categoryModel.getWord().getContent().length()<=30){
 tv_details.setText(categoryModel.getWord().getContent());}
@@ -53,7 +53,10 @@ else {
 holder.itemView.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-
+if(fragment instanceof Fragment_Client_Store){
+    fragment_main=(Fragment_Client_Store)fragment_main;
+    fragment_main.Displaycatogry(categoryModelList.get(holder.getLayoutPosition()));
+}
     }
 });
     }
