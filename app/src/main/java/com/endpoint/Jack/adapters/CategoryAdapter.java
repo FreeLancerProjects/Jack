@@ -54,7 +54,7 @@ holder.itemView.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
 if(fragment instanceof Fragment_Client_Store){
-    fragment_main=(Fragment_Client_Store)fragment_main;
+    fragment_main=(Fragment_Client_Store)fragment;
     fragment_main.Displaycatogry(categoryModelList.get(holder.getLayoutPosition()));
 }
     }

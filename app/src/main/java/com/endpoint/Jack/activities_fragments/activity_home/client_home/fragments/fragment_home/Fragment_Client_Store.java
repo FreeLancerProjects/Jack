@@ -65,7 +65,7 @@ public class Fragment_Client_Store extends Fragment {
     private ViewPager pager;
     private TabLayout tab;
     private FrameLayout fl_slider;
-    private Location location;
+    public Location location;
     private QueryAdapter queryAdapter;
     private List<String> queriesList;
     private List<QuerySearchModel> en_ar_queriesList;
@@ -98,6 +98,8 @@ private List<CategoryModel.Data>categoryModels;
         mainNearbyModelList = new ArrayList<>();
         categoryModels = new ArrayList<>();
         queriesList = new ArrayList<>();
+        queriesList.add("all");
+
         queriesList.add("restaurant");
         queriesList.add("bakery");
         queriesList.add("supermarket");
@@ -106,6 +108,7 @@ private List<CategoryModel.Data>categoryModels;
         queriesList.add("florist");
 
         en_ar_queriesList = new ArrayList<>();
+        en_ar_queriesList.add(new QuerySearchModel(getString(R.string.all),R.drawable.map));
         en_ar_queriesList.add(new QuerySearchModel(getString(R.string.restaurant),R.drawable.ic_restaurant));
         en_ar_queriesList.add(new QuerySearchModel(getString(R.string.bakery),R.drawable.ic_sweet));
         en_ar_queriesList.add(new QuerySearchModel(getString(R.string.supermarket),R.drawable.ic_nav_store));
@@ -265,7 +268,7 @@ recviewcat.setAdapter(categoryAdapter);
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
-                            fl_slider.setVisibility(View.GONE);
+                            pager.setVisibility(View.GONE);
 
                         }
                     }
@@ -313,7 +316,7 @@ recviewcat.setAdapter(categoryAdapter);
 
                 pager.setVisibility(View.GONE);
         {
-            fl_slider.setVisibility(View.GONE);
+            pager.setVisibility(View.GONE);
 
         }
 
@@ -345,6 +348,8 @@ recviewcat.setAdapter(categoryAdapter);
                     .enqueue(new Callback<NearbyStoreDataModel>() {
                         @Override
                         public void onResponse(Call<NearbyStoreDataModel> call, Response<NearbyStoreDataModel> response) {
+                        //    Log.e("jjjjjj",response.code()+"");
+
                             if (response.isSuccessful()&&response.body()!=null)
                             {
                                 progBar.setVisibility(View.GONE);
@@ -385,6 +390,10 @@ recviewcat.setAdapter(categoryAdapter);
                             }
                         }
                     });
+        }
+        else {
+            Log.e("jjjjjj","lfklfkkfk");
+
         }
 
     }

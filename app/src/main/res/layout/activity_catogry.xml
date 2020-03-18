@@ -26,6 +26,51 @@
             android:layout_height="wrap_content"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
+
+            <FrameLayout
+                android:id="@+id/fl_slider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/pager"
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:layout_marginBottom="8dp">
+
+                    </androidx.viewpager.widget.ViewPager>
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tab"
+                        android:layout_width="wrap_content"
+                        android:layout_height="6dp"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:layout_marginBottom="10dp"
+                        app:tabBackground="@drawable/tab_circle_indicator"
+                        app:tabIndicatorHeight="0dp"
+                        app:tabMaxWidth="6dp"
+                        app:tabMinWidth="6dp"
+                        app:tabMode="scrollable">
+
+                    </com.google.android.material.tabs.TabLayout>
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progBarSlider"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+
+                    />
+            </FrameLayout>
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
@@ -92,10 +137,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
                                 android:gravity="center"
-                                android:text="name"
                                 android:textColor="@color/colorPrimary"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
+                                android:textSize="14sp"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/image" />
@@ -108,7 +151,7 @@
                                 android:gravity="center"
                                 android:text="name"
                                 android:textColor="@color/colorPrimary"
-                                android:textSize="18sp"
+                                android:textSize="14sp"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/image"
@@ -122,51 +165,6 @@
 
 
             </androidx.appcompat.widget.Toolbar>
-
-            <FrameLayout
-                android:id="@+id/fl_slider"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="56dp"
-
-                >
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <androidx.viewpager.widget.ViewPager
-                        android:id="@+id/pager"
-                        android:layout_width="match_parent"
-                        android:layout_height="160dp"
-                        android:layout_marginBottom="8dp">
-
-                    </androidx.viewpager.widget.ViewPager>
-
-                    <com.google.android.material.tabs.TabLayout
-                        android:id="@+id/tab"
-                        android:layout_width="wrap_content"
-                        android:layout_height="6dp"
-                        android:layout_gravity="bottom|center_horizontal"
-                        android:layout_marginBottom="10dp"
-                        app:tabBackground="@drawable/tab_circle_indicator"
-                        app:tabIndicatorHeight="0dp"
-                        app:tabMaxWidth="6dp"
-                        app:tabMinWidth="6dp"
-                        app:tabMode="scrollable">
-
-                    </com.google.android.material.tabs.TabLayout>
-                </LinearLayout>
-
-                <ProgressBar
-                    android:id="@+id/progBarSlider"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_gravity="center"
-
-                    />
-            </FrameLayout>
 
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -210,7 +208,7 @@
                         android:gravity="center"
                         android:text="@string/user_reviews"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="18sp"
+                        android:textSize="14sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -253,7 +251,7 @@
                             android:gravity="center"
                             android:text="name"
                             android:textColor="@color/gray3"
-                            android:textSize="18sp"
+                            android:textSize="14sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/image"
@@ -273,7 +271,7 @@
                     android:gravity="center"
                     android:text="@string/user_opinions"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/image" />
@@ -320,9 +318,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:gravity="center"
-                        android:text="name"
+                        android:text="@string/address"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="18sp"
+                        android:textSize="14sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -341,9 +339,9 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:gravity="center"
-                            android:text="name"
+                            android:text="@string/address"
                             android:textColor="@color/gray3"
-                            android:textSize="18sp"
+                            android:textSize="14sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/image" />
@@ -361,7 +359,7 @@
                     android:gravity="center"
                     android:text="@string/change"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/image" />
@@ -410,7 +408,7 @@
                         android:gravity="center"
                         android:text="name"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="18sp"
+                        android:textSize="14sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -431,7 +429,7 @@
                             android:gravity="center"
                             android:text="name"
                             android:textColor="@color/gray3"
-                            android:textSize="18sp"
+                            android:textSize="14sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/image" />
@@ -449,7 +447,7 @@
                     android:gravity="center"
                     android:text="@string/display_times"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/image" />

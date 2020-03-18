@@ -2395,7 +2395,44 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
 
     @Override
     public void onLocationChanged(Location location) {
-        //LocationListener(location);
+        LocationListener(location);
+
+
+
+
+        DisplayFragmentHomeView();
+
+    }
+    private void LocationListener(final Location location)
+    {
+
+        if (location!=null)
+        {
+            if (userModel!=null)
+            {
+                UpdateUserLocation(location);
+            }
+            ClientHomeActivity.this.location = location;
+        }
+        if (fragment_client_store!=null&&fragment_client_store.isAdded())
+        {
+            new Handler()
+                    .postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (canUpdateLocation)
+                            {
+                                canUpdateLocation = false;
+                                fragment_client_store.getNearbyPlaces(location,"all");
+
+                            }
+                            /*if (intentService!=null)
+                            {
+                                stopService(intentService);
+                            }*/
+                        }
+                    },1);
+        }
     }
     /////////////////////////////////////////////////////////////////
     public void DisplayFragmentHomeView()

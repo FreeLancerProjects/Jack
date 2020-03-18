@@ -2,6 +2,7 @@ package com.endpoint.Jack.activities_fragments.activity_catogry;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import android.app.Activity;
@@ -9,12 +10,14 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.endpoint.Jack.R;
@@ -58,7 +61,7 @@ private SliderCatogryAdapter sliderCatogryAdapter;
 private LinearLayout ll_change;
     private SelectedLocation selectedLocation;
     private ImageView arrow1,arrow2,arrow3,imback;
-
+private ProgressBar progressBar;
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(Language_Helper.updateResources(base,Language_Helper.getLanguage(base)));
@@ -79,7 +82,7 @@ private LinearLayout ll_change;
         tv_name=findViewById(R.id.tv_name);
         tv_content=findViewById(R.id.tv_content);
         tv_rate=findViewById(R.id.tv_rate);
-        tv_status=findViewById(R.id.tv_state);
+        tv_status=findViewById(R.id.tv_status);
         tv_time=findViewById(R.id.tv_time);
         simpleRatingBar=findViewById(R.id.rateBar);
         imageView=findViewById(R.id.image);
@@ -89,8 +92,10 @@ private LinearLayout ll_change;
         tv_address=findViewById(R.id.tv_address1);
         arrow1=findViewById(R.id.arrow1);
         arrow2=findViewById(R.id.arrow2);
-        arrow1=findViewById(R.id.arrow3);
+        arrow3=findViewById(R.id.arrow3);
 imback=findViewById(R.id.image_back);
+        progressBar = findViewById(R.id.progBarSlider);
+        progressBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(this,R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
 if(lang.equals("en")){
     arrow1.setRotation(180.0f);
     arrow2.setRotation(180.0f);
@@ -131,12 +136,12 @@ imback.setOnClickListener(new View.OnClickListener() {
         final ProgressDialog dialog = Common.createProgressDialog(this,getString(R.string.wait));
         dialog.show();
         Api.getService(Tags.base_url)
-                .getsinglecat(lang,data.getWord().getId()+"",1,1)
+                .getsinglecat(lang,data.getCategory_id()+"",1,1)
                 .enqueue(new Callback<SingleCategoryModel>() {
                     @Override
                     public void onResponse(Call<SingleCategoryModel> call, Response<SingleCategoryModel> response) {
                         dialog.dismiss();
-                        if (response.isSuccessful())
+                        if (response.isSuccessful()&&response.body()!=null&&response.body().getData()!=null&&response.body().getData().size()>0)
                         {
                            update(response.body());
 
@@ -144,9 +149,9 @@ imback.setOnClickListener(new View.OnClickListener() {
                         }else
                         {
                             try {
-                                Log.e("code",response.code()+""+response.errorBody().string());
-                            } catch (IOException e) {
-                                e.printStackTrace();
+                                Log.e("codesssss",response.code()+""+response.errorBody().string());
+                            } catch (Exception e) {
+                              //  e.printStackTrace();
                             }
 
                         }
@@ -154,6 +159,8 @@ imback.setOnClickListener(new View.OnClickListener() {
 
                     @Override
                     public void onFailure(Call<SingleCategoryModel> call, Throwable t) {
+                        Log.e("codesssss",t.getMessage());
+
 
                     }
                 });
@@ -161,13 +168,19 @@ imback.setOnClickListener(new View.OnClickListener() {
     }
 
     private void update(SingleCategoryModel body) {
-        tv_content.setText(body.getData().get(0).getWord().getContent());
+        if(body.getData().get(0).getWord().getContent()!= null)
+        tv_content.setText(body.getData().get(0).getWord().getContent()+"");
         tv_name.setText(body.getData().get(0).getWord().getTitle());
-        Picasso.with(this).load(Tags.IMAGE_URL+body.getData().get(0).getLogo());
-        if(body.getData().get(0).getMenus()!=null){
+        Picasso.with(this).load(Tags.IMAGE_URL+body.getData().get(0).getLogo()).into(imageView);
+        progressBar.setVisibility(View.GONE);
+        if(body.getData().get(0).getMenus()!=null&&body.getData().get(0).getMenus().size()>0){
             NUM_PAGES=body.getData().get(0).getMenus().size();
             sliderCatogryAdapter=new SliderCatogryAdapter(body.getData().get(0).getMenus(),this);
             pager.setAdapter(sliderCatogryAdapter);
+            pager.setVisibility(View.VISIBLE);
+        }
+        else {
+pager.setVisibility(View.GONE);
         }
         tv_rate.setText(body.getData().get(0).getRate()+"");
         simpleRatingBar.setIndicator(false);
