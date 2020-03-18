@@ -6,9 +6,10 @@
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout    android:layout_width="match_parent"
     android:layout_height="0dp"
-    android:background="@color/gray0"
+    android:background="@color/gray2"
     android:clickable="true"
     android:focusable="true"
+
     app:layout_constraintBottom_toTopOf="@id/ll"
     app:layout_constraintTop_toTopOf="parent"
     >
@@ -73,8 +74,8 @@
             </FrameLayout>
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:background="@color/gray4"
+                android:layout_height="55dp"
+                android:background="@color/colorPrimary"
                 app:contentInsetEnd="0dp"
                 app:contentInsetLeft="0dp"
                 app:contentInsetRight="0dp"
@@ -137,19 +138,20 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
                                 android:gravity="center"
-                                android:textColor="@color/colorPrimary"
+                                android:textColor="@color/white"
                                 android:textSize="14sp"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/image" />
 
                             <TextView
-                                android:id="@+id/tv_content"
+                                android:id="@+id/tv_title1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
                                 android:gravity="center"
                                 android:text="name"
+                                android:visibility="gone"
                                 android:textColor="@color/colorPrimary"
                                 android:textSize="14sp"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -188,7 +190,21 @@
             android:paddingRight="10dp"
 
             >
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="name"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image"
 
+
+                />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -207,7 +223,7 @@
                         android:layout_marginTop="5dp"
                         android:gravity="center"
                         android:text="@string/user_reviews"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/black"
                         android:textSize="14sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -268,9 +284,10 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:text="@string/user_opinions"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -283,9 +300,10 @@
                     android:layout_gravity="center"
                     android:clickable="false"
                     android:longClickable="false"
+                    android:layout_marginTop="5dp"
                     android:padding="8dp"
                     android:src="@drawable/ic_left_arrow"
-                    android:tint="@color/colorPrimary" />
+                    android:tint="@color/black" />
             </LinearLayout>
 
             <LinearLayout
@@ -302,7 +320,8 @@
                     android:clickable="false"
                     android:longClickable="false"
                     android:padding="8dp"
-                    android:src="@drawable/ic_left_arrow"
+                    android:src="@drawable/map"
+                    app:civ_fill_color="@color/black"
                     app:civ_circle_background_color="@color/gray4" />
 
                 <LinearLayout
@@ -319,7 +338,7 @@
                         android:layout_marginTop="5dp"
                         android:gravity="center"
                         android:text="@string/address"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/black"
                         android:textSize="14sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -338,6 +357,7 @@
                             android:layout_gravity="center"
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
+                            android:lines="1"
                             android:gravity="center"
                             android:text="@string/address"
                             android:textColor="@color/gray3"
@@ -356,9 +376,10 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:text="@string/change"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -372,9 +393,11 @@
                     android:layout_gravity="center"
                     android:clickable="false"
                     android:longClickable="false"
+                    android:layout_marginTop="5dp"
+
                     android:padding="8dp"
                     android:src="@drawable/ic_left_arrow"
-                    android:tint="@color/colorPrimary" />
+                    android:tint="@color/black" />
             </LinearLayout>
 
             <LinearLayout
@@ -390,7 +413,7 @@
                     android:clickable="false"
                     android:longClickable="false"
                     android:padding="8dp"
-                    android:src="@drawable/ic_left_arrow"
+                    android:src="@drawable/ic_call2"
                     app:civ_circle_background_color="@color/gray4" />
 
                 <LinearLayout
@@ -407,7 +430,7 @@
                         android:layout_marginTop="5dp"
                         android:gravity="center"
                         android:text="name"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/black"
                         android:textSize="14sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -444,9 +467,12 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+
                     android:gravity="center"
                     android:text="@string/display_times"
-                    android:textColor="@color/colorPrimary"
+
+                    android:textColor="@color/black"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -460,9 +486,10 @@
                     android:layout_gravity="center"
                     android:clickable="false"
                     android:longClickable="false"
+                    android:layout_marginTop="5dp"
                     android:padding="8dp"
                     android:src="@drawable/ic_left_arrow"
-                    android:tint="@color/colorPrimary" />
+                    android:tint="@color/black" />
             </LinearLayout>
 
 

@@ -15,6 +15,7 @@ public class PlaceModel implements Serializable {
     private boolean isOpenNow;
     private List<String> weekday_text;
     private double distance;
+    private List<PhotosModel> photosList;
 
     public PlaceModel(String id, String place_id, String name, String icon, float rating, double lat, double lng, String address) {
         this.id = id;
@@ -82,4 +83,10 @@ public class PlaceModel implements Serializable {
     public void setDistance(double distance) {
         this.distance = distance;
     }
+
+    public List<PhotosModel> getPhotosList() {
+        return photosList;
+    }
+
+
 }

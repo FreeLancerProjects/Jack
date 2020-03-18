@@ -1,6 +1,7 @@
 package com.endpoint.Jack.activities_fragments.activity_sign_in.fragments;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -48,6 +49,7 @@ public class Fragment_Chooser_Login extends Fragment {
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(activity, gso);
+mGoogleSignInClient.signOut();
 
         return view;
     }
@@ -129,7 +131,7 @@ signIn();            }
 
             // Signed in successfully, show authenticated UI.
             updateUI(account);
-            mGoogleSignInClient.signOut();
+           // mGoogleSignInClient.signOut();
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
@@ -138,14 +140,19 @@ signIn();            }
         }
     }
 
-    private void updateUI(GoogleSignInAccount o) {
-        mGoogleSignInClient.signOut();
+    private void updateUI(GoogleSignInAccount acct) {
+      //  mGoogleSignInClient.signOut();
 
-        if(o!=null){
-        Log.e("datassss",o.getEmail());}
-        else {
-            Log.e("lflflfllfl","lflflfl");
+        if (acct != null) {
+            String personName = acct.getDisplayName();
+            String personGivenName = acct.getGivenName();
+            String personFamilyName = acct.getFamilyName();
+            String personEmail = acct.getEmail();
+            String personId = acct.getId();
+            Uri personPhoto = acct.getPhotoUrl();
+          //  Log.e("ldkkkfk",acct.getAccount().type);
         }
+
     }
 
     @Override

@@ -141,7 +141,7 @@ public class Fragment_Code_Verification extends Fragment {
                 if (phoneAuthCredential.getSmsCode() != null) {
                     code = phoneAuthCredential.getSmsCode();
                     edt_code.setText(code);
-                    edt_code.setBackground(activity.getResources().getDrawable(R.drawable.edit_shape2));
+                    edt_code.setPinBackground(activity.getResources().getDrawable(R.drawable.edit_shape2));
                     siginwithcredental(phoneAuthCredential);
                 } else {
                     siginwithcredental(phoneAuthCredential);
@@ -160,17 +160,19 @@ public class Fragment_Code_Verification extends Fragment {
         edt_code.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                edt_code.setBackground(activity.getResources().getDrawable(R.drawable.edit_shape));
+                edt_code.setPinBackground(activity.getResources().getDrawable(R.drawable.edit_shape));
 
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                edt_code.setPinBackground(activity.getResources().getDrawable(R.drawable.edit_shape));
 
             }
 
             @Override
             public void afterTextChanged(Editable s) {
+                edt_code.setPinBackground(activity.getResources().getDrawable(R.drawable.edit_shape));
 
             }
         });
@@ -257,7 +259,7 @@ try {
 
                 }
                 else {
-                   // Log.e("llllll",";llllll"+task.toString());
+                    Log.e("llllll",";llllll");
 
                 }
 

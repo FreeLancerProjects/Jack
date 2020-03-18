@@ -4,8 +4,11 @@ import android.graphics.Bitmap;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -21,7 +24,9 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.aurelhubert.ahbottomnavigation.notification.AHNotification;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.endpoint.Jack.R;
 import com.endpoint.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity;
 import com.endpoint.Jack.models.UserModel;
@@ -29,12 +34,16 @@ import com.endpoint.Jack.preferences.Preferences;
 import com.endpoint.Jack.share.Common;
 import com.endpoint.Jack.singletone.UserSingleTone;
 import com.endpoint.Jack.tags.Tags;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class Fragment_Home extends Fragment {
 
     private ClientHomeActivity activity;
     private AHBottomNavigation ah_bottom_nav;
+    private BottomNavigationView bottomNavigationView;
     private UserSingleTone userSingleTone;
     private UserModel userModel;
     private Preferences preferences;
@@ -50,9 +59,53 @@ public class Fragment_Home extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home,container,false);
         initView(view);
+        setimage();
         return view;
     }
 
+    private void setimage() {
+        if(userModel!=null){
+            bottomNavigationView.setItemIconTintList(null); // this is important
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                bottomNavigationView.getMenu().getItem(3).setIconTintList(null);
+                bottomNavigationView.getMenu().getItem(3).setIconTintMode(null);
+            }
+            Log.e("lflgllg",userModel.getData().getUser_image());
+            Glide.with(getApplicationContext()).asBitmap().load(Tags.IMAGE_URL+userModel.getData().getUser_image())
+                     .apply(RequestOptions.circleCropTransform()).into(new SimpleTarget<Bitmap>() {
+
+                @Override
+                public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                   // Log.e("lflgllg,";fllflf");
+
+                    Drawable profileImage = new BitmapDrawable(getResources(), resource);
+                    bottomNavigationView.getMenu().findItem(R.id.profile).setIcon(profileImage);
+                }
+
+                @Override
+                public void onLoadCleared(@Nullable Drawable placeholder) {
+
+
+                    bottomNavigationView.getMenu().findItem(R.id.profile).setIcon(R.drawable.ic_nav_user);
+
+                }
+
+                @Override
+                public void onLoadFailed(@Nullable Drawable errorDrawable) {
+                    super.onLoadFailed(errorDrawable);
+                    bottomNavigationView.getMenu().findItem(R.id.profile).setIcon(R.drawable.ic_nav_user);
+
+                }
+            });
+        }
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setimage();
+    }
 
     private void initView(View view)
     {
@@ -66,12 +119,65 @@ public class Fragment_Home extends Fragment {
         }
         userModel = userSingleTone.getUserModel();
         ah_bottom_nav = view.findViewById(R.id.ah_bottom_nav);
-
+bottomNavigationView=view.findViewById(R.id.bottom_nav);
         ll_container = view.findViewById(R.id.ll_container);
         ll_progress = view.findViewById(R.id.ll_progress);
         progBar = view.findViewById(R.id.progBar);
         progBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(activity,R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
+bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        switch (menuItem.getItemId())
+        {
+            case R.id.store:
+                activity.DisplayFragmentStore();
+                break;
 
+            case R.id.order:
+                if (userModel==null)
+                {
+                    Common.CreateUserNotSignInAlertDialog(activity);
+
+                }else
+                {
+
+                    activity.DisplayFragmentMyOrders();
+
+                }
+
+
+                break;
+            case R.id.naoti:
+
+                if (userModel==null)
+                {
+                    Common.CreateUserNotSignInAlertDialog(activity);
+
+                }else
+                {
+                    activity.DisplayFragmentNotification();
+
+                }
+
+
+
+                break;
+            case R.id.profile:
+                if (userModel==null)
+                {
+                    Common.CreateUserNotSignInAlertDialog(activity);
+                }else
+                {
+
+                    activity.DisplayFragmentProfile();
+
+                }
+                break;
+        }
+
+        return true;
+    }
+});
         setUpBottomNavigation();
         ah_bottom_nav.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
             @Override
@@ -182,6 +288,6 @@ public class Fragment_Home extends Fragment {
     {
         ll_progress.setVisibility(View.GONE);
         ll_container.setVisibility(View.VISIBLE);
-        ah_bottom_nav.setVisibility(View.VISIBLE);
+        ah_bottom_nav.setVisibility(View.GONE);
     }
 }

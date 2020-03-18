@@ -427,7 +427,7 @@ public class Fragment_Edit_Profile extends Fragment implements DatePickerDialog.
         RequestBody user_country_part = Common.getRequestBodyText(userModel.getData().getUser_country());
         RequestBody user_gender_part = Common.getRequestBodyText(userModel.getData().getUser_gender());
         RequestBody user_age_part = Common.getRequestBodyText(userModel.getData().getUser_age());
-        RequestBody user_address_part = Common.getRequestBodyText(userModel.getData().getUser_address());
+        RequestBody user_address_part = Common.getRequestBodyText(userModel.getData().getUser_address()+"");
         RequestBody user_phone_code_part = Common.getRequestBodyText(userModel.getData().getUser_phone_code());
         RequestBody user_phone_part = Common.getRequestBodyText(userModel.getData().getUser_phone());
 

@@ -83,6 +83,7 @@
                 android:layout_height="50dp"
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
+                android:visibility="gone"
                 android:layout_marginTop="20dp"
                 android:background="@color/com_facebook_blue"
                 android:orientation="horizontal">
@@ -102,6 +103,7 @@ android:id="@+id/login_button"
                 android:layout_marginRight="25dp"
                 android:layout_marginTop="20dp"
                 android:background="@color/delete"
+                android:visibility="gone"
                 android:orientation="horizontal">
 
                 <ImageView

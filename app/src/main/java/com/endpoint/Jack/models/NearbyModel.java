@@ -1,6 +1,7 @@
 package com.endpoint.Jack.models;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class NearbyModel implements Serializable {
 
@@ -13,8 +14,10 @@ public class NearbyModel implements Serializable {
     private String vicinity;
     private Opening_Hours opening_hours;
     private double distance;
-
-
+    private List<PhotosModel> photos;
+    public List<PhotosModel> getPhotos() {
+        return photos;
+    }
     public Geometry getGeometry() {
         return geometry;
     }

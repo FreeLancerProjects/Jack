@@ -51,7 +51,7 @@ import retrofit2.Response;
 public class CatogryActivity extends AppCompatActivity {
 private CategoryModel.Data data;
     private String lang;
-private TextView tv_name,tv_content,tv_rate,tv_addess,tv_address,tv_time,tv_status;
+private TextView tv_name,tv_content,tv_rate,tv_addess,tv_address,tv_time,tv_status,tv_title1;
 private CircleImageView imageView;
 private SimpleRatingBar simpleRatingBar;
     private ViewPager pager;
@@ -80,6 +80,8 @@ private ProgressBar progressBar;
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
         tv_name=findViewById(R.id.tv_name);
+        tv_title1=findViewById(R.id.tv_title1);
+
         tv_content=findViewById(R.id.tv_content);
         tv_rate=findViewById(R.id.tv_rate);
         tv_status=findViewById(R.id.tv_status);
@@ -171,6 +173,8 @@ imback.setOnClickListener(new View.OnClickListener() {
         if(body.getData().get(0).getWord().getContent()!= null)
         tv_content.setText(body.getData().get(0).getWord().getContent()+"");
         tv_name.setText(body.getData().get(0).getWord().getTitle());
+        tv_title1.setText(body.getData().get(0).getWord().getTitle());
+
         Picasso.with(this).load(Tags.IMAGE_URL+body.getData().get(0).getLogo()).into(imageView);
         progressBar.setVisibility(View.GONE);
         if(body.getData().get(0).getMenus()!=null&&body.getData().get(0).getMenus().size()>0){

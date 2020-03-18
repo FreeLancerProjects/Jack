@@ -83,6 +83,9 @@ private List<CategoryModel.Data>categoryModels;
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_client_store, container, false);
         initView(view);
+        if(location!=null&&savedInstanceState!=null){
+            activity.DisplayFragmentHomeView();
+        }
         return view;
     }
 
@@ -91,7 +94,9 @@ private List<CategoryModel.Data>categoryModels;
     }
 
     private void initView(View view) {
+
         activity = (ClientHomeActivity) getActivity();
+
         Paper.init(activity);
         current_language = Paper.book().read("lang", Locale.getDefault().getLanguage());
         nearbyModelList = new ArrayList<>();

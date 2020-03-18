@@ -15,6 +15,8 @@
     <color name="gray5">#424242</color>
     <color name="gray6">#212121</color>
     <color name="gray7">#757575</color>
+    <color name="gray8">#FFE4A8</color>
+
     <color name="active">#43A047</color>
     <color name="distance">#FFFF00</color>
     <color name="rating">#FBC02D</color>
