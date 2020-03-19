@@ -81,6 +81,8 @@ params.setMarginStart(20);
                 R.layout.intro_screen3,
         };
         myvpAdapter = new MyViewPagerAdapter();
+        vp.setId(0x1000);
+
         vp.setAdapter(myvpAdapter);
         preferenceManager = new PreferenceManager(this);
         vp.addOnPageChangeListener(viewPagerPageChangeListener);

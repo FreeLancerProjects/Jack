@@ -52,6 +52,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/my_navigation_item"
         app:labelVisibilityMode="labeled"
+        android:visibility="gone"
         >
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>

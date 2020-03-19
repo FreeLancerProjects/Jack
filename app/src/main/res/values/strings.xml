@@ -4,7 +4,7 @@
     <!--AIzaSyArjmbYWTWZhDFFtPOLRLKYwjtBDkOEGrY-->
     <string name="facebook_app_id">[APP_ID]</string>
     <string name="fb_login_protocol_scheme">fb[APP_ID]</string>
-    <string name="map_api_key">AIzaSyArjmbYWTWZhDFFtPOLRLKYwjtBDkOEGrY</string>
+    <string name="map_api_key">AIzaSyDz07XWgRsDTQtmA4IOvx-fSIc1d_Wrk9c</string>
     <string name="notifications">Notifications</string>
     <string name="si_su">Please Sign in or sign up .</string>
     <string name="ok">Ok</string>

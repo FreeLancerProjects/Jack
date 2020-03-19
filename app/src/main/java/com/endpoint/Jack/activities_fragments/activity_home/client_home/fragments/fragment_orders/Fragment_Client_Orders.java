@@ -1,6 +1,7 @@
 package com.endpoint.Jack.activities_fragments.activity_home.client_home.fragments.fragment_orders;
 
 import android.graphics.PorterDuff;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -164,7 +165,11 @@ sptype.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         if(position==0){
-            type="current";
+            if (userModel.getData().getUser_type().equals(Tags.TYPE_CLIENT)){
+            type="current";}
+            else {
+                type="new";
+            }
         }
         else {
             type="old";

@@ -92,7 +92,7 @@ public class Fragment_Client_Profile extends Fragment {
         image_instagram = view.findViewById(R.id.image_instagram);
         img_certified = view.findViewById(R.id.img_certified);*/
 
-        tv_certified = view.findViewById(R.id.tv_certified);
+      //  tv_certified = view.findViewById(R.id.tv_certified);
 
         image_logout = view.findViewById(R.id.image_logout);
         image = view.findViewById(R.id.image);
@@ -268,15 +268,15 @@ public class Fragment_Client_Profile extends Fragment {
             if (userModel.getData().getUser_type().equals(Tags.TYPE_CLIENT)) {
 //                ll_certification.setVisibility(View.GONE);
             } else {
-                if (userModel.getData().getNum_orders() > 0) {
-                    tv_certified.setText(getString(R.string.certified_account));
-                    img_certified.setImageResource(R.drawable.checked_certified);
-                } else {
-                    tv_certified.setText(R.string.not_certified);
-                    img_certified.setImageResource(R.drawable.checked_not_certified);
-
-                }
-                ll_certification.setVisibility(View.VISIBLE);
+//                if (userModel.getData().getNum_orders() > 0) {
+//                    tv_certified.setText(getString(R.string.certified_account));
+//                    img_certified.setImageResource(R.drawable.checked_certified);
+//                } else {
+//                    tv_certified.setText(R.string.not_certified);
+//                    img_certified.setImageResource(R.drawable.checked_not_certified);
+//
+//                }
+//                ll_certification.setVisibility(View.VISIBLE);
 
 
             }

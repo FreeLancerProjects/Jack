@@ -163,6 +163,7 @@ bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationVie
         {
             case R.id.store:
                 activity.DisplayFragmentStore();
+
                 break;
 
             case R.id.order:
@@ -174,6 +175,7 @@ bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationVie
                 {
 
                     activity.DisplayFragmentMyOrders();
+                    return true;
 
                 }
 
@@ -188,6 +190,7 @@ bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationVie
                 }else
                 {
                     activity.DisplayFragmentNotification();
+                    return true;
 
                 }
 
@@ -202,6 +205,7 @@ bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationVie
                 {
 
                     activity.DisplayFragmentProfile();
+                    return true;
 
                 }
                 break;
@@ -321,5 +325,6 @@ bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationVie
         ll_progress.setVisibility(View.GONE);
         ll_container.setVisibility(View.VISIBLE);
         ah_bottom_nav.setVisibility(View.GONE);
+        bottomNavigationView.setVisibility(View.VISIBLE);
     }
 }

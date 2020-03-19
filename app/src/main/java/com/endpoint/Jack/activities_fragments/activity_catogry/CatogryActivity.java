@@ -49,23 +49,25 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CatogryActivity extends AppCompatActivity {
-private CategoryModel.Data data;
+    private CategoryModel.Data data;
     private String lang;
-private TextView tv_name,tv_content,tv_rate,tv_addess,tv_address,tv_time,tv_status,tv_title1;
-private CircleImageView imageView;
-private SimpleRatingBar simpleRatingBar;
+    private TextView tv_name, tv_content, tv_rate, tv_addess, tv_address, tv_time, tv_status;
+    private CircleImageView imageView;
+    private SimpleRatingBar simpleRatingBar;
     private ViewPager pager;
     private TabLayout tab;
     private int current_page = 0, NUM_PAGES;
-private SliderCatogryAdapter sliderCatogryAdapter;
-private LinearLayout ll_change;
+    private SliderCatogryAdapter sliderCatogryAdapter;
+    private LinearLayout ll_change;
     private SelectedLocation selectedLocation;
-    private ImageView arrow1,arrow2,arrow3,imback;
-private ProgressBar progressBar;
+    private ImageView arrow1, arrow2, arrow3, imback;
+    private ProgressBar progressBar;
+
     @Override
     protected void attachBaseContext(Context base) {
-        super.attachBaseContext(Language_Helper.updateResources(base,Language_Helper.getLanguage(base)));
+        super.attachBaseContext(Language_Helper.updateResources(base, Language_Helper.getLanguage(base)));
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,40 +81,37 @@ private ProgressBar progressBar;
     private void initview() {
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
-        tv_name=findViewById(R.id.tv_name);
-        tv_title1=findViewById(R.id.tv_title1);
-
-        tv_content=findViewById(R.id.tv_content);
-        tv_rate=findViewById(R.id.tv_rate);
-        tv_status=findViewById(R.id.tv_status);
-        tv_time=findViewById(R.id.tv_time);
-        simpleRatingBar=findViewById(R.id.rateBar);
-        imageView=findViewById(R.id.image);
+        tv_name = findViewById(R.id.tv_name);
+        tv_content = findViewById(R.id.tv_content);
+        tv_rate = findViewById(R.id.tv_rate);
+        tv_status = findViewById(R.id.tv_status);
+        tv_time = findViewById(R.id.tv_time);
+        simpleRatingBar = findViewById(R.id.rateBar);
+        imageView = findViewById(R.id.image);
         pager = findViewById(R.id.pager);
-        ll_change=findViewById(R.id.ll_change);
-        tv_addess=findViewById(R.id.tv_address);
-        tv_address=findViewById(R.id.tv_address1);
-        arrow1=findViewById(R.id.arrow1);
-        arrow2=findViewById(R.id.arrow2);
-        arrow3=findViewById(R.id.arrow3);
-imback=findViewById(R.id.image_back);
+        ll_change = findViewById(R.id.ll_change);
+        tv_addess = findViewById(R.id.tv_address);
+        tv_address = findViewById(R.id.tv_address1);
+        arrow1 = findViewById(R.id.arrow1);
+        arrow2 = findViewById(R.id.arrow2);
+        arrow3 = findViewById(R.id.arrow3);
+        imback = findViewById(R.id.image_back);
         progressBar = findViewById(R.id.progBarSlider);
-        progressBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(this,R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
-if(lang.equals("en")){
-    arrow1.setRotation(180.0f);
-    arrow2.setRotation(180.0f);
-    arrow3.setRotation(180.0f);
+        progressBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
+        if (lang.equals("en")) {
+            arrow1.setRotation(180.0f);
+            arrow2.setRotation(180.0f);
+            arrow3.setRotation(180.0f);
 
-}
-else {
-    imback.setRotation(180.0f);
-}
-imback.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        finish();
-    }
-});
+        } else {
+            imback.setRotation(180.0f);
+        }
+        imback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         tab = findViewById(R.id.tab);
         tab.setupWithViewPager(pager);
         ll_change.setOnClickListener(new View.OnClickListener() {
@@ -126,34 +125,31 @@ imback.setOnClickListener(new View.OnClickListener() {
     }
 
     private void getdatafromintent() {
-        if(getIntent().getSerializableExtra("data")!=null)
-        {
-        data= (CategoryModel.Data) getIntent().getSerializableExtra("data");
+        if (getIntent().getSerializableExtra("data") != null) {
+            data = (CategoryModel.Data) getIntent().getSerializableExtra("data");
         }
     }
-    public void getsinglecat()
-    {
+
+    public void getsinglecat() {
 
 
-        final ProgressDialog dialog = Common.createProgressDialog(this,getString(R.string.wait));
+        final ProgressDialog dialog = Common.createProgressDialog(this, getString(R.string.wait));
         dialog.show();
         Api.getService(Tags.base_url)
-                .getsinglecat(lang,data.getCategory_id()+"",1,1)
+                .getsinglecat(lang, data.getCategory_id() + "", 1, 1)
                 .enqueue(new Callback<SingleCategoryModel>() {
                     @Override
                     public void onResponse(Call<SingleCategoryModel> call, Response<SingleCategoryModel> response) {
                         dialog.dismiss();
-                        if (response.isSuccessful()&&response.body()!=null&&response.body().getData()!=null&&response.body().getData().size()>0)
-                        {
-                           update(response.body());
+                        if (response.isSuccessful() && response.body() != null && response.body().getData() != null && response.body().getData().size() > 0) {
+                            update(response.body());
 
 
-                        }else
-                        {
+                        } else {
                             try {
-                                Log.e("codesssss",response.code()+""+response.errorBody().string());
+                                Log.e("codesssss", response.code() + "" + response.errorBody().string());
                             } catch (Exception e) {
-                              //  e.printStackTrace();
+                                //  e.printStackTrace();
                             }
 
                         }
@@ -161,7 +157,7 @@ imback.setOnClickListener(new View.OnClickListener() {
 
                     @Override
                     public void onFailure(Call<SingleCategoryModel> call, Throwable t) {
-                        Log.e("codesssss",t.getMessage());
+                        Log.e("codesssss", t.getMessage());
 
 
                     }
@@ -170,29 +166,27 @@ imback.setOnClickListener(new View.OnClickListener() {
     }
 
     private void update(SingleCategoryModel body) {
-        if(body.getData().get(0).getWord().getContent()!= null)
-        tv_content.setText(body.getData().get(0).getWord().getContent()+"");
+        if (body.getData().get(0).getWord().getContent() != null)
+        tv_content.setText(body.getData().get(0).getWord().getContent() + "");
         tv_name.setText(body.getData().get(0).getWord().getTitle());
-        tv_title1.setText(body.getData().get(0).getWord().getTitle());
-
-        Picasso.with(this).load(Tags.IMAGE_URL+body.getData().get(0).getLogo()).into(imageView);
+        Picasso.with(this).load(Tags.IMAGE_URL + body.getData().get(0).getLogo()).into(imageView);
         progressBar.setVisibility(View.GONE);
-        if(body.getData().get(0).getMenus()!=null&&body.getData().get(0).getMenus().size()>0){
-            NUM_PAGES=body.getData().get(0).getMenus().size();
-            sliderCatogryAdapter=new SliderCatogryAdapter(body.getData().get(0).getMenus(),this);
+        if (body.getData().get(0).getMenus() != null && body.getData().get(0).getMenus().size() > 0) {
+            NUM_PAGES = body.getData().get(0).getMenus().size();
+            sliderCatogryAdapter = new SliderCatogryAdapter(body.getData().get(0).getMenus(), this);
             pager.setAdapter(sliderCatogryAdapter);
             pager.setVisibility(View.VISIBLE);
+        } else {
+            pager.setVisibility(View.GONE);
         }
-        else {
-pager.setVisibility(View.GONE);
-        }
-        tv_rate.setText(body.getData().get(0).getRate()+"");
+        tv_rate.setText(body.getData().get(0).getRate() + "");
         simpleRatingBar.setIndicator(false);
         simpleRatingBar.setRating(body.getData().get(0).getRate());
-        tv_time.setText(body.getData().get(0).getDays().get(0).getFrom_time()+":"+body.getData().get(0).getDays().get(0).getTo_time());
+        tv_time.setText(body.getData().get(0).getDays().get(0).getFrom_time() + ":" + body.getData().get(0).getDays().get(0).getTo_time());
         tv_status.setText(body.getData().get(0).getDays().get(0).getStatus());
 
     }
+
     private void change_slide_image() {
         final Handler handler = new Handler();
         final Runnable Update = new Runnable() {
@@ -211,6 +205,7 @@ pager.setVisibility(View.GONE);
             }
         }, 3000, 3000);
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -218,9 +213,9 @@ pager.setVisibility(View.GONE);
         if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
             if (data.hasExtra("location")) {
                 selectedLocation = (SelectedLocation) data.getSerializableExtra("location");
-                if(selectedLocation!=null) {
+                if (selectedLocation != null) {
                     tv_address.setText(selectedLocation.getAddress());
-                    tv_addess.setText(selectedLocation.getAddress().substring(0,5));
+                    tv_addess.setText(selectedLocation.getAddress().substring(0, 5));
                 }
             }
         }

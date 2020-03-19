@@ -440,6 +440,7 @@ public class Fragment_Edit_Profile extends Fragment implements DatePickerDialog.
                     @Override
                     public void onResponse(Call<UserModel> call, Response<UserModel> response) {
                         dialog.dismiss();
+
                         if (response.isSuccessful()&&response.body()!=null&&response.body().getData()!=null)
                         {
                             UpdateUserData(response.body());
@@ -495,7 +496,7 @@ public class Fragment_Edit_Profile extends Fragment implements DatePickerDialog.
                         {
                             Toast.makeText(activity, getString(R.string.failed), Toast.LENGTH_SHORT).show();
                             try {
-                                Log.e("Error_code",response.code()+"_"+response.errorBody().string());
+                                Log.e("Error_codesss",response.code()+"_"+response.errorBody().string());
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -507,7 +508,7 @@ public class Fragment_Edit_Profile extends Fragment implements DatePickerDialog.
                         try {
                             dialog.dismiss();
                             Toast.makeText(activity, R.string.something, Toast.LENGTH_SHORT).show();
-                            Log.e("Error",t.getMessage());
+                            Log.e("Errorsss",t.getMessage());
                         }catch (Exception e){}
                     }
                 });
@@ -519,6 +520,8 @@ public class Fragment_Edit_Profile extends Fragment implements DatePickerDialog.
         this.userModel = userModel;
         UpdateUI(userModel);
         activity.updateUserData(userModel);
+        activity.Back();
+        activity.Back();
     }
     private void CreateImageAlertDialog()
     {
