@@ -6,7 +6,9 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,6 +36,7 @@ import com.endpoint.Jack.preferences.Preferences;
 import com.endpoint.Jack.share.Common;
 import com.endpoint.Jack.singletone.UserSingleTone;
 import com.endpoint.Jack.tags.Tags;
+import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
 
@@ -64,6 +67,7 @@ public class Fragment_Home extends Fragment {
     }
 
     private void setimage() {
+
         if(userModel!=null){
             bottomNavigationView.setItemIconTintList(null); // this is important
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -88,6 +92,7 @@ public class Fragment_Home extends Fragment {
 
                     bottomNavigationView.getMenu().findItem(R.id.profile).setIcon(R.drawable.ic_nav_user);
 
+
                 }
 
                 @Override
@@ -98,7 +103,21 @@ public class Fragment_Home extends Fragment {
                 }
             });
         }
+        BottomNavigationMenuView menuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
 
+        final View iconView =
+                menuView.getChildAt(3).findViewById(com.google.android.material.R.id.icon);
+        final ViewGroup.LayoutParams layoutParams =
+                iconView.getLayoutParams();
+        final DisplayMetrics displayMetrics =
+                getResources().getDisplayMetrics();
+        layoutParams.height = (int)
+                TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 45,
+                        displayMetrics);
+        layoutParams.width = (int)
+                TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 45,
+                        displayMetrics);
+        iconView.setLayoutParams(layoutParams);
     }
 
     @Override
