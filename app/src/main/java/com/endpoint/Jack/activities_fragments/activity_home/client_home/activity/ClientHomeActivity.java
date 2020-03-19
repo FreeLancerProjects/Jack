@@ -95,6 +95,7 @@ import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 import com.squareup.picasso.Picasso;
@@ -178,7 +179,11 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_home);
 
-
+        if(FirebaseAuth.getInstance().getCurrentUser()!=null){
+            // Log.e("user", Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getPhoneNumber());
+            FirebaseAuth.getInstance().getCurrentUser().delete();
+            FirebaseAuth.getInstance().signOut();
+        }
         initView();
 
         if (savedInstanceState == null) {
@@ -727,6 +732,9 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
                             fragment_client_profile.updateUI(userModel);
                         }
                     },1);
+        }
+        if(fragment_home!=null){
+            fragment_home.setimage();
         }
     }
     ///////////////////////////////////
@@ -2216,7 +2224,9 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
         for (Fragment fragment : fragmentList) {
             fragment.onActivityResult(requestCode, resultCode, data);
         }
-
+if(fragment_home!=null){
+    fragment_home.setimage();
+}
         if (requestCode == 1255)
         {
             if (resultCode == RESULT_OK)

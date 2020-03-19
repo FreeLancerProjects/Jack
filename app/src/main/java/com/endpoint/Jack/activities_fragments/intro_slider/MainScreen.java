@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.os.Bundle;
 
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,10 +22,15 @@ import com.endpoint.Jack.R;
 import com.endpoint.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity;
 import com.endpoint.Jack.activities_fragments.activity_sign_in.activity.SignInActivity;
 import com.endpoint.Jack.activities_fragments.activity_splash.SplashActivity;
+import com.endpoint.Jack.language.Language_Helper;
 import com.endpoint.Jack.models.UserModel;
 import com.endpoint.Jack.preferences.Preferences;
 import com.endpoint.Jack.singletone.UserSingleTone;
 import com.endpoint.Jack.tags.Tags;
+
+import java.util.Locale;
+
+import io.paperdb.Paper;
 
 
 public class MainScreen extends AppCompatActivity {
@@ -33,19 +39,42 @@ public class MainScreen extends AppCompatActivity {
     LinearLayout Layout_bars;
     TextView[] bottomBars;
     int[] screens;
-    Button Skip, Next;
+    Button  Next;
     ViewPager vp;
+    TextView Skip;
     MyViewPagerAdapter myvpAdapter;
-private Preferences preferences;
+    private String lang;
+
+    private Preferences preferences;
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(Language_Helper.updateResources(base,Language_Helper.getLanguage(base)));
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
+        Paper.init(this);
+        lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
         preferences=Preferences.getInstance();
-        vp = (ViewPager) findViewById(R.id.view_pager);
-        Layout_bars = (LinearLayout) findViewById(R.id.layoutBars);
-        Skip = (Button) findViewById(R.id.skip);
-        Next = (Button) findViewById(R.id.next);
+        vp =  findViewById(R.id.view_pager);
+        Layout_bars =  findViewById(R.id.layoutBars);
+        Skip =  findViewById(R.id.skip);
+        Next =  findViewById(R.id.next);
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) Skip.getLayoutParams();
+
+        if(lang.equals("ar")){
+            params.addRule(RelativeLayout.ALIGN_PARENT_START, RelativeLayout.TRUE)   ;
+
+params.setMarginStart(20);
+        }
+        else {
+            params.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE)   ;
+            params.setMarginEnd(20);
+
+
+        }
         screens = new int[]{
                 R.layout.intro_screen1,
                 R.layout.intro_screen2,

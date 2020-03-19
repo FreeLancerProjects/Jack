@@ -1,5 +1,6 @@
 package com.endpoint.Jack.activities_fragments.activity_home.client_home.fragments.fragment_home;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.BitmapDrawable;
@@ -66,8 +67,8 @@ public class Fragment_Home extends Fragment {
         return view;
     }
 
-    private void setimage() {
-
+    public void setimage() {
+userModel=preferences.getUserData(activity);
         if(userModel!=null){
             bottomNavigationView.setItemIconTintList(null); // this is important
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -123,6 +124,18 @@ public class Fragment_Home extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        setimage();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        setimage();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         setimage();
     }
 
