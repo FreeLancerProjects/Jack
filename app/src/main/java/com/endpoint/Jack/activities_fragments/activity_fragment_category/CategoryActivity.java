@@ -67,6 +67,7 @@ public class CategoryActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private Button btnOrderNow;
     public Location location = null;
+    private long selected_time=0;
     private Fragment_Map fragment_map;
     private FragmentManager fragmentManager;
 
@@ -214,7 +215,7 @@ public class CategoryActivity extends AppCompatActivity {
     }
 
     private void setTime(int value) {
-        Calendar calendar = Calendar.getInstance(new Locale(current_language));
+        Calendar calendar = Calendar.getInstance(new Locale(lang));
         switch (value)
         {
             case 0:
