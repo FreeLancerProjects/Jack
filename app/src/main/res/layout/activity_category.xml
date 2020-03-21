@@ -401,6 +401,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -492,7 +493,73 @@
                     android:tint="@color/black" />
             </LinearLayout>
 
+            <EditText
+                android:id="@+id/edt_more_detials"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/transparent"
+                android:gravity="center_vertical"
+                android:hint="@string/more_detials"
+                android:inputType="textMultiLine"
+                android:maxLines="3"
+                android:minHeight="37dp"
+                android:paddingLeft="8dp"
+                android:paddingTop="5dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="5dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray3"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/image_upload_image"
 
+
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray4"
+                />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cons_add_coupon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:background="@color/white"
+                app:layout_constraintTop_toBottomOf="@+id/view3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                >
+                <ImageView
+                    android:id="@+id/coupon"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:src="@drawable/ic_coupon"
+                    android:tint="@color/active"
+                    android:padding="3dp"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="@string/add_coupon"
+                    android:textColor="@color/active"
+                    app:layout_constraintBottom_toBottomOf="@id/coupon"
+                    app:layout_constraintStart_toEndOf="@id/coupon" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

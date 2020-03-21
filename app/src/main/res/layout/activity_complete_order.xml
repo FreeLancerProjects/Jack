@@ -149,17 +149,15 @@ android:layout_weight="1"
             android:padding="3dp"
 
             />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/coupon"
-            app:layout_constraintBottom_toBottomOf="@id/coupon"
-            app:layout_constraintTop_toTopOf="@id/coupon"
             android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:textColor="@color/active"
             android:text="@string/add_coupon"
-            />
+            android:textColor="@color/active"
+            app:layout_constraintBottom_toBottomOf="@id/coupon"
+            app:layout_constraintStart_toEndOf="@id/coupon" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

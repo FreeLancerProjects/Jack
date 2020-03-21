@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -14,10 +15,12 @@ import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.NumberPicker;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -57,7 +60,7 @@ public class CategoryActivity extends AppCompatActivity {
     private TabLayout tab;
     private int current_page = 0, NUM_PAGES;
     private SliderCatogryAdapter sliderCatogryAdapter;
-    private LinearLayout ll_change;
+    private LinearLayout ll_change,ll_choose_delivery_time;
     private SelectedLocation selectedLocation;
     private ImageView arrow1, arrow2, arrow3, imback;
     private ProgressBar progressBar;
@@ -94,6 +97,7 @@ public class CategoryActivity extends AppCompatActivity {
         imageView = findViewById(R.id.image);
         pager = findViewById(R.id.pager);
         ll_change = findViewById(R.id.ll_change);
+        ll_choose_delivery_time=findViewById(R.id.ll_time);
         tv_addess = findViewById(R.id.tv_address);
         tv_address = findViewById(R.id.tv_address1);
         arrow1 = findViewById(R.id.arrow1);
@@ -115,6 +119,12 @@ public class CategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+        ll_choose_delivery_time.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CreateTimeDialog();
             }
         });
         tab = findViewById(R.id.tab);
@@ -160,6 +170,48 @@ public class CategoryActivity extends AppCompatActivity {
 
 
     }
+    private void CreateTimeDialog()
+    {
+        final AlertDialog dialog = new AlertDialog.Builder(this)
+                .setCancelable(true)
+                .create();
+
+        View view  = LayoutInflater.from(this).inflate(R.layout.dialog_delivery_time,null);
+        Button btn_select = view.findViewById(R.id.btn_select);
+        Button btn_cancel = view.findViewById(R.id.btn_cancel);
+
+        final NumberPicker numberPicker = view.findViewById(R.id.numberPicker);
+
+        numberPicker.setMinValue(0);
+        numberPicker.setMaxValue(timesList.length-1);
+        numberPicker.setDisplayedValues(timesList);
+        numberPicker.setWrapSelectorWheel(false);
+        numberPicker.setValue(1);
+        btn_select.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String val = timesList[numberPicker.getValue()];
+                tv_delivery_time.setText(val);
+                setTime(numberPicker.getValue());
+                dialog.dismiss();
+            }
+        });
+
+
+
+
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.getWindow().getAttributes().windowAnimations = R.style.dialog_congratulation_animation;
+        dialog.setView(view);
+        dialog.show();
+    }
+
 
     public void getsinglecat() {
 
