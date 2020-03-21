@@ -33,6 +33,7 @@ import com.endpoint.Jack.R;
 import com.endpoint.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity;
 import com.endpoint.Jack.adapters.NearbyAdapter;
 import com.endpoint.Jack.adapters.SearchRecentAdapter;
+import com.endpoint.Jack.models.PhotosModel;
 import com.endpoint.Jack.models.PlaceModel;
 import com.endpoint.Jack.models.QueryModel;
 import com.endpoint.Jack.models.SearchDataModel;
@@ -297,8 +298,16 @@ public class Fragment_Search extends Fragment {
 
         for (SearchModel searchModel : searchModelList)
         {
-            PlaceModel placeModel = new PlaceModel(searchModel.getId(),searchModel.getPlace_id(),searchModel.getName(),searchModel.getIcon(),searchModel.getRating(),searchModel.getGeometry().getLocation().getLat(),searchModel.getGeometry().getLocation().getLng(),searchModel.getFormatted_address());
+            PlaceModel placeModel ;
+            if (searchModel.getPhotos()!=null)
+            {
+                placeModel = new PlaceModel(searchModel.getId(),searchModel.getPlace_id(),searchModel.getName(),searchModel.getIcon(),searchModel.getPhotos(),searchModel.getRating(),searchModel.getGeometry().getLocation().getLat(),searchModel.getGeometry().getLocation().getLng(),searchModel.getFormatted_address());
 
+            }else
+            {
+                placeModel = new PlaceModel(searchModel.getId(),searchModel.getPlace_id(),searchModel.getName(),searchModel.getIcon(),new ArrayList<PhotosModel>(),searchModel.getRating(),searchModel.getGeometry().getLocation().getLat(),searchModel.getGeometry().getLocation().getLng(),searchModel.getFormatted_address());
+
+            }
             if (searchModel.getOpening_hours()!=null)
             {
                 placeModel.setOpenNow(searchModel.getOpening_hours().isOpen_now());

@@ -7,4 +7,5 @@ public class PhotosModel implements Serializable {
 
     public String getPhoto_reference() {
         return photo_reference;
-    }}
+    }
+}

@@ -1,6 +1,10 @@
 package com.endpoint.Jack.models;
 
+import com.endpoint.Jack.models.NearbyModel;
+import com.endpoint.Jack.models.PhotosModel;
+
 import java.io.Serializable;
+import java.util.List;
 
 public class SearchModel implements Serializable {
     private String id;
@@ -11,6 +15,8 @@ public class SearchModel implements Serializable {
     private float rating;
     private String formatted_address;
     private Opening_Hours opening_hours;
+    private List<PhotosModel> photos;
+
 
 
     public NearbyModel.Geometry getGeometry() {
@@ -42,6 +48,10 @@ public class SearchModel implements Serializable {
         return id;
     }
 
+    public List<PhotosModel> getPhotos() {
+        return photos;
+    }
+
     public String getPlace_id() {
         return place_id;
     }
@@ -55,7 +65,7 @@ public class SearchModel implements Serializable {
         }
     }
 
-    public class Location implements Serializable{
+    public class Location implements Serializable {
 
         private double lat;
         private double lng;
@@ -77,5 +87,7 @@ public class SearchModel implements Serializable {
             return open_now;
         }
     }
+
+
 
 }

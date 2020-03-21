@@ -33,6 +33,7 @@ import com.endpoint.Jack.adapters.SliderAdapter;
 import com.endpoint.Jack.models.CategoryModel;
 import com.endpoint.Jack.models.NearbyModel;
 import com.endpoint.Jack.models.NearbyStoreDataModel;
+import com.endpoint.Jack.models.PhotosModel;
 import com.endpoint.Jack.models.PlaceModel;
 import com.endpoint.Jack.models.QuerySearchModel;
 import com.endpoint.Jack.models.SliderModel;
@@ -440,8 +441,17 @@ recviewcat.setAdapter(categoryAdapter);
         {
 
 
-            PlaceModel placeModel = new PlaceModel(nearbyModel.getId(),nearbyModel.getPlace_id(),nearbyModel.getName(),nearbyModel.getIcon(),nearbyModel.getRating(),nearbyModel.getGeometry().getLocation().getLat(),nearbyModel.getGeometry().getLocation().getLng(),nearbyModel.getVicinity());
+            PlaceModel placeModel;
 
+            if (nearbyModel.getPhotos()!=null)
+            {
+                placeModel = new PlaceModel(nearbyModel.getId(),nearbyModel.getPlace_id(),nearbyModel.getName(),nearbyModel.getIcon(),nearbyModel.getPhotos(),nearbyModel.getRating(),nearbyModel.getGeometry().getLocation().getLat(),nearbyModel.getGeometry().getLocation().getLng(),nearbyModel.getVicinity());
+
+            }else
+            {
+                placeModel = new PlaceModel(nearbyModel.getId(),nearbyModel.getPlace_id(),nearbyModel.getName(),nearbyModel.getIcon(),new ArrayList<PhotosModel>(),nearbyModel.getRating(),nearbyModel.getGeometry().getLocation().getLat(),nearbyModel.getGeometry().getLocation().getLng(),nearbyModel.getVicinity());
+
+            }
 
             if (nearbyModel.getOpening_hours()!=null)
             {
@@ -457,6 +467,7 @@ recviewcat.setAdapter(categoryAdapter);
         }
         return returnedList;
     }
+
 
     public void setItemData(PlaceModel placeModel) {
         activity.DisplayFragmentStoreDetails(placeModel);

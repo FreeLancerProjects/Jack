@@ -23,6 +23,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class NearbyAdapter extends RecyclerView.Adapter<NearbyAdapter.MyHolder> {
 
     private List<PlaceModel> placeModelList;
@@ -77,7 +79,7 @@ public class NearbyAdapter extends RecyclerView.Adapter<NearbyAdapter.MyHolder> 
     }
 
     public class MyHolder extends RecyclerView.ViewHolder {
-        private ImageView image;
+        private CircleImageView image;
         private TextView tv_name, tv_address, tv_rate, tv_state,tv_distance;
 
         public MyHolder(View itemView) {
