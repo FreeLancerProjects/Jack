@@ -2,6 +2,7 @@ package com.endpoint.Jack.adapters;
 
 import android.content.Context;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -99,6 +100,7 @@ public class NearbyAdapter extends RecyclerView.Adapter<NearbyAdapter.MyHolder> 
             if (placeModel.getPhotosList()!=null&&placeModel.getPhotosList().size()>0)
             {
                 String url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+placeModel.getPhotosList().get(0).getPhoto_reference()+"&key=AIzaSyCbc2Y5AIwZ8uUeHRUXiozGN3CnpjKT0oI";
+                Log.e("lllll",url);
                 Picasso.with(context).load(Uri.parse(url)).fit().into(image);
 
             }else
