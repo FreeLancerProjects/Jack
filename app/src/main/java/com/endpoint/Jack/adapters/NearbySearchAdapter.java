@@ -2,7 +2,6 @@ package com.endpoint.Jack.adapters;
 
 import android.content.Context;
 import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,29 +10,26 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.endpoint.Jack.R;
-import com.endpoint.Jack.activities_fragments.activity_home.client_home.fragments.fragment_home.Fragment_Client_Store;
 import com.endpoint.Jack.activities_fragments.activity_home.client_home.fragments.fragment_home.Fragment_Search;
-import com.endpoint.Jack.models.PlaceModel;
+import com.endpoint.Jack.models.NearbyModel;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.maps.android.SphericalUtil;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
+public class NearbySearchAdapter extends RecyclerView.Adapter<NearbySearchAdapter.MyHolder> {
 
-public class NearbyAdapter extends RecyclerView.Adapter<NearbyAdapter.MyHolder> {
-
-    private List<PlaceModel> placeModelList;
+    private List<NearbyModel> nearbyModelList;
     private Context context;
-    private Fragment fragment;
+    private Fragment_Search fragment;
     private double user_lat=0.0,user_lng=0.0;
-    public NearbyAdapter(List<PlaceModel> placeModelList, Context context, Fragment fragment, double user_lat, double user_lng) {
-        this.placeModelList = placeModelList;
+    public NearbySearchAdapter(List<NearbyModel> nearbyModelList, Context context, Fragment_Search fragment, double user_lat, double user_lng) {
+        this.nearbyModelList = nearbyModelList;
         this.context = context;
         this.fragment = fragment;
         this.user_lat = user_lat;
@@ -51,24 +47,13 @@ public class NearbyAdapter extends RecyclerView.Adapter<NearbyAdapter.MyHolder> 
     @Override
     public void onBindViewHolder(@NonNull final MyHolder holder, int position) {
 
-        PlaceModel placeModel = placeModelList.get(position);
-        holder.BindData(placeModel);
+        NearbyModel nearbyModel = nearbyModelList.get(position);
+        holder.BindData(nearbyModel);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PlaceModel placeModel= placeModelList.get(holder.getAdapterPosition());
-
-                if (fragment instanceof Fragment_Client_Store)
-                {
-                    Fragment_Client_Store fragment_client_store = (Fragment_Client_Store) fragment;
-                    fragment_client_store.setItemData(placeModel);
-
-                }else if (fragment instanceof Fragment_Search)
-                {
-                   // Fragment_Search fragment_search = (Fragment_Search) fragment;
-                    //fragment_search.setItemData(placeModel);
-                }
-
+                NearbyModel nearbyModel= nearbyModelList.get(holder.getAdapterPosition());
+                fragment.setItemData(nearbyModel);
 
             }
         });
@@ -76,11 +61,11 @@ public class NearbyAdapter extends RecyclerView.Adapter<NearbyAdapter.MyHolder> 
 
     @Override
     public int getItemCount() {
-        return placeModelList.size();
+        return nearbyModelList.size();
     }
 
     public class MyHolder extends RecyclerView.ViewHolder {
-        private CircleImageView image;
+        private ImageView image;
         private TextView tv_name, tv_address, tv_rate, tv_state,tv_distance;
 
         public MyHolder(View itemView) {
@@ -96,28 +81,26 @@ public class NearbyAdapter extends RecyclerView.Adapter<NearbyAdapter.MyHolder> 
 
         }
 
-        public void BindData(PlaceModel placeModel) {
-            if (placeModel.getPhotosList()!=null&&placeModel.getPhotosList().size()>0)
+        public void BindData(NearbyModel nearbyModel) {
+            if (nearbyModel.getPhotos().size()>0)
             {
-                String url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+placeModel.getPhotosList().get(0).getPhoto_reference()+"&key=AIzaSyCbc2Y5AIwZ8uUeHRUXiozGN3CnpjKT0oI";
-                Log.e("lllll",url);
+                String url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+nearbyModel.getPhotos().get(0).getPhoto_reference()+"&key=AIzaSyCbc2Y5AIwZ8uUeHRUXiozGN3CnpjKT0oI";
                 Picasso.with(context).load(Uri.parse(url)).fit().into(image);
 
             }else
             {
-                Picasso.with(context).load(Uri.parse(placeModel.getIcon())).fit().into(image);
+                Picasso.with(context).load(Uri.parse(nearbyModel.getIcon())).fit().into(image);
 
-            }
-            tv_name.setText(placeModel.getName());
-            tv_address.setText(placeModel.getAddress());
-            tv_rate.setText(String.valueOf(placeModel.getRating()));
-            double distance = SphericalUtil.computeDistanceBetween(new LatLng(user_lat,user_lng),new LatLng(placeModel.getLat(),placeModel.getLng()));
+            }            tv_name.setText(nearbyModel.getName());
+            tv_address.setText(nearbyModel.getVicinity());
+            tv_rate.setText(String.valueOf(nearbyModel.getRating()));
+            double distance = SphericalUtil.computeDistanceBetween(new LatLng(user_lat,user_lng),new LatLng(nearbyModel.getGeometry().getLocation().getLat(),nearbyModel.getGeometry().getLocation().getLng()));
             tv_distance.setText(String.format("%.2f",(distance/1000))+" "+context.getString(R.string.km));
 
-            if (placeModel.isOpenNow()) {
+            if (nearbyModel.getOpening_hours()!=null&&nearbyModel.getOpening_hours().isOpen_now()) {
 
                 tv_state.setText(R.string.active);
-                tv_state.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
+                tv_state.setTextColor(ContextCompat.getColor(context, R.color.black));
             }else
             {
                 tv_state.setText(R.string.inactive);

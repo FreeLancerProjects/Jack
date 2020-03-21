@@ -303,6 +303,12 @@
     <string name="select_location">Select Location</string>
     <string name="signup_with_google">Signup With Google</string>
     <string name="signup_with_facebook">Signup With Facebook</string>
-
+    <string name="normal">Normal</string>
+    <string name="hybrid">Hybrid</string>
+    <string name="terrain">Terrain</string>
+    <string name="reviews">Reviews</string>
+    <string name="no_rev">No reviews</string>
+    <string name="map_style">Map style</string>
+    <string name="cust_rate">Customers Rating</string>
 
 </resources>

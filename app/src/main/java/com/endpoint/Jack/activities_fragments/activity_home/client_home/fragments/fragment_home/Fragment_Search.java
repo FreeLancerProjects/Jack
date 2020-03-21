@@ -32,7 +32,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.endpoint.Jack.R;
 import com.endpoint.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity;
 import com.endpoint.Jack.adapters.NearbyAdapter;
+import com.endpoint.Jack.adapters.NearbySearchAdapter;
 import com.endpoint.Jack.adapters.SearchRecentAdapter;
+import com.endpoint.Jack.models.NearbyModel;
+import com.endpoint.Jack.models.NearbyStoreDataModel;
 import com.endpoint.Jack.models.PhotosModel;
 import com.endpoint.Jack.models.PlaceModel;
 import com.endpoint.Jack.models.QueryModel;
@@ -54,11 +57,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Fragment_Search extends Fragment {
+public class Fragment_Search extends Fragment
+{
     private static final String TAG2 = "LAT";
     private static final String TAG3 = "LNG";
     private ClientHomeActivity activity;
-    private ImageView arrow, image_icon_delete;
+    private ImageView arrow,image_icon_delete;
     private ConstraintLayout cons_search;
     private LinearLayout ll_no_store;
     private EditText edt_search;
@@ -71,11 +75,12 @@ public class Fragment_Search extends Fragment {
     private String query = "";
     private List<QueryModel> queryModelList;
     private Preferences preferences;
+    private NearbySearchAdapter adapter;
     private SearchRecentAdapter searchRecentAdapter;
-    private NearbyAdapter adapter;
-    private List<PlaceModel> placeModelList;
+    private List<NearbyModel> nearbyModelList;
     private double lat = 0.0, lng = 0.0;
     private String user_address="";
+
 
     @Nullable
     @Override
@@ -107,7 +112,7 @@ public class Fragment_Search extends Fragment {
         }
 
         queryModelList = new ArrayList<>();
-        placeModelList = new ArrayList<>();
+        nearbyModelList = new ArrayList<>();
 
 
 
@@ -136,13 +141,13 @@ public class Fragment_Search extends Fragment {
         manager = new LinearLayoutManager(activity);
         managerQueries = new LinearLayoutManager(activity);
         recView.setLayoutManager(manager);
-        adapter = new NearbyAdapter(placeModelList, activity, this, lat, lng);
+        adapter = new NearbySearchAdapter(nearbyModelList, activity, this, lat, lng);
         recView.setAdapter(adapter);
         recViewQueries.setLayoutManager(managerQueries);
 
 
         progBar = view.findViewById(R.id.progBar);
-        progBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(activity, R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
+        progBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(activity, R.color.colorAccent), PorterDuff.Mode.SRC_IN);
         cons_search.setVisibility(View.VISIBLE);
         animation = AnimationUtils.loadAnimation(activity, R.anim.search_anim);
         cons_search.clearAnimation();
@@ -210,6 +215,7 @@ public class Fragment_Search extends Fragment {
             }
         });
 
+
         image_icon_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -218,7 +224,11 @@ public class Fragment_Search extends Fragment {
                 query = "";
             }
         });
+
+
     }
+
+
 
 
     private void Search() {
@@ -230,14 +240,58 @@ public class Fragment_Search extends Fragment {
 
         Common.CloseKeyBoard(activity,edt_search);
         ll_no_store.setVisibility(View.GONE);
-        placeModelList.clear();
+        nearbyModelList.clear();
         if (adapter != null) {
             adapter.notifyDataSetChanged();
         }
         progBar.setVisibility(View.VISIBLE);
 
 
-        String loc = "circle:15000@"+lat+","+lng;
+        String loc = lat+","+lng;
+
+        Api.getService("https://maps.googleapis.com/maps/api/")
+                .getNearbySearchStores(loc,5000,query,current_language,getString(R.string.map_api_key))
+                .enqueue(new Callback<NearbyStoreDataModel>() {
+                    @Override
+                    public void onResponse(Call<NearbyStoreDataModel> call, Response<NearbyStoreDataModel> response) {
+                        if (response.isSuccessful() && response.body() != null) {
+                            progBar.setVisibility(View.GONE);
+                            if (response.body()!=null&&response.body().getResults()!=null&&response.body().getResults().size()>0) {
+                                preferences.saveQuery(activity, new QueryModel(query.trim()));
+                                updateAdapter(response.body().getResults());
+
+                            } else {
+                                ll_no_store.setVisibility(View.VISIBLE);
+
+                            }
+                        } else {
+
+                            progBar.setVisibility(View.GONE);
+
+                            try {
+                                Log.e("error_code", response.errorBody().string());
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<NearbyStoreDataModel> call, Throwable t) {
+                        try {
+
+
+                            progBar.setVisibility(View.GONE);
+                            Toast.makeText(activity, getString(R.string.something), Toast.LENGTH_LONG).show();
+                        } catch (Exception e) {
+
+                        }
+                    }
+                });
+
+       /* String loc = "circle:15000@"+lat+","+lng;
         String fields ="id,place_id,name,geometry,rating,formatted_address,icon,opening_hours";
 
         Api.getService("https://maps.googleapis.com/maps/api/")
@@ -280,12 +334,12 @@ public class Fragment_Search extends Fragment {
 
                         }
                     }
-                });
+                });*/
     }
 
-    private void updateAdapter(List<SearchModel> candidates) {
+    private void updateAdapter(List<NearbyModel> results) {
 
-        placeModelList.addAll(getPlaceModelFromResult(candidates));
+        nearbyModelList.addAll(results);
         adapter.notifyDataSetChanged();
         queryModelList.clear();
         queryModelList.addAll(preferences.getAllQueries(activity));
@@ -344,11 +398,27 @@ public class Fragment_Search extends Fragment {
         Search();
     }
 
-    public void setItemData(PlaceModel placeModel) {
+    public void setItemData(NearbyModel nearbyModel) {
+
+        PlaceModel placeModel ;
+        if (nearbyModel.getPhotos()!=null)
+        {
+            placeModel = new PlaceModel(nearbyModel.getId(),nearbyModel.getPlace_id(),nearbyModel.getName(),nearbyModel.getIcon(),nearbyModel.getPhotos(),nearbyModel.getRating(),nearbyModel.getGeometry().getLocation().getLat(),nearbyModel.getGeometry().getLocation().getLng(),nearbyModel.getVicinity());
+
+        }else
+        {
+            placeModel = new PlaceModel(nearbyModel.getId(),nearbyModel.getPlace_id(),nearbyModel.getName(),nearbyModel.getIcon(),new ArrayList<PhotosModel>(),nearbyModel.getRating(),nearbyModel.getGeometry().getLocation().getLat(),nearbyModel.getGeometry().getLocation().getLng(),nearbyModel.getVicinity());
+
+        }
+        if (nearbyModel.getOpening_hours()!=null)
+        {
+            placeModel.setOpenNow(nearbyModel.getOpening_hours().isOpen_now());
+
+        }
         activity.DisplayFragmentStoreDetails(placeModel);
     }
 
-    private String getUserAddress(double lat,double lng)
+    private String getUserAddress(double lat, double lng)
     {
         String user_address = "";
 
@@ -381,5 +451,7 @@ public class Fragment_Search extends Fragment {
 
         return user_address;
     }
+
+
 
 }

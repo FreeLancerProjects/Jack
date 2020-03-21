@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.endpoint.Jack.R;
 import com.endpoint.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity;
 import com.endpoint.Jack.adapters.WaitOrderAdapter;
@@ -75,6 +76,7 @@ public class Fragment_Pending_Orders extends Fragment {
         recView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
         recView.setDrawingCacheEnabled(true);
         recView.setItemViewCacheSize(25);
+
         manager = new LinearLayoutManager(activity);
         recView.setLayoutManager(manager);
         adapter = new WaitOrderAdapter(waitOrderList, activity);
@@ -102,7 +104,7 @@ public class Fragment_Pending_Orders extends Fragment {
         });
 
         progBar = view.findViewById(R.id.progBar);
-        progBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(activity, R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
+        progBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(activity, R.color.colorAccent), PorterDuff.Mode.SRC_IN);
 
         Bundle bundle = getArguments();
         if (bundle!=null)
@@ -167,7 +169,7 @@ public class Fragment_Pending_Orders extends Fragment {
                 });
     }
 
-    private void loadMore(String place_id,int next_page)
+    private void loadMore(String place_id, int next_page)
     {
         Log.e("next_page",next_page+"");
         Api.getService(Tags.base_url)

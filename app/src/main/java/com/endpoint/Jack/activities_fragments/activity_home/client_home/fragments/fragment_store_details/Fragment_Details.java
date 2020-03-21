@@ -20,6 +20,7 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+
 import com.endpoint.Jack.R;
 import com.endpoint.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity;
 import com.endpoint.Jack.models.NearDelegateDataModel;
@@ -62,8 +63,8 @@ public class Fragment_Details extends Fragment implements OnMapReadyCallback {
     private static final String TAG3 = "LNG";
 
     private ClientHomeActivity activity;
-    private LinearLayout ll_map,ll_delegate,ll_today,ll_open_hour;
-    private TextView tv_delegate_count,tv_name,tv_address,tv_state,tv;
+    private LinearLayout ll_map,ll_delegate,ll_today,ll_open_hour,ll_map_type;
+    private TextView tv_delegate_count,tv_name,tv_address,tv_state,tv,tv_map_type;
     private FloatingActionButton fab;
     private ProgressBar progBar;
     private PlaceModel placeModel;
@@ -79,6 +80,7 @@ public class Fragment_Details extends Fragment implements OnMapReadyCallback {
     private int delegate_count = 0;
     private UserSingleTone userSingleTone;
     private UserModel userModel;
+    private PlaceDetailsModel.PlaceDetails placeDetails;
 
     public static Fragment_Details newInstance(PlaceModel placeModel, double lat, double lng)
     {
@@ -108,16 +110,20 @@ public class Fragment_Details extends Fragment implements OnMapReadyCallback {
         userModel = userSingleTone.getUserModel();
         current_language = Paper.book().read("lang", Locale.getDefault().getLanguage());
         ll_map = view.findViewById(R.id.ll_map);
+        ll_map_type = view.findViewById(R.id.ll_map_type);
+        tv_map_type = view.findViewById(R.id.tv_map_type);
+
         ll_delegate = view.findViewById(R.id.ll_delegate);
         ll_delegate.setEnabled(false);
         tv_delegate_count = view.findViewById(R.id.tv_delegate_count);
         tv_name = view.findViewById(R.id.tv_name);
         tv_address = view.findViewById(R.id.tv_address);
+
         tv = view.findViewById(R.id.tv);
         tv_state = view.findViewById(R.id.tv_state);
         fab = view.findViewById(R.id.fab);
         progBar = view.findViewById(R.id.progBar);
-        progBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(activity,R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
+        progBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(activity,R.color.colorAccent), PorterDuff.Mode.SRC_IN);
         expandedLayout = view.findViewById(R.id.expandedLayout);
         arrow_down = view.findViewById(R.id.arrow_down);
         ll_today = view.findViewById(R.id.ll_today);
@@ -194,6 +200,32 @@ public class Fragment_Details extends Fragment implements OnMapReadyCallback {
             }
         });
 
+        ll_map_type.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                switch (mMap.getMapType())
+                {
+                    case GoogleMap.MAP_TYPE_NORMAL:
+                        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                        tv_map_type.setText(getString(R.string.hybrid));
+                        break;
+
+                    case GoogleMap.MAP_TYPE_HYBRID:
+                        mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+                        tv_map_type.setText(getString(R.string.terrain));
+
+
+                        break;
+                    case GoogleMap.MAP_TYPE_TERRAIN:
+                        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                        tv_map_type.setText(getString(R.string.normal));
+
+                        break;
+                }
+            }
+        });
+
         ll_today.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -216,7 +248,14 @@ public class Fragment_Details extends Fragment implements OnMapReadyCallback {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                activity.DisplayFragmentReserveOrder(placeModel);
+                try {
+                    activity.DisplayFragmentReserveOrder(placeModel,placeDetails);
+
+
+                }
+                catch (Exception e){
+
+                }
             }
         });
 
@@ -292,10 +331,11 @@ public class Fragment_Details extends Fragment implements OnMapReadyCallback {
         tv_address.setText(placeModel.getAddress());
         tv.setVisibility(View.VISIBLE);
         tv_state.setVisibility(View.VISIBLE);
+        Log.e("stat",placeModel.isOpenNow()+"_");
         if (placeModel.isOpenNow())
         {
             tv_state.setText(getString(R.string.active));
-            tv_state.setTextColor(ContextCompat.getColor(activity,R.color.colorPrimary));
+            tv_state.setTextColor(ContextCompat.getColor(activity,R.color.black));
 
         }else
             {
@@ -313,7 +353,7 @@ public class Fragment_Details extends Fragment implements OnMapReadyCallback {
 
     private void getPlaceDetails(PlaceModel placeModel) {
 
-        String fields ="opening_hours";
+        String fields ="opening_hours,photos,reviews";
 
         Api.getService("https://maps.googleapis.com/maps/api/")
                 .getPlaceDetails(placeModel.getPlace_id(),fields,current_language,getString(R.string.map_api_key))
@@ -323,7 +363,9 @@ public class Fragment_Details extends Fragment implements OnMapReadyCallback {
                         if (response.isSuccessful() && response.body() != null) {
                             dialog.dismiss();
 
-                            updateHoursUI(response.body());
+    updateHoursUI(response.body());
+
+
                         } else {
                             dialog.dismiss();
 
@@ -354,71 +396,78 @@ public class Fragment_Details extends Fragment implements OnMapReadyCallback {
 
     private void updateHoursUI(PlaceDetailsModel body) {
 
-        if (body.getResult()!=null&&body.getResult().getOpening_hours()!=null)
+        placeDetails = body.getResult();
+try {
+    if (body.getResult().getOpening_hours()!=null)
+    {
+        ll_open_hour.setVisibility(View.VISIBLE);
+        ll_today.setVisibility(View.VISIBLE);
+        if (body.getResult().getOpening_hours().getPeriods().size()==7)
         {
-            ll_open_hour.setVisibility(View.VISIBLE);
-            ll_today.setVisibility(View.VISIBLE);
-            if (body.getResult().getOpening_hours().getPeriods().size()==7)
-            {
-                List<String> time = body.getResult().getOpening_hours().getWeekday_text();
+            List<String> time = body.getResult().getOpening_hours().getWeekday_text();
 
-                tv_today.setText(time.get(0).split(":",2)[1].trim());
+            tv_today.setText(time.get(0).split(":",2)[1].trim());
 
-                tv_d1.setText(time.get(0).split(":", 2)[0].trim());
-                tv_d11.setText(time.get(0).split(":", 2)[1].trim());
+            tv_d1.setText(time.get(0).split(":", 2)[0].trim());
+            tv_d11.setText(time.get(0).split(":", 2)[1].trim());
 
-                tv_d2.setText(time.get(1).split(":",2)[0].trim());
-                tv_d22.setText(time.get(1).split(":",2)[1].trim());
+            tv_d2.setText(time.get(1).split(":",2)[0].trim());
+            tv_d22.setText(time.get(1).split(":",2)[1].trim());
 
-                tv_d3.setText(time.get(2).split(":",2)[0].trim());
-                tv_d33.setText(time.get(2).split(":",2)[1].trim());
+            tv_d3.setText(time.get(2).split(":",2)[0].trim());
+            tv_d33.setText(time.get(2).split(":",2)[1].trim());
 
-                tv_d4.setText(time.get(3).split(":",2)[0].trim());
-                tv_d44.setText(time.get(3).split(":",2)[1].trim());
+            tv_d4.setText(time.get(3).split(":",2)[0].trim());
+            tv_d44.setText(time.get(3).split(":",2)[1].trim());
 
-                tv_d5.setText(time.get(4).split(":",2)[0].trim());
-                tv_d55.setText(time.get(4).split(":",2)[1].trim());
+            tv_d5.setText(time.get(4).split(":",2)[0].trim());
+            tv_d55.setText(time.get(4).split(":",2)[1].trim());
 
-                tv_d6.setText(time.get(5).split(":",2)[0].trim());
-                tv_d66.setText(time.get(5).split(":",2)[1].trim());
+            tv_d6.setText(time.get(5).split(":",2)[0].trim());
+            tv_d66.setText(time.get(5).split(":",2)[1].trim());
 
-                tv_d7.setText(time.get(6).split(":",2)[0].trim());
-                tv_d77.setText(time.get(6).split(":",2)[1].trim());
+            tv_d7.setText(time.get(6).split(":",2)[0].trim());
+            tv_d77.setText(time.get(6).split(":",2)[1].trim());
 
 
-            }else if (body.getResult().getOpening_hours().getPeriods().size()==1)
-            {
-                List<String> time = body.getResult().getOpening_hours().getWeekday_text();
+        }else if (body.getResult().getOpening_hours().getPeriods().size()==1)
+        {
+            List<String> time = body.getResult().getOpening_hours().getWeekday_text();
 
-                tv_today.setText(R.string.all_day);
+            tv_today.setText(R.string.all_day);
 
-                tv_d1.setText(time.get(0).split(":")[0].trim());
-                tv_d11.setText(R.string.all_day);
+            tv_d1.setText(time.get(0).split(":")[0].trim());
+            tv_d11.setText(R.string.all_day);
 
-                tv_d2.setText(time.get(1).split(":")[0].trim());
-                tv_d22.setText(R.string.all_day);
+            tv_d2.setText(time.get(1).split(":")[0].trim());
+            tv_d22.setText(R.string.all_day);
 
-                tv_d3.setText(time.get(2).split(":")[0].trim());
-                tv_d33.setText(R.string.all_day);
+            tv_d3.setText(time.get(2).split(":")[0].trim());
+            tv_d33.setText(R.string.all_day);
 
-                tv_d4.setText(time.get(3).split(":")[0].trim());
-                tv_d44.setText(R.string.all_day);
+            tv_d4.setText(time.get(3).split(":")[0].trim());
+            tv_d44.setText(R.string.all_day);
 
-                tv_d5.setText(time.get(4).split(":")[0].trim());
-                tv_d55.setText(R.string.all_day);
+            tv_d5.setText(time.get(4).split(":")[0].trim());
+            tv_d55.setText(R.string.all_day);
 
-                tv_d6.setText(time.get(5).split(":")[0].trim());
-                tv_d66.setText(R.string.all_day);
+            tv_d6.setText(time.get(5).split(":")[0].trim());
+            tv_d66.setText(R.string.all_day);
 
-                tv_d7.setText(time.get(6).split(":")[0].trim());
-                tv_d77.setText(R.string.all_day);
+            tv_d7.setText(time.get(6).split(":")[0].trim());
+            tv_d77.setText(R.string.all_day);
 
-            }
-        }else
-            {
-                ll_open_hour.setVisibility(View.GONE);
-                //tv_today.setVisibility(View.GONE);
-            }
+        }
+    }else
+    {
+        ll_open_hour.setVisibility(View.GONE);
+        //tv_today.setVisibility(View.GONE);
+    }
+}
+catch (Exception e){
+
+}
+
 
 
     }
@@ -428,6 +477,8 @@ public class Fragment_Details extends Fragment implements OnMapReadyCallback {
         if (googleMap!=null)
         {
             mMap = googleMap;
+            tv_map_type.setText(getString(R.string.normal));
+            mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
             mMap.setBuildingsEnabled(false);
             mMap.setIndoorEnabled(true);
             mMap.setTrafficEnabled(false);

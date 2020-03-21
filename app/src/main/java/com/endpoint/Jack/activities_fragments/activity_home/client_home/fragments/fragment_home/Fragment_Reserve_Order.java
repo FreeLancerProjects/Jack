@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
@@ -28,14 +29,19 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import com.endpoint.Jack.R;
 import com.endpoint.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity;
+import com.endpoint.Jack.activities_fragments.activity_reviews.ReviewsActivity;
+import com.endpoint.Jack.adapters.SliderStoreDetailsAdapter;
 import com.endpoint.Jack.models.Favourite_location;
 import com.endpoint.Jack.models.OrderIdDataModel;
+import com.endpoint.Jack.models.PlaceDetailsModel;
 import com.endpoint.Jack.models.PlaceModel;
 import com.endpoint.Jack.models.UserModel;
 import com.endpoint.Jack.preferences.Preferences;
@@ -44,6 +50,8 @@ import com.endpoint.Jack.share.Common;
 import com.endpoint.Jack.singletone.UserSingleTone;
 import com.endpoint.Jack.tags.Tags;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.tabs.TabLayout;
+import com.iarcuschin.simpleratingbar.SimpleRatingBar;
 import com.squareup.picasso.Picasso;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
@@ -63,22 +71,32 @@ import retrofit2.Response;
 
 public class Fragment_Reserve_Order extends Fragment {
     private static final String TAG = "DATA";
+    private static final String TAG2 = "DATA2";
+
     private ClientHomeActivity activity;
-    private ImageView image, arrow, image_reserve,image_details;
+    private ImageView image, arrow,arrow2, image_reserve,image_details;
     private TextView tv_place_name, tv_place_address, tv_address;
     private LinearLayout ll_back, ll_delivery_location, ll_fav_address, ll_fav_map_loc, ll_choose_delivery_time;
+    private ConstraintLayout cons_add_coupon;
     private CheckBox checkbox;
     private ExpandableLayout expandLayout;
-    private TextView tv_fav_address_title, tv_fav_address, tv_delivery_time;
+    private TextView tv_fav_address_title, tv_fav_address, tv_delivery_time,tvRate,tvReview;
+    private SimpleRatingBar ratingBar;
+    private ConstraintLayout consReview;
     private EditText edt_order_details;
     private PlaceModel placeModel;
+    private TabLayout tab;
+    private ViewPager pager;
+    private FrameLayout llSlider;
+    private SliderStoreDetailsAdapter adapter;
     private String current_language;
     private Preferences preferences;
     private FloatingActionButton fab;
     private Favourite_location favourite_location;
-    private String [] timesList;
+    private String[] timesList;
     private UserSingleTone userSingleTone;
     private UserModel userModel;
+    private PlaceDetailsModel.PlaceDetails placeDetails;
 
     private final int IMG1=1,IMG2=2;
     private Uri uri=null;
@@ -99,10 +117,12 @@ public class Fragment_Reserve_Order extends Fragment {
         return view;
     }
 
-    public static Fragment_Reserve_Order newInstance(PlaceModel placeModel) {
+    public static Fragment_Reserve_Order newInstance(PlaceModel placeModel, PlaceDetailsModel.PlaceDetails placeDetails) {
         Fragment_Reserve_Order fragment_reserve_order = new Fragment_Reserve_Order();
         Bundle bundle = new Bundle();
         bundle.putSerializable(TAG, placeModel);
+        bundle.putSerializable(TAG2, placeDetails);
+
         fragment_reserve_order.setArguments(bundle);
         return fragment_reserve_order;
 
@@ -117,27 +137,46 @@ public class Fragment_Reserve_Order extends Fragment {
         Paper.init(activity);
         current_language = Paper.book().read("lang", Locale.getDefault().getLanguage());
 
-        timesList = new String[]{getString(R.string.hour1),
-                getString(R.string.hour2),
+        timesList = new String[]{getString(R.string.hour1)};
+        cons_add_coupon = view.findViewById(R.id.cons_add_coupon);
+
+       /* getString(R.string.hour2),
                 getString(R.string.hour3),
                 getString(R.string.day1),
                 getString(R.string.day2),
-                getString(R.string.day3)
-
-        };
+                getString(R.string.day3)*/
 
 
         arrow = view.findViewById(R.id.arrow);
+        arrow2 = view.findViewById(R.id.arrow2);
 
         if (current_language.equals("ar")) {
             arrow.setImageResource(R.drawable.ic_right_arrow);
             arrow.setColorFilter(ContextCompat.getColor(activity, R.color.white), PorterDuff.Mode.SRC_IN);
+            arrow2.setImageResource(R.drawable.ic_left_arrow);
+            arrow2.setColorFilter(ContextCompat.getColor(activity, R.color.black), PorterDuff.Mode.SRC_IN);
+
         } else {
             arrow.setImageResource(R.drawable.ic_left_arrow);
             arrow.setColorFilter(ContextCompat.getColor(activity, R.color.white), PorterDuff.Mode.SRC_IN);
 
+            arrow2.setImageResource(R.drawable.ic_right_arrow);
+            arrow2.setColorFilter(ContextCompat.getColor(activity, R.color.black), PorterDuff.Mode.SRC_IN);
+
 
         }
+        tvRate = view.findViewById(R.id.tvRate);
+        tvReview = view.findViewById(R.id.tvReview);
+        ratingBar = view.findViewById(R.id.ratingBar);
+        consReview = view.findViewById(R.id.consReview);
+
+
+        tab = view.findViewById(R.id.tab);
+        pager = view.findViewById(R.id.pager);
+        llSlider = view.findViewById(R.id.llSlider);
+
+        tab.setupWithViewPager(pager);
+
         ll_back = view.findViewById(R.id.ll_back);
         image = view.findViewById(R.id.image);
         image_details = view.findViewById(R.id.image_details);
@@ -157,6 +196,12 @@ public class Fragment_Reserve_Order extends Fragment {
         tv_delivery_time = view.findViewById(R.id.tv_delivery_time);
         edt_order_details = view.findViewById(R.id.edt_order_details);
 
+        cons_add_coupon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.DisplayFragmentAddCoupon();
+            }
+        });
 
 
 
@@ -178,17 +223,17 @@ public class Fragment_Reserve_Order extends Fragment {
                     {
                         expandLayout.collapse(true);
                     }else
-                        {
-                            expandLayout.expand(true);
-                        }
-                }else
                     {
-                        if (!checkbox.isChecked())
-                        {
-                            activity.DisplayFragmentMap("fragment_reserve_order");
-
-                        }
+                        expandLayout.expand(true);
                     }
+                }else
+                {
+                    if (!checkbox.isChecked())
+                    {
+                        activity.DisplayFragmentMap("fragment_reserve_order");
+
+                    }
+                }
             }
         });
 
@@ -214,6 +259,28 @@ public class Fragment_Reserve_Order extends Fragment {
             }
         });
 
+        consReview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (placeDetails!=null&&placeDetails.getReviews()!=null)
+                {
+                    if (placeDetails.getReviews().size()>0)
+                    {
+                        Intent intent = new Intent(activity, ReviewsActivity.class);
+                        intent.putExtra("data",placeDetails);
+                        startActivity(intent);
+                    }else
+                    {
+                        Toast.makeText(activity, getString(R.string.no_rev), Toast.LENGTH_SHORT).show();
+                    }
+                }else
+                {
+                    Toast.makeText(activity, getString(R.string.no_rev), Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        });
 
         checkbox.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -223,10 +290,10 @@ public class Fragment_Reserve_Order extends Fragment {
                 {
                     DisplayAlertEnterAddressTitle();
                 }else
-                    {
-                        preferences.ClearFavoriteLocation(activity);
-                        expandLayout.collapse(true);
-                    }
+                {
+                    preferences.ClearFavoriteLocation(activity);
+                    expandLayout.collapse(true);
+                }
             }
         });
 
@@ -240,6 +307,7 @@ public class Fragment_Reserve_Order extends Fragment {
         Bundle bundle = getArguments();
         if (bundle != null) {
             placeModel = (PlaceModel) bundle.getSerializable(TAG);
+            placeDetails = (PlaceDetailsModel.PlaceDetails) bundle.getSerializable(TAG2);
             updateUI(placeModel);
         }
 
@@ -279,40 +347,40 @@ public class Fragment_Reserve_Order extends Fragment {
                 sendOrder();
 
             }else
-                {
-                    sendOrderWithImage();
-                }
+            {
+                sendOrderWithImage();
+            }
 
 
         }else
+        {
+            if (TextUtils.isEmpty(order_details))
             {
-                if (TextUtils.isEmpty(order_details))
-                {
-                    edt_order_details.setError(getString(R.string.field_req));
+                edt_order_details.setError(getString(R.string.field_req));
 
-                }else
-                    {
-                        edt_order_details.setError(null);
-                    }
-
-                if (selected_time == 0)
-                {
-                    tv_delivery_time.setError(getString(R.string.field_req));
-
-                }else
-                {
-                    tv_delivery_time.setError(null);
-                }
-
-                if (selected_location == null)
-                {
-                    tv_address.setError(getString(R.string.field_req));
-
-                }else
-                {
-                    tv_address.setError(null);
-                }
+            }else
+            {
+                edt_order_details.setError(null);
             }
+
+            if (selected_time == 0)
+            {
+                tv_delivery_time.setError(getString(R.string.field_req));
+
+            }else
+            {
+                tv_delivery_time.setError(null);
+            }
+
+            if (selected_location == null)
+            {
+                tv_address.setError(getString(R.string.field_req));
+
+            }else
+            {
+                tv_address.setError(null);
+            }
+        }
 
     }
 
@@ -323,7 +391,67 @@ public class Fragment_Reserve_Order extends Fragment {
         {
             tv_place_name.setText(placeModel.getName());
             tv_place_address.setText(placeModel.getAddress());
-            Picasso.with(activity).load(placeModel.getIcon()).fit().into(image);
+
+            ratingBar.setRating(placeModel.getRating());
+            tvRate.setText(String.format("%s%s%s","(", String.valueOf(placeModel.getRating()),")"));
+            try {
+                if (placeDetails.getReviews()!=null)
+                {
+                    if (placeDetails.getReviews().size()>0)
+                    {
+                        tvReview.setText(String.format("%s %s", String.valueOf(placeDetails.getReviews().size()),getString(R.string.reviews)));
+
+                    }else
+                    {
+                        tvReview.setText(String.format("%s %s","0",getString(R.string.reviews)));
+
+                    }
+                }else
+                {
+                    tvReview.setText(String.format("%s %s","0",getString(R.string.reviews)));
+
+                }
+            }
+            catch (Exception e){
+
+            }
+
+
+            if (placeModel.getPhotosList().size()>0)
+            {
+
+                String url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+placeModel.getPhotosList().get(0).getPhoto_reference()+"&key=AIzaSyCbc2Y5AIwZ8uUeHRUXiozGN3CnpjKT0oI";
+                Picasso.with(activity).load(Uri.parse(url)).fit().into(image);
+            }else
+            {
+                Picasso.with(activity).load(placeModel.getIcon()).fit().into(image);
+
+            }
+
+
+            try {
+                if (placeDetails.getPhotos()!=null)
+                {
+                    if (placeDetails.getPhotos().size()>0)
+                    {
+                        llSlider.setVisibility(View.VISIBLE);
+                        adapter = new SliderStoreDetailsAdapter(placeDetails.getPhotos(),activity);
+                        pager.setAdapter(adapter);
+
+                    }else
+                    {
+                        llSlider.setVisibility(View.GONE);
+                    }
+                }else
+                {
+                    llSlider.setVisibility(View.GONE);
+
+                }
+            }
+            catch (Exception e){
+
+            }
+
 
 
         }
@@ -348,20 +476,20 @@ public class Fragment_Reserve_Order extends Fragment {
             tv_address.setText(selected_location.getStreet()+"\n"+selected_location.getAddress());
 
         }else
-            {
-                tv_address.setText(selected_location.getAddress());
+        {
+            tv_address.setText(selected_location.getAddress());
 
-            }
+        }
 
         if (checked)
         {
             checkbox.setChecked(true);
 
         }else
-            {
-                checkbox.setChecked(false);
+        {
+            checkbox.setChecked(false);
 
-            }
+        }
     }
 
     private void DisplayAlertEnterAddressTitle()
@@ -396,16 +524,16 @@ public class Fragment_Reserve_Order extends Fragment {
                         tv_fav_address.setText(selected_location.getAddress());
 
                     }else
-                        {
-                            tv_fav_address_title.setText(name);
-                            tv_fav_address.setText(selected_location.getAddress());
-                        }
+                    {
+                        tv_fav_address_title.setText(name);
+                        tv_fav_address.setText(selected_location.getAddress());
+                    }
                     dialog.dismiss();
 
                 }else
-                    {
-                        edt_name.setError(getString(R.string.field_req));
-                    }
+                {
+                    edt_name.setError(getString(R.string.field_req));
+                }
             }
         });
 
@@ -459,14 +587,14 @@ public class Fragment_Reserve_Order extends Fragment {
                             uri = null;
                             CreateAlertDialog(response.body().getData().getOrder_id());
                         }else
-                            {
-                                try {
-                                    Log.e("Error_code",response.code()+""+response.errorBody().string());
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-                                Toast.makeText(activity, R.string.failed, Toast.LENGTH_SHORT).show();
+                        {
+                            try {
+                                Log.e("Error_code",response.code()+""+response.errorBody().string());
+                            } catch (IOException e) {
+                                e.printStackTrace();
                             }
+                            Toast.makeText(activity, R.string.failed, Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                     @Override
@@ -536,7 +664,7 @@ public class Fragment_Reserve_Order extends Fragment {
         numberPicker.setMaxValue(timesList.length-1);
         numberPicker.setDisplayedValues(timesList);
         numberPicker.setWrapSelectorWheel(false);
-        numberPicker.setValue(1);
+        numberPicker.setValue(0);
         btn_select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -614,8 +742,6 @@ public class Fragment_Reserve_Order extends Fragment {
             public void onClick(View v) {
                 dialog.dismiss();
                 activity.FollowOrder();
-
-
 
 
 
@@ -702,7 +828,7 @@ public class Fragment_Reserve_Order extends Fragment {
 
     private void Check_CameraPermission()
     {
-        if (ContextCompat.checkSelfPermission(activity,camera_permission)!= PackageManager.PERMISSION_GRANTED&&ContextCompat.checkSelfPermission(activity,write_permission)!= PackageManager.PERMISSION_GRANTED)
+        if (ContextCompat.checkSelfPermission(activity,camera_permission)!= PackageManager.PERMISSION_GRANTED&& ContextCompat.checkSelfPermission(activity,write_permission)!= PackageManager.PERMISSION_GRANTED)
         {
             ActivityCompat.requestPermissions(activity,new String[]{camera_permission,write_permission},IMG2);
         }else
@@ -714,7 +840,7 @@ public class Fragment_Reserve_Order extends Fragment {
     }
     private void select_photo(int type)
     {
-        Intent  intent = new Intent();
+        Intent intent = new Intent();
 
         if (type == 1)
         {
@@ -822,7 +948,7 @@ public class Fragment_Reserve_Order extends Fragment {
         {
             if (grantResults.length>0)
             {
-                if (grantResults[0]==PackageManager.PERMISSION_GRANTED&&grantResults[1]==PackageManager.PERMISSION_GRANTED)
+                if (grantResults[0]== PackageManager.PERMISSION_GRANTED&&grantResults[1]== PackageManager.PERMISSION_GRANTED)
                 {
                     select_photo(2);
 
@@ -836,4 +962,9 @@ public class Fragment_Reserve_Order extends Fragment {
 
     }
 
+    public void updateUserData(UserModel userModel) {
+        this.userModel=userModel;
+        userSingleTone.setUserModel(userModel);
+        cons_add_coupon.setVisibility(View.GONE);
+    }
 }

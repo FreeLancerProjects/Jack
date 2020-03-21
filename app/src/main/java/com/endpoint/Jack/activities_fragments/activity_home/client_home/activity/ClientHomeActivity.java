@@ -73,6 +73,7 @@ import com.endpoint.Jack.models.NotificationCountModel;
 import com.endpoint.Jack.models.NotificationModel;
 import com.endpoint.Jack.models.NotificationTypeModel;
 import com.endpoint.Jack.models.OrderDataModel;
+import com.endpoint.Jack.models.PlaceDetailsModel;
 import com.endpoint.Jack.models.PlaceModel;
 import com.endpoint.Jack.models.UserModel;
 import com.endpoint.Jack.preferences.Preferences;
@@ -982,33 +983,37 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
 
 
     }
-    public void DisplayFragmentReserveOrder(PlaceModel placeModel)
+    public void DisplayFragmentReserveOrder(PlaceModel placeModel, PlaceDetailsModel.PlaceDetails placeDetails)
     {
 
+        try {
 
-        if (userModel==null)
-        {
-            Common.CreateUserNotSignInAlertDialog(this);
-        }else
+
+            if (userModel==null)
+            {
+                Common.CreateUserNotSignInAlertDialog(this);
+            }else
             {
                 if (userModel.getData().getUser_type().equals(Tags.TYPE_DELEGATE))
                 {
                     Common.CreateSignAlertDialog(this,getString(R.string.serv_aval_client));
                 }else
-                    {
-                        fragment_count+=1;
+                {
+                    fragment_count+=1;
 
-                        fragment_reserve_order = Fragment_Reserve_Order.newInstance(placeModel);
+                    fragment_reserve_order = Fragment_Reserve_Order.newInstance(placeModel,placeDetails);
 
-                        if (fragment_reserve_order.isAdded()) {
-                            fragmentManager.beginTransaction().show(fragment_reserve_order).commit();
+                    if (fragment_reserve_order.isAdded()) {
+                        fragmentManager.beginTransaction().show(fragment_reserve_order).commit();
 
-                        } else {
-                            fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_reserve_order, "fragment_reserve_order").addToBackStack("fragment_reserve_order").commit();
-                        }
-
+                    } else {
+                        fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_reserve_order, "fragment_reserve_order").addToBackStack("fragment_reserve_order").commit();
                     }
-                    }
+
+                }
+            }}catch (Exception e){
+
+        }
 
 
 
