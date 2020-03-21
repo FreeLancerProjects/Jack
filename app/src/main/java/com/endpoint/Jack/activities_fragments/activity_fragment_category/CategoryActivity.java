@@ -1,35 +1,34 @@
-package com.endpoint.Jack.activities_fragments.activity_catogry;
+package com.endpoint.Jack.activities_fragments.activity_fragment_category;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.PorterDuff;
+import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.endpoint.Jack.R;
-import com.endpoint.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity;
+import com.endpoint.Jack.activities_fragments.activity_home.client_home.fragments.fragment_home.Fragment_Map;
 import com.endpoint.Jack.activities_fragments.activity_map.MapActivity;
-import com.endpoint.Jack.activities_fragments.activity_sign_in.activity.SignInActivity;
 import com.endpoint.Jack.adapters.SliderCatogryAdapter;
 import com.endpoint.Jack.language.Language_Helper;
 import com.endpoint.Jack.models.CategoryModel;
 import com.endpoint.Jack.models.SelectedLocation;
 import com.endpoint.Jack.models.SingleCategoryModel;
-import com.endpoint.Jack.models.UserModel;
 import com.endpoint.Jack.remote.Api;
 import com.endpoint.Jack.share.Common;
 import com.endpoint.Jack.tags.Tags;
@@ -37,7 +36,6 @@ import com.google.android.material.tabs.TabLayout;
 import com.iarcuschin.simpleratingbar.SimpleRatingBar;
 import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
 import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -48,7 +46,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CatogryActivity extends AppCompatActivity {
+public class CategoryActivity extends AppCompatActivity {
     private CategoryModel.Data data;
     private String lang;
     private TextView tv_name, tv_content, tv_rate, tv_addess, tv_address, tv_time, tv_status;
@@ -62,6 +60,10 @@ public class CatogryActivity extends AppCompatActivity {
     private SelectedLocation selectedLocation;
     private ImageView arrow1, arrow2, arrow3, imback;
     private ProgressBar progressBar;
+    private Button btnOrderNow;
+    public Location location = null;
+    private Fragment_Map fragment_map;
+    private FragmentManager fragmentManager;
 
     @Override
     protected void attachBaseContext(Context base) {
@@ -71,7 +73,7 @@ public class CatogryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_catogry);
+        setContentView(R.layout.activity_category);
         getdatafromintent();
         initview();
         getsinglecat();
@@ -81,6 +83,7 @@ public class CatogryActivity extends AppCompatActivity {
     private void initview() {
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
+        fragmentManager = getSupportFragmentManager();
         tv_name = findViewById(R.id.tv_name);
         tv_content = findViewById(R.id.tv_content);
         tv_rate = findViewById(R.id.tv_rate);
@@ -97,6 +100,7 @@ public class CatogryActivity extends AppCompatActivity {
         arrow3 = findViewById(R.id.arrow3);
         imback = findViewById(R.id.image_back);
         progressBar = findViewById(R.id.progBarSlider);
+        btnOrderNow=findViewById(R.id.btnOrderNow);
         progressBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
         if (lang.equals("en")) {
             arrow1.setRotation(180.0f);
@@ -117,9 +121,14 @@ public class CatogryActivity extends AppCompatActivity {
         ll_change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CatogryActivity.this, MapActivity.class);
+                Intent intent = new Intent(CategoryActivity.this, MapActivity.class);
                 startActivityForResult(intent, 1);
             }
+        });
+
+        btnOrderNow.setOnClickListener(view -> {
+
+
         });
 
     }
@@ -129,7 +138,29 @@ public class CatogryActivity extends AppCompatActivity {
             data = (CategoryModel.Data) getIntent().getSerializableExtra("data");
         }
     }
+    public void DisplayFragmentMap(String from)
+    {
 
+        if (location!=null)
+        {
+            fragment_map = Fragment_Map.newInstance(location.getLatitude(),location.getLongitude(),from);
+
+        }else
+        {
+            fragment_map = Fragment_Map.newInstance(0.0,0.0,from);
+
+        }
+
+        if (fragment_map.isAdded()) {
+            fragmentManager.beginTransaction().show(fragment_map).commit();
+
+        } else {
+            fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_map, "fragment_map").addToBackStack("fragment_map").commit();
+        }
+
+
+
+    }
     public void getsinglecat() {
 
 
@@ -221,4 +252,6 @@ public class CatogryActivity extends AppCompatActivity {
         }
 
     }
+
+
 }

@@ -26,7 +26,7 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="m">
-        <activity android:name=".activities_fragments.activity_catogry.CatogryActivity"></activity>
+        <activity android:name=".activities_fragments.activity_fragment_category.CategoryActivity"></activity>
 
         <uses-library
             android:name="org.apache.http.legacy"

@@ -24,7 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.endpoint.Jack.R;
-import com.endpoint.Jack.activities_fragments.activity_catogry.CatogryActivity;
+import com.endpoint.Jack.activities_fragments.activity_fragment_category.CategoryActivity;
 import com.endpoint.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity;
 import com.endpoint.Jack.adapters.CategoryAdapter;
 import com.endpoint.Jack.adapters.NearbyAdapter;
@@ -498,7 +498,7 @@ recviewcat.setAdapter(categoryAdapter);
     }
 
     public void Displaycatogry(CategoryModel.Data data) {
-        Intent intent=new Intent(activity, CatogryActivity.class);
+        Intent intent=new Intent(activity, CategoryActivity.class);
         intent.putExtra("data",data);
         startActivity(intent);
     }

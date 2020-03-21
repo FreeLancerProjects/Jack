@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -36,7 +35,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyHold
     @NonNull
     @Override
     public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.catogry_row, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.category_row, parent, false);
         return new MyHolder(view);
     }
 
