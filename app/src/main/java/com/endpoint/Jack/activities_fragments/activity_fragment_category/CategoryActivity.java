@@ -70,6 +70,7 @@ public class CategoryActivity extends AppCompatActivity {
     private long selected_time=0;
     private Fragment_Map fragment_map;
     private FragmentManager fragmentManager;
+    private String [] timesList;
 
     @Override
     protected void attachBaseContext(Context base) {
@@ -87,6 +88,14 @@ public class CategoryActivity extends AppCompatActivity {
     }
 
     private void initview() {
+        timesList = new String[]{getString(R.string.hour1),
+                getString(R.string.hour2),
+                getString(R.string.hour3),
+                getString(R.string.day1),
+                getString(R.string.day2),
+                getString(R.string.day3)
+
+        };
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
         fragmentManager = getSupportFragmentManager();
@@ -193,7 +202,7 @@ public class CategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String val = timesList[numberPicker.getValue()];
-                tv_delivery_time.setText(val);
+              //  tv_delivery_time.setText(val);
                 setTime(numberPicker.getValue());
                 dialog.dismiss();
             }
