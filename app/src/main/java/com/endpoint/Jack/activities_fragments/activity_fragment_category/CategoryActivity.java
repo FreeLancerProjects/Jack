@@ -40,6 +40,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.iarcuschin.simpleratingbar.SimpleRatingBar;
 import com.squareup.picasso.Picasso;
 
+import java.util.Calendar;
 import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -212,6 +213,37 @@ public class CategoryActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    private void setTime(int value) {
+        Calendar calendar = Calendar.getInstance(new Locale(current_language));
+        switch (value)
+        {
+            case 0:
+                calendar.add(Calendar.HOUR_OF_DAY,1);
+                break;
+            case 1:
+                calendar.add(Calendar.HOUR_OF_DAY,2);
+
+                break;
+            case 2:
+                calendar.add(Calendar.HOUR_OF_DAY,3);
+
+                break;
+            case 3:
+                calendar.add(Calendar.DAY_OF_MONTH,1);
+
+                break;
+            case 4:
+                calendar.add(Calendar.DAY_OF_MONTH,2);
+
+                break;
+            case 5:
+                calendar.add(Calendar.DAY_OF_MONTH,3);
+
+                break;
+        }
+
+        selected_time = calendar.getTimeInMillis()/1000;
+    }
 
     public void getsinglecat() {
 
