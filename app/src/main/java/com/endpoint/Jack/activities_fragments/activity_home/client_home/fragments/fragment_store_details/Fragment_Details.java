@@ -398,7 +398,7 @@ public class Fragment_Details extends Fragment implements OnMapReadyCallback {
 
         placeDetails = body.getResult();
 try {
-    if (body.getResult().getOpening_hours()!=null)
+    if (body.getResult()!=null&&body.getResult().getOpening_hours()!=null)
     {
         ll_open_hour.setVisibility(View.VISIBLE);
         ll_today.setVisibility(View.VISIBLE);
@@ -430,7 +430,7 @@ try {
             tv_d77.setText(time.get(6).split(":",2)[1].trim());
 
 
-        }else if (body.getResult().getOpening_hours().getPeriods().size()==1)
+        }else if (body.getResult()!=null&&body.getResult().getOpening_hours().getPeriods().size()==1)
         {
             List<String> time = body.getResult().getOpening_hours().getWeekday_text();
 

@@ -177,7 +177,7 @@ public class Fragment_Pending_Orders extends Fragment {
                 .enqueue(new Callback<WatingOrderData>() {
                     @Override
                     public void onResponse(Call<WatingOrderData> call, Response<WatingOrderData> response) {
-                        if (response.isSuccessful())
+                        if (response.isSuccessful()&&response.body()!=null)
                         {
                             waitOrderList.remove(waitOrderList.size()-1);
                             adapter.notifyDataSetChanged();

@@ -22,6 +22,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.endpoint.Jack.R;
+import com.endpoint.Jack.activities_fragments.activity_complete_order.CompleteOrderActivity;
 import com.endpoint.Jack.activities_fragments.activity_home.client_home.fragments.fragment_home.Fragment_Map;
 import com.endpoint.Jack.activities_fragments.activity_map.MapActivity;
 import com.endpoint.Jack.adapters.SliderCatogryAdapter;
@@ -100,7 +101,7 @@ public class CategoryActivity extends AppCompatActivity {
         arrow3 = findViewById(R.id.arrow3);
         imback = findViewById(R.id.image_back);
         progressBar = findViewById(R.id.progBarSlider);
-        btnOrderNow=findViewById(R.id.btnOrderNow);
+        btnOrderNow = findViewById(R.id.btnOrderNow);
         progressBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
         if (lang.equals("en")) {
             arrow1.setRotation(180.0f);
@@ -127,7 +128,8 @@ public class CategoryActivity extends AppCompatActivity {
         });
 
         btnOrderNow.setOnClickListener(view -> {
-
+            Intent intent = new Intent(CategoryActivity.this, CompleteOrderActivity.class);
+            startActivity(intent);
 
         });
 
@@ -138,16 +140,14 @@ public class CategoryActivity extends AppCompatActivity {
             data = (CategoryModel.Data) getIntent().getSerializableExtra("data");
         }
     }
-    public void DisplayFragmentMap(String from)
-    {
 
-        if (location!=null)
-        {
-            fragment_map = Fragment_Map.newInstance(location.getLatitude(),location.getLongitude(),from);
+    public void DisplayFragmentMap(String from) {
 
-        }else
-        {
-            fragment_map = Fragment_Map.newInstance(0.0,0.0,from);
+        if (location != null) {
+            fragment_map = Fragment_Map.newInstance(location.getLatitude(), location.getLongitude(), from);
+
+        } else {
+            fragment_map = Fragment_Map.newInstance(0.0, 0.0, from);
 
         }
 
@@ -159,8 +159,8 @@ public class CategoryActivity extends AppCompatActivity {
         }
 
 
-
     }
+
     public void getsinglecat() {
 
 
@@ -198,7 +198,7 @@ public class CategoryActivity extends AppCompatActivity {
 
     private void update(SingleCategoryModel body) {
         if (body.getData().get(0).getWord().getContent() != null)
-        tv_content.setText(body.getData().get(0).getWord().getContent() + "");
+            tv_content.setText(body.getData().get(0).getWord().getContent() + "");
         tv_name.setText(body.getData().get(0).getWord().getTitle());
         Picasso.with(this).load(Tags.IMAGE_URL + body.getData().get(0).getLogo()).into(imageView);
         progressBar.setVisibility(View.GONE);

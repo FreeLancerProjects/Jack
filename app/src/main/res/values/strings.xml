@@ -310,5 +310,7 @@
     <string name="no_rev">No reviews</string>
     <string name="map_style">Map style</string>
     <string name="cust_rate">Customers Rating</string>
+    <string name="write_order_here">Write order Here</string>
+    <string name="more_detials">More Detials</string>
 
 </resources>
