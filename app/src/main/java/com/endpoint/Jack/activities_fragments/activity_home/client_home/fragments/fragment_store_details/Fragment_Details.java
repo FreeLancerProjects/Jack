@@ -354,7 +354,7 @@ public class Fragment_Details extends Fragment implements OnMapReadyCallback {
 
     private void updateHoursUI(PlaceDetailsModel body) {
 
-        if (body.getResult().getOpening_hours()!=null)
+        if (body.getResult()!=null&&body.getResult().getOpening_hours()!=null)
         {
             ll_open_hour.setVisibility(View.VISIBLE);
             ll_today.setVisibility(View.VISIBLE);
