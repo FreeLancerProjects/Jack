@@ -5,7 +5,11 @@ import java.io.Serializable;
 public class UserModel implements Serializable {
 
     private Data data;
+    private Coupon_data coupon_data;
 
+    public Coupon_data getCoupon_data() {
+        return coupon_data;
+    }
     public Data getData() {
         return data;
     }
@@ -116,6 +120,13 @@ public class UserModel implements Serializable {
 
         public String getAvailable() {
             return available;
+        }
+    }
+    public class Coupon_data implements Serializable {
+        private int id;
+
+        public int getId() {
+            return id;
         }
     }
 }

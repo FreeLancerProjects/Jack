@@ -135,7 +135,7 @@ public class Add_Coupon_Activity extends AppCompatActivity {
         ll_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                activity.Back();
+finish();
             }
         });
 

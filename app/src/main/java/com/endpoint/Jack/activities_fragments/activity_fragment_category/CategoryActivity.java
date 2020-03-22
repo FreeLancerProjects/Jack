@@ -412,11 +412,17 @@ private UserModel userModel;
     {
         //this.delegate_id = delegate_id;
 
-
+        int coupon_id=0;
+        if(userModel.getCoupon_data()!=null){
+            coupon_id=userModel.getCoupon_data().getId();
+        }
+        else {
+            coupon_id=-1;
+        }
         final ProgressDialog dialog = Common.createProgressDialog(this,getString(R.string.wait));
         dialog.show();
         Api.getService(Tags.base_url)
-                .sendOrder(userModel.getData().getUser_id(),selectedLocation.getAddress()+" "+selectedLocation.getAddress(),selectedLocation.getLat(),selectedLocation.getLng(),order_details,singlecategory.getData().get(0).getPlace_id()+"",singlecategory.getData().get(0).getAddress(),"1",singlecategory.getData().get(0).getGoogle_lat(),singlecategory.getData().get(0).getGoogle_long(),selected_time)
+                .sendOrder(userModel.getData().getUser_id(),selectedLocation.getAddress()+" "+selectedLocation.getAddress(),selectedLocation.getLat(),selectedLocation.getLng(),order_details,singlecategory.getData().get(0).getPlace_id()+"",singlecategory.getData().get(0).getAddress(),"1",singlecategory.getData().get(0).getGoogle_lat(),singlecategory.getData().get(0).getGoogle_long(),selected_time,coupon_id+"")
                 .enqueue(new Callback<OrderIdDataModel>() {
                     @Override
                     public void onResponse(Call<OrderIdDataModel> call, Response<OrderIdDataModel> response) {

@@ -156,8 +156,10 @@ public interface Service {
                                      @Field("order_type") String order_type,
                                      @Field("place_lat") double place_lat,
                                      @Field("place_long") double place_long,
-                                     @Field("order_time_arrival") long order_time_arrival
-    );
+                                     @Field("order_time_arrival") long order_time_arrival,
+                                     @Field("coupon_id") String coupon_id
+
+                                     );
 
     @Multipart
     @POST("/api/addOrder")
@@ -172,6 +174,7 @@ public interface Service {
                                               @Part("place_lat") RequestBody place_lat,
                                               @Part("place_long") RequestBody place_long,
                                               @Part("order_time_arrival") RequestBody order_time_arrival,
+                                              @Part("coupon_id") RequestBody RequestBody,
                                               @Part MultipartBody.Part image
     );
 

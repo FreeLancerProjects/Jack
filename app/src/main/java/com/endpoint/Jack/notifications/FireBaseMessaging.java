@@ -277,7 +277,7 @@ public class FireBaseMessaging extends FirebaseMessagingService {
             builder.setSound(Uri.parse(sound_Path), AudioManager.STREAM_NOTIFICATION);
             builder.setSmallIcon(R.drawable.ic_notification);
 
-            if (notification_type.equals(Tags.FIREBASE_NOT_ORDER_STATUS)) {
+            if (notification_type.equals(Tags.FIREBASE_NOT_ORDER_STATUS)&&getUserData().getData().getUser_id().equals(map.get("to_user"))) {
 
 
                 builder.setContentTitle(map.get("from_name"));
@@ -629,7 +629,7 @@ public class FireBaseMessaging extends FirebaseMessagingService {
             builder.setSound(Uri.parse(sound_Path), AudioManager.STREAM_NOTIFICATION);
             builder.setSmallIcon(R.drawable.ic_notification);
 
-            if (notification_type.equals(Tags.FIREBASE_NOT_ORDER_STATUS)) {
+            if (notification_type.equals(Tags.FIREBASE_NOT_ORDER_STATUS)&&getUserData().getData().getUser_id().equals(map.get("to_user"))) {
                 builder.setContentTitle(map.get("from_name"));
 
 
