@@ -337,7 +337,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:gravity="center"
-                        android:text="@string/address"
+                        android:text="@string/delivery_location"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:textStyle="bold"
@@ -430,7 +430,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:gravity="center"
-                        android:text="name"
+                        android:text="@string/delivery_time"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:textStyle="bold"
@@ -494,7 +494,7 @@
             </LinearLayout>
 
             <EditText
-                android:id="@+id/edt_more_detials"
+                android:id="@+id/edt_order_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"

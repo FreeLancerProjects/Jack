@@ -328,14 +328,15 @@ ordersAdapteradapter.notifyDataSetChanged();
 
     public void RefreshOrderFragments()
     {
-        Fragment_Client_New_Orders fragment_client_new_orders = (Fragment_Client_New_Orders) fragmentList.get(0);
-        Fragment_Client_Current_Orders  fragment_client_current_orders = (Fragment_Client_Current_Orders) fragmentList.get(1);
-        Fragment_Client_Previous_Orders fragment_client_previous_orders = (Fragment_Client_Previous_Orders) fragmentList.get(2);
+        if(fragmentList!=null&&fragmentList.size()>0) {
+            Fragment_Client_New_Orders fragment_client_new_orders = (Fragment_Client_New_Orders) fragmentList.get(0);
+            Fragment_Client_Current_Orders fragment_client_current_orders = (Fragment_Client_Current_Orders) fragmentList.get(1);
+            Fragment_Client_Previous_Orders fragment_client_previous_orders = (Fragment_Client_Previous_Orders) fragmentList.get(2);
 
-        fragment_client_new_orders.getOrders();
-        fragment_client_current_orders.getOrders();
-        fragment_client_previous_orders.getOrders();
-
+            fragment_client_new_orders.getOrders();
+            fragment_client_current_orders.getOrders();
+            fragment_client_previous_orders.getOrders();
+        }
 
     }
     public void setItemData(OrderDataModel.OrderModel orderModel) {

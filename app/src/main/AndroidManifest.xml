@@ -65,7 +65,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities_fragments.activity_sign_in.activity.SignInActivity"
+        android:name=".activities_fragments.activity_sign_in.activity.SignInActivity"
+        android:configChanges="orientation|screenSize|keyboardHidden"
+        android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name=".activities_fragments.activity_fragment_category.Add_Coupon_Activity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity

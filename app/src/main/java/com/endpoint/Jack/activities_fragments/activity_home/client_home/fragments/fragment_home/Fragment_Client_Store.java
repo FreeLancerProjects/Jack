@@ -500,7 +500,7 @@ recviewcat.setAdapter(categoryAdapter);
     public void Displaycatogry(CategoryModel.Data data) {
         Intent intent=new Intent(activity, CategoryActivity.class);
         intent.putExtra("data",data);
-        startActivity(intent);
+        startActivityForResult(intent,2);
     }
 
     private class MyTimerTask extends TimerTask {
@@ -533,6 +533,14 @@ recviewcat.setAdapter(categoryAdapter);
         if (timerTask!=null)
         {
             timerTask.cancel();
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==2){
+            activity.DisplayFragmentMyOrders();
         }
     }
 }

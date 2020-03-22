@@ -2169,7 +2169,8 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
                     .postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                         fragment_client_orders.RefreshOrderFragments();
+                      //   fragment_client_orders.RefreshOrderFragments();
+                            fragment_client_orders.getOrders();
                         }
                     },1);
         }

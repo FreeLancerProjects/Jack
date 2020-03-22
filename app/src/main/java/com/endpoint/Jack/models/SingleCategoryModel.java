@@ -17,8 +17,8 @@ private List<Data> data;
                 private String area_id;
                 private String logo;
                 private String address;
-                private String google_lat;
-                private String google_long;
+                private double google_lat;
+                private double google_long;
                 private List<Days>days;
                 public class Days implements Serializable
 
@@ -70,11 +70,11 @@ private List<Data> data;
                 return address;
             }
 
-            public String getGoogle_lat() {
+            public double getGoogle_lat() {
                 return google_lat;
             }
 
-            public String getGoogle_long() {
+            public double getGoogle_long() {
                 return google_long;
             }
 
