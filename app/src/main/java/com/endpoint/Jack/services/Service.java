@@ -130,7 +130,8 @@ public interface Service {
     @FormUrlEncoded
     @POST("/api/updateToken")
     Call<ResponseBody> updateToken(@Field("user_id") String user_id,
-                                   @Field("user_token_id") String user_token_id
+                                   @Field("user_token_id") String user_token_id,
+                                   @Field("soft_type") int soft_type
 
     );
 
@@ -142,7 +143,10 @@ public interface Service {
 
     @FormUrlEncoded
     @POST("/api/logout")
-    Call<ResponseBody> logOut(@Field("user_id") String user_id);
+    Call<ResponseBody> logOut(@Field("user_id") String user_id,
+                              @Field("user_token_id") String user_token_id
+
+    );
 
     @FormUrlEncoded
     @POST("/api/addOrder")
@@ -159,7 +163,7 @@ public interface Service {
                                      @Field("order_time_arrival") long order_time_arrival,
                                      @Field("coupon_id") String coupon_id
 
-                                     );
+    );
 
     @Multipart
     @POST("/api/addOrder")
@@ -373,14 +377,14 @@ public interface Service {
     @POST("/api/availableStatus")
     Call<UserModel> updateDelegateAvailable(@Field("user_id") String  user_id,
                                             @Field("available") String  available
-                                            );
+    );
 
     @GET("directions/json")
     Call<PlaceDirectionModel> getDirection(@Query("origin") String origin,
                                            @Query("destination") String destination,
                                            @Query("transit_mode") String transit_mode,
                                            @Query("key") String key
-                                           );
+    );
 
 
     @FormUrlEncoded
@@ -388,7 +392,7 @@ public interface Service {
     Call<FollowModel> getFollowData(@Field("order_id")String order_id,
                                     @Field("driver_id")String driver_id,
                                     @Field("client_id")String client_id
-                                    );
+    );
 
     @GET("/api/banks")
     Call<BankDataModel> getBankAccount();

@@ -167,7 +167,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
     private GoogleApiClient googleApiClient;
     private LocationRequest locationRequest;
     private  LocationCallback  locationCallback;
-
+    private String token;
 
 
     @Override
@@ -404,9 +404,9 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
                     public void onComplete(@NonNull Task<InstanceIdResult> task) {
                         if (task.isSuccessful())
                         {
-                            String token = task.getResult().getToken();
+                            token = task.getResult().getToken();
                             Api.getService(Tags.base_url)
-                                    .updateToken(userModel.getData().getUser_id(),token)
+                                    .updateToken(userModel.getData().getUser_id(),token,2)
                                     .enqueue(new Callback<ResponseBody>() {
                                         @Override
                                         public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -523,7 +523,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
         if (beDriverModel.getAction_status().equals("2"))
         {
             getUserDataById(userModel.getData().getUser_id());
-            
+
         }
 
 
@@ -535,16 +535,16 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
     {
 
         Log.e("ssss",followModel.getDriver_lat()+"__");
-       if (fragment_map_follow_order!=null&&fragment_map_follow_order.isAdded())
-       {
-           new Handler()
-                   .postDelayed(new Runnable() {
-                       @Override
-                       public void run() {
-                           fragment_map_follow_order.getFollowData();
-                       }
-                   },10);
-       }
+        if (fragment_map_follow_order!=null&&fragment_map_follow_order.isAdded())
+        {
+            new Handler()
+                    .postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            fragment_map_follow_order.getFollowData();
+                        }
+                    },10);
+        }
 
 
     }
@@ -606,13 +606,13 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
                         {
                             preferences.saveVisitTime(ClientHomeActivity.this,timeNow);
                         }else
-                            {
-                                try {
-                                    Log.e("error_code",response.code()+response.errorBody().string());
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
+                        {
+                            try {
+                                Log.e("error_code",response.code()+response.errorBody().string());
+                            } catch (IOException e) {
+                                e.printStackTrace();
                             }
+                        }
                     }
 
                     @Override
@@ -639,13 +639,13 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
                             }
 
                         }else
-                            {
-                                try {
-                                    Log.e("Error_code",response.code()+"_"+response.errorBody().string());
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
+                        {
+                            try {
+                                Log.e("Error_code",response.code()+"_"+response.errorBody().string());
+                            } catch (IOException e) {
+                                e.printStackTrace();
                             }
+                        }
                     }
 
                     @Override
@@ -705,18 +705,18 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
                         }
                     },1);
         }else
-            {
-                new Handler()
-                        .postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (fragment_home!=null&&fragment_home.isAdded())
-                                {
-                                    fragment_home.updateNotificationCount(0);
-                                }
+        {
+            new Handler()
+                    .postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (fragment_home!=null&&fragment_home.isAdded())
+                            {
+                                fragment_home.updateNotificationCount(0);
                             }
-                        },1);
-            }
+                        }
+                    },1);
+        }
     }
     ///////////////////////////////////
     public void updateUserData(final UserModel userModel)
@@ -973,12 +973,12 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
 
 
 
-            if (fragment_settings.isAdded()) {
-                fragmentManager.beginTransaction().show(fragment_settings).commit();
+        if (fragment_settings.isAdded()) {
+            fragmentManager.beginTransaction().show(fragment_settings).commit();
 
-            } else {
-                fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_settings, "fragment_settings").addToBackStack("fragment_settings").commit();
-            }
+        } else {
+            fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_settings, "fragment_settings").addToBackStack("fragment_settings").commit();
+        }
 
 
 
@@ -1028,10 +1028,10 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
             fragment_map = Fragment_Map.newInstance(location.getLatitude(),location.getLongitude(),from);
 
         }else
-            {
-                fragment_map = Fragment_Map.newInstance(0.0,0.0,from);
+        {
+            fragment_map = Fragment_Map.newInstance(0.0,0.0,from);
 
-            }
+        }
 
         if (fragment_map.isAdded()) {
             fragmentManager.beginTransaction().show(fragment_map).commit();
@@ -1095,20 +1095,20 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
                         },1);
             }
         }else if (from.equals("fragment_shipment_pickup_location"))
+        {
+            if (fragment_shipment!=null&&fragment_shipment.isAdded())
             {
-                if (fragment_shipment!=null&&fragment_shipment.isAdded())
-                {
-                    new Handler()
-                            .postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    fragment_shipment.setLocationData(favourite_location.getPlace_id(),favourite_location.getStreet()+" "+favourite_location.getAddress(),favourite_location.getLat(),favourite_location.getLng(),"pickup_location");
-                                    fragmentManager.popBackStack("fragment_map",FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                                    fragment_count-=1;
-                                }
-                            },1);
-                }
+                new Handler()
+                        .postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                fragment_shipment.setLocationData(favourite_location.getPlace_id(),favourite_location.getStreet()+" "+favourite_location.getAddress(),favourite_location.getLat(),favourite_location.getLng(),"pickup_location");
+                                fragmentManager.popBackStack("fragment_map",FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                                fragment_count-=1;
+                            }
+                        },1);
             }
+        }
         else if (from.equals("fragment_shipment_dropoff_location"))
         {
             if (fragment_shipment!=null&&fragment_shipment.isAdded())
@@ -1175,14 +1175,14 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
                 fragmentManager.beginTransaction().show(fragment_delegate_register).commit();
 
             }else
-                {
-                    fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_delegate_register, "fragment_delegate_register").addToBackStack("fragment_delegate_register").commit();
-
-                }
-        }else
             {
-                Common.CreateSignAlertDialog(this,getString(R.string.already_courier));
+                fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_delegate_register, "fragment_delegate_register").addToBackStack("fragment_delegate_register").commit();
+
             }
+        }else
+        {
+            Common.CreateSignAlertDialog(this,getString(R.string.already_courier));
+        }
 
 
 
@@ -1394,15 +1394,15 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
                             Toast.makeText(ClientHomeActivity.this, R.string.accepted, Toast.LENGTH_SHORT).show();
                             RefreshFragment_Order();
                         }else
-                            {
-                                dialog.dismiss();
-                                Toast.makeText(ClientHomeActivity.this, getString(R.string.failed), Toast.LENGTH_SHORT).show();
-                                try {
-                                    Log.e("error_code",response.code()+""+response.errorBody().string());
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
+                        {
+                            dialog.dismiss();
+                            Toast.makeText(ClientHomeActivity.this, getString(R.string.failed), Toast.LENGTH_SHORT).show();
+                            try {
+                                Log.e("error_code",response.code()+""+response.errorBody().string());
+                            } catch (IOException e) {
+                                e.printStackTrace();
                             }
+                        }
                     }
 
                     @Override
@@ -1810,14 +1810,14 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
                         {
                             Toast.makeText(ClientHomeActivity.this, getString(R.string.req_sent), Toast.LENGTH_LONG).show();
                         }else
-                            {
-                                try {
-                                    Log.e("Error_code",response.code()+""+response.errorBody().string());
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-                                Toast.makeText(ClientHomeActivity.this, getString(R.string.failed), Toast.LENGTH_SHORT).show();
+                        {
+                            try {
+                                Log.e("Error_code",response.code()+""+response.errorBody().string());
+                            } catch (IOException e) {
+                                e.printStackTrace();
                             }
+                            Toast.makeText(ClientHomeActivity.this, getString(R.string.failed), Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                     @Override
@@ -2169,7 +2169,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
                     .postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                      //   fragment_client_orders.RefreshOrderFragments();
+                            //   fragment_client_orders.RefreshOrderFragments();
                             fragment_client_orders.getOrders();
                         }
                     },1);
@@ -2230,18 +2230,18 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
         for (Fragment fragment : fragmentList) {
             fragment.onActivityResult(requestCode, resultCode, data);
         }
-if(fragment_home!=null){
-    fragment_home.setimage();
-}
+        if(fragment_home!=null){
+            fragment_home.setimage();
+        }
         if (requestCode == 1255)
         {
             if (resultCode == RESULT_OK)
             {
                 startLocationUpdate();
             }else
-                {
-                    //create dialog to open_gps
-                }
+            {
+                //create dialog to open_gps
+            }
         }
 
         /*if (requestCode == 33) {
@@ -2464,7 +2464,7 @@ if(fragment_home!=null){
         final ProgressDialog dialog =Common.createProgressDialog(this,getString(R.string.wait));
         dialog.show();
         Api.getService(Tags.base_url)
-                .logOut(userModel.getData().getUser_id())
+                .logOut(userModel.getData().getUser_id(),token)
                 .enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -2513,15 +2513,15 @@ if(fragment_home!=null){
             fragment_count-=1;
 
         }else
+        {
+            if (fragment_client_store!=null&&fragment_client_store.isVisible())
             {
-                if (fragment_client_store!=null&&fragment_client_store.isVisible())
-                {
-                    NavigateToSignInActivity();
-                }else
-                {
-                    DisplayFragmentStore();
-                }
+                NavigateToSignInActivity();
+            }else
+            {
+                DisplayFragmentStore();
             }
+        }
 
 
     }
