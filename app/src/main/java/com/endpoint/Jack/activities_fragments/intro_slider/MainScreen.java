@@ -2,7 +2,6 @@ package com.endpoint.Jack.activities_fragments.intro_slider;
 
 import android.content.Context;
 import android.content.Intent;
-import android.preference.Preference;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.View;
@@ -21,7 +20,6 @@ import androidx.viewpager.widget.ViewPager;
 import com.endpoint.Jack.R;
 import com.endpoint.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity;
 import com.endpoint.Jack.activities_fragments.activity_sign_in.activity.SignInActivity;
-import com.endpoint.Jack.activities_fragments.activity_splash.SplashActivity;
 import com.endpoint.Jack.language.Language_Helper;
 import com.endpoint.Jack.models.UserModel;
 import com.endpoint.Jack.preferences.Preferences;

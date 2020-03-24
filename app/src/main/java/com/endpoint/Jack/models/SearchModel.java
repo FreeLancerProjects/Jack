@@ -1,8 +1,5 @@
 package com.endpoint.Jack.models;
 
-import com.endpoint.Jack.models.NearbyModel;
-import com.endpoint.Jack.models.PhotosModel;
-
 import java.io.Serializable;
 import java.util.List;
 

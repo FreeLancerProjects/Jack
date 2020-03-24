@@ -12,7 +12,6 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.endpoint.Jack.R;
 import com.endpoint.Jack.models.SingleCategoryModel;
-import com.endpoint.Jack.models.SliderModel;
 import com.endpoint.Jack.tags.Tags;
 import com.squareup.picasso.Picasso;
 

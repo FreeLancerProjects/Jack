@@ -1,7 +1,6 @@
 package com.endpoint.Jack.activities_fragments.activity_home.client_home.fragments.fragment_orders;
 
 import android.graphics.PorterDuff;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 

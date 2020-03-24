@@ -16,7 +16,7 @@
         tools:ignore="ProtectedPermissions" />
 
     <application
-        android:name=".share.App"
+        android:name="com.endpoint.Jack.share.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -26,20 +26,20 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="m">
-        <activity android:name=".activities_fragments.activity_fragment_category.CategoryActivity"></activity>
+        <activity android:name="com.endpoint.Jack.activities_fragments.activity_fragment_category.CategoryActivity"></activity>
 
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
 
         <service
-            android:name=".notifications.FireBaseMessaging"
+            android:name="com.endpoint.Jack.notifications.FireBaseMessaging"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service android:name=".services.UpdateLocationService" />
+        <service android:name="com.endpoint.Jack.services.UpdateLocationService" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -56,7 +56,7 @@
             android:label="@string/app_name" />
 
         <activity
-            android:name=".activities_fragments.activity_splash.SplashActivity"
+            android:name="com.endpoint.Jack.activities_fragments.activity_splash.SplashActivity"
             android:configChanges="orientation|screenSize|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -65,41 +65,41 @@
             </intent-filter>
         </activity>
         <activity
-        android:name=".activities_fragments.activity_sign_in.activity.SignInActivity"
+        android:name="com.endpoint.Jack.activities_fragments.activity_sign_in.activity.SignInActivity"
         android:configChanges="orientation|screenSize|keyboardHidden"
         android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
-            android:name=".activities_fragments.activity_fragment_category.Add_Coupon_Activity"
+            android:name="com.endpoint.Jack.activities_fragments.activity_fragment_category.Add_Coupon_Activity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
-            android:name=".activities_fragments.activity_complete_order.CompleteOrderActivity"
+            android:name="com.endpoint.Jack.activities_fragments.activity_complete_order.CompleteOrderActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
-            android:name=".activities_fragments.activity_reviews.ReviewsActivity"
+            android:name="com.endpoint.Jack.activities_fragments.activity_reviews.ReviewsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
-            android:name=".activities_fragments.activity_map.MapActivity"
+            android:name="com.endpoint.Jack.activities_fragments.activity_map.MapActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
-            android:name=".activities_fragments.terms_conditions.TermsConditionsActivity"
+            android:name="com.endpoint.Jack.activities_fragments.terms_conditions.TermsConditionsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activities_fragments.intro_slider.MainScreen"
+            android:name="com.endpoint.Jack.activities_fragments.intro_slider.MainScreen"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activities_fragments.activity_home.client_home.activity.ClientHomeActivity"
+            android:name="com.endpoint.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:excludeFromRecents="true"
             android:launchMode="singleTask"
             android:taskAffinity="" />
         <activity
-            android:name=".activities_fragments.activity_chat.ChatActivity"
+            android:name="com.endpoint.Jack.activities_fragments.activity_chat.ChatActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:excludeFromRecents="true"
             android:launchMode="singleTask"

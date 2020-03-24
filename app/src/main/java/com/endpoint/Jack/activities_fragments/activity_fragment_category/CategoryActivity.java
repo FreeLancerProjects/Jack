@@ -15,7 +15,6 @@ import android.graphics.PorterDuff;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.Preference;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,7 +29,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.endpoint.Jack.R;
-import com.endpoint.Jack.activities_fragments.activity_complete_order.CompleteOrderActivity;
 import com.endpoint.Jack.activities_fragments.activity_home.client_home.fragments.fragment_home.Fragment_Map;
 import com.endpoint.Jack.activities_fragments.activity_map.MapActivity;
 import com.endpoint.Jack.adapters.SliderCatogryAdapter;
@@ -49,7 +47,6 @@ import com.iarcuschin.simpleratingbar.SimpleRatingBar;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
-import java.text.BreakIterator;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.Timer;

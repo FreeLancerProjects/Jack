@@ -33,7 +33,6 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.endpoint.Jack.R;
-import com.endpoint.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity;
 import com.endpoint.Jack.models.Favourite_location;
 import com.endpoint.Jack.models.OrderIdDataModel;
 import com.endpoint.Jack.models.PlaceModel;

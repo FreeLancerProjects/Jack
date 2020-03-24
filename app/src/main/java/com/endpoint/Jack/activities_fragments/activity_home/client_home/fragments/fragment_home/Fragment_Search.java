@@ -31,7 +31,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.endpoint.Jack.R;
 import com.endpoint.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity;
-import com.endpoint.Jack.adapters.NearbyAdapter;
 import com.endpoint.Jack.adapters.NearbySearchAdapter;
 import com.endpoint.Jack.adapters.SearchRecentAdapter;
 import com.endpoint.Jack.models.NearbyModel;
@@ -39,7 +38,6 @@ import com.endpoint.Jack.models.NearbyStoreDataModel;
 import com.endpoint.Jack.models.PhotosModel;
 import com.endpoint.Jack.models.PlaceModel;
 import com.endpoint.Jack.models.QueryModel;
-import com.endpoint.Jack.models.SearchDataModel;
 import com.endpoint.Jack.models.SearchModel;
 import com.endpoint.Jack.preferences.Preferences;
 import com.endpoint.Jack.remote.Api;
