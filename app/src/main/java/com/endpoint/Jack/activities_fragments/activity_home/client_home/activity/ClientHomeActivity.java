@@ -1851,7 +1851,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
 
     public void UpdateOrderMovement(final String client_id, final String driver_id, final String order_id, int order_movement) {
 
-
+Log.e("kdkdkkd",order_movement+"");
         if (order_movement == Tags.STATE_CLIENT_ACCEPT_OFFER)
         {
             final ProgressDialog dialog = Common.createProgressDialog(this,getString(R.string.wait));

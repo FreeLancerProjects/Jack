@@ -166,7 +166,7 @@ sptype.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             if (userModel.getData().getUser_type().equals(Tags.TYPE_CLIENT)){
             type="current";}
             else {
-                type="new";
+                type="current";
             }
         }
         else {
@@ -345,7 +345,12 @@ ordersAdapteradapter.notifyDataSetChanged();
 
         }else
         {
-            activity.DisplayFragmentDelegateCurrentOrderDetails(orderModel);
+            if(orderModel.getOrder_status().equals("0")){
+                activity.DisplayFragmentDelegateAddOffer(orderModel);
+
+            }
+            else {
+            activity.DisplayFragmentDelegateCurrentOrderDetails(orderModel);}
         }
     }
 }
