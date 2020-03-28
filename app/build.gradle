@@ -3,7 +3,7 @@ apply plugin: 'com.google.gms.google-services'
 
 android {
     defaultConfig {
-        applicationId "com.endpoint.aamr"
+        applicationId "com.endpoint.Jack"
         minSdkVersion 17
         targetSdkVersion 28
         versionCode 7
