@@ -150,6 +150,7 @@ signIn();            }
             String personEmail = acct.getEmail();
             String personId = acct.getId();
             Uri personPhoto = acct.getPhotoUrl();
+
           //  Log.e("ldkkkfk",acct.getAccount().type);
         }
 
