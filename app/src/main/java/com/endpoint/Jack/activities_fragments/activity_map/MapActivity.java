@@ -236,7 +236,7 @@ private Button bt_select;
       progressBar.setVisibility(View.VISIBLE);
         String location = lat + "," + lng;
         Api.getService("https://maps.googleapis.com/maps/api/")
-                .getGeoData(location, lang, getString(R.string.map_api_key))
+                .getGeoData(location, lang, getString(R.string.map_api_key2))
                 .enqueue(new Callback<PlaceGeocodeData>() {
                     @Override
                     public void onResponse(Call<PlaceGeocodeData> call, Response<PlaceGeocodeData> response) {

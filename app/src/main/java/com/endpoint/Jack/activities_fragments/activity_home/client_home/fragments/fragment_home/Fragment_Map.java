@@ -178,7 +178,8 @@ public class Fragment_Map extends Fragment implements OnMapReadyCallback {
             mMap.setTrafficEnabled(false);
             mMap.setBuildingsEnabled(false);
             mMap.setIndoorEnabled(true);
-            //getGeoData(lat,lng);
+            Log.e(";;;;",lat+":"+lng);
+            getGeoData(lat,lng);
 
             AddMarker(lat, lng,true);
 
@@ -285,10 +286,11 @@ public class Fragment_Map extends Fragment implements OnMapReadyCallback {
 
         String location = lat+","+lng;
         Api.getService("https://maps.googleapis.com/maps/api/")
-                .getGeoData(location,current_language,getString(R.string.map_api_key))
+                .getGeoData(location,current_language,getString(R.string.map_api_key2))
                 .enqueue(new Callback<PlaceGeocodeData>() {
                     @Override
                     public void onResponse(Call<PlaceGeocodeData> call, Response<PlaceGeocodeData> response) {
+                        Log.e("kkkkkk",response.code()+""+response.body().getResults().size());
                         if (response.isSuccessful() && response.body() != null) {
 
                             image_pin.setVisibility(View.VISIBLE);

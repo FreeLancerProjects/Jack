@@ -4,6 +4,7 @@
     <string name="facebook_app_id">[APP_ID]</string>
     <string name="fb_login_protocol_scheme">fb[APP_ID]</string>
     <string name="map_api_key">AIzaSyDz07XWgRsDTQtmA4IOvx-fSIc1d_Wrk9c</string>
+    <string name="map_api_key2">AIzaSyArjmbYWTWZhDFFtPOLRLKYwjtBDkOEGrY</string>
     <string name="notifications">الإشعارات</string>
     <string name="si_su">قم بتسجيل الدخول أو إنشاء حساب جديد .</string>
     <string name="ok">حسنا</string>
