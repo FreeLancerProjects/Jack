@@ -1477,7 +1477,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
                 });
     }
     // from dialog or fragment delegate result
-    public void clientAcceptOffer(final String driver_id, final String client_id, final String order_id, final String type, String driver_offer, final String from)
+    public void clientAcceptOffer(final String driver_id, final String client_id, final String order_id, final String type, String driver_offer, final String from, String id_notification)
     {
 
         final ProgressDialog dialog = Common.createProgressDialog(this,getString(R.string.wait));
@@ -1491,16 +1491,21 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
                         dialog.dismiss();
                         if (response.isSuccessful())
                         {
-                            if (from.equals("fragment_delegate_result"))
-                            {
-                                fragment_count-=1;
-                                ClientHomeActivity.super.onBackPressed();
-                            }
+if(type.equals("refuse")) {
+    clientRefuseOffer(id_notification);
+}
+else {
+    if (from.equals("fragment_delegate_result"))
+    {
+        fragment_count-=1;
+        ClientHomeActivity.super.onBackPressed();
+    }
 
-                            Toast.makeText(ClientHomeActivity.this,getString(R.string.accepted), Toast.LENGTH_SHORT).show();
+    Toast.makeText(ClientHomeActivity.this,getString(R.string.accepted), Toast.LENGTH_SHORT).show();
 
-                            RefreshFragment_Notification();
-                            RefreshFragment_Order();
+    RefreshFragment_Notification();
+    RefreshFragment_Order();
+}
 
                         }else
                         {

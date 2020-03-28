@@ -335,7 +335,7 @@ public class Fragment_Client_Notifications extends Fragment {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                activity.clientAcceptOffer(drivers.getDriver_id(),userModel.getData().getUser_id(),notificationModel.getOrder_id(),"accept",notificationModel.getDriver_offer(),"dialog");
+                activity.clientAcceptOffer(drivers.getDriver_id(),userModel.getData().getUser_id(),notificationModel.getOrder_id(),"accept",notificationModel.getDriver_offer(),"dialog", drivers.getId_notification());
             }
         });
 
@@ -343,7 +343,9 @@ public class Fragment_Client_Notifications extends Fragment {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                activity.clientRefuseOffer(drivers.getId_notification());
+                activity.clientAcceptOffer(drivers.getDriver_id(),userModel.getData().getUser_id(),notificationModel.getOrder_id(),"refuse",notificationModel.getDriver_offer(),"dialog",drivers.getId_notification());
+//
+               // activity.clientRefuseOffer(drivers.getId_notification());
 
             }
         });

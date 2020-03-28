@@ -307,7 +307,8 @@
     <string name="no_rev">لا توجد تعليقات</string>
     <string name="map_style">نوع الخريطة</string>
     <string name="cust_rate">تقييم العملاء</string>
-    <string name="write_order_here">Write order Here</string>
-    <string name="more_detials">More Detials</string>
+    <string name="write_order_here">اكتب طلبك هنا</string>
+    <string name="more_detials">تفاصيل اضافيه</string>
+    <string name="client_rate_order">العميل قيم الطلب</string>
 
 </resources>

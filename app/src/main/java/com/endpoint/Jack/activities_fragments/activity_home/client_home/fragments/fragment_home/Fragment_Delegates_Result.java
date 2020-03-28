@@ -112,7 +112,7 @@ public class Fragment_Delegates_Result extends Fragment {
 
 
     public void setItemData(NotificationModel.Drivers drivers) {
-        activity.clientAcceptOffer(drivers.getDriver_id(),userModel.getData().getUser_id(),notificationModel.getOrder_id(),"accept",notificationModel.getDriver_offer(),"fragment_delegate_result");
+        activity.clientAcceptOffer(drivers.getDriver_id(),userModel.getData().getUser_id(),notificationModel.getOrder_id(),"accept",notificationModel.getDriver_offer(),"fragment_delegate_result", drivers.getId_notification());
         //activity.setDelegate_id(delegateModel.getDriver_id(),client_id,order_id,type);
 
     }
