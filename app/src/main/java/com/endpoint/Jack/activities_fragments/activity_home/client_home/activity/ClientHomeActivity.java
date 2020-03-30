@@ -750,7 +750,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
             fragmentManager.beginTransaction().show(fragment_home).commit();
 
         } else {
-            fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_home, "fragment_home").addToBackStack("fragment_home").commit();
+            fragmentManager.beginTransaction().setCustomAnimations(R.anim.dialog_enter,R.anim.dialog_exit).add(R.id.fragment_app_container, fragment_home, "fragment_home").addToBackStack("fragment_home").commit();
             DisplayFragmentStore();
 
         }
@@ -784,7 +784,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
             fragmentManager.beginTransaction().show(fragment_client_store).commit();
 
         } else {
-            fragmentManager.beginTransaction().add(R.id.fragment_home_container, fragment_client_store, "fragment_client_store").addToBackStack("fragment_client_store").commit();
+            fragmentManager.beginTransaction().setCustomAnimations(R.anim.dialog_enter,R.anim.dialog_exit).add(R.id.fragment_home_container, fragment_client_store, "fragment_client_store").addToBackStack("fragment_client_store").commit();
         }
 
     }
@@ -924,7 +924,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
             fragmentManager.beginTransaction().show(fragment_add_coupon).commit();
 
         } else {
-            fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_add_coupon, "fragment_add_coupon").addToBackStack("fragment_add_coupon").commit();
+            fragmentManager.beginTransaction().setCustomAnimations(R.anim.dialog_enter,R.anim.dialog_exit).add(R.id.fragment_app_container, fragment_add_coupon, "fragment_add_coupon").addToBackStack("fragment_add_coupon").commit();
         }
 
     }
@@ -938,7 +938,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
             fragmentManager.beginTransaction().show(fragment_phone).commit();
 
         } else {
-            fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_phone, "fragment_phone").addToBackStack("fragment_phone").commit();
+            fragmentManager.beginTransaction().setCustomAnimations(R.anim.dialog_enter,R.anim.dialog_exit).add(R.id.fragment_app_container, fragment_phone, "fragment_phone").addToBackStack("fragment_phone").commit();
         }
 
 
@@ -959,7 +959,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
                 fragmentManager.beginTransaction().show(fragment_search).commit();
 
             } else {
-                fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_search, "fragment_search").addToBackStack("fragment_search").commit();
+                fragmentManager.beginTransaction().setCustomAnimations(R.anim.dialog_enter,R.anim.dialog_exit).add(R.id.fragment_app_container, fragment_search, "fragment_search").addToBackStack("fragment_search").commit();
             }
         }
 
@@ -977,7 +977,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
             fragmentManager.beginTransaction().show(fragment_settings).commit();
 
         } else {
-            fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_settings, "fragment_settings").addToBackStack("fragment_settings").commit();
+            fragmentManager.beginTransaction().setCustomAnimations(R.anim.dialog_enter,R.anim.dialog_exit).add(R.id.fragment_app_container, fragment_settings, "fragment_settings").addToBackStack("fragment_settings").commit();
         }
 
 
@@ -1007,7 +1007,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
                         fragmentManager.beginTransaction().show(fragment_reserve_order).commit();
 
                     } else {
-                        fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_reserve_order, "fragment_reserve_order").addToBackStack("fragment_reserve_order").commit();
+                        fragmentManager.beginTransaction().setCustomAnimations(R.anim.dialog_enter,R.anim.dialog_exit).add(R.id.fragment_app_container, fragment_reserve_order, "fragment_reserve_order").addToBackStack("fragment_reserve_order").commit();
                     }
 
                 }
@@ -1037,7 +1037,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
             fragmentManager.beginTransaction().show(fragment_map).commit();
 
         } else {
-            fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_map, "fragment_map").addToBackStack("fragment_map").commit();
+            fragmentManager.beginTransaction().setCustomAnimations(R.anim.dialog_enter,R.anim.dialog_exit).add(R.id.fragment_app_container, fragment_map, "fragment_map").addToBackStack("fragment_map").commit();
         }
 
 
@@ -1054,7 +1054,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
             fragmentManager.beginTransaction().show(fragment_edit_profile).commit();
 
         } else {
-            fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_edit_profile, "fragment_edit_profile").addToBackStack("fragment_edit_profile").commit();
+            fragmentManager.beginTransaction().setCustomAnimations(R.anim.dialog_enter,R.anim.dialog_exit).add(R.id.fragment_app_container, fragment_edit_profile, "fragment_edit_profile").addToBackStack("fragment_edit_profile").commit();
         }
 
 
@@ -1073,7 +1073,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
             fragmentManager.beginTransaction().show(fragment_store_details).commit();
 
         } else {
-            fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_store_details, "fragment_store_details").addToBackStack("fragment_store_details").commit();
+            fragmentManager.beginTransaction().setCustomAnimations(R.anim.dialog_enter,R.anim.dialog_exit).add(R.id.fragment_app_container, fragment_store_details, "fragment_store_details").addToBackStack("fragment_store_details").commit();
         }
 
     }
@@ -1137,7 +1137,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
             fragmentManager.beginTransaction().show(fragment_delegates).commit();
 
         } else {
-            fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_delegates, "fragment_delegates").addToBackStack("fragment_delegates").commit();
+            fragmentManager.beginTransaction().setCustomAnimations(R.anim.dialog_enter,R.anim.dialog_exit).add(R.id.fragment_app_container, fragment_delegates, "fragment_delegates").addToBackStack("fragment_delegates").commit();
 
         }
 
@@ -1154,7 +1154,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
             fragmentManager.beginTransaction().show(fragment_delegates_result).commit();
 
         } else {
-            fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_delegates_result, "fragment_delegates_result").addToBackStack("fragment_delegates_result").commit();
+            fragmentManager.beginTransaction().setCustomAnimations(R.anim.dialog_enter,R.anim.dialog_exit).add(R.id.fragment_app_container, fragment_delegates_result, "fragment_delegates_result").addToBackStack("fragment_delegates_result").commit();
 
         }
 
@@ -1176,7 +1176,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
 
             }else
             {
-                fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_delegate_register, "fragment_delegate_register").addToBackStack("fragment_delegate_register").commit();
+                fragmentManager.beginTransaction().setCustomAnimations(R.anim.dialog_enter,R.anim.dialog_exit).add(R.id.fragment_app_container, fragment_delegate_register, "fragment_delegate_register").addToBackStack("fragment_delegate_register").commit();
 
             }
         }else

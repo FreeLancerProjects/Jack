@@ -110,6 +110,7 @@ public class SignInActivity extends AppCompatActivity {
         if (fragment_chooser_login == null)
         {
             fragment_chooser_login = Fragment_Chooser_Login.newInstance();
+
         }
 
 
@@ -118,7 +119,7 @@ public class SignInActivity extends AppCompatActivity {
             fragmentManager.beginTransaction().show(fragment_chooser_login).commit();
         }else
             {
-                fragmentManager.beginTransaction().add(R.id.fragment_sign_in_container,fragment_chooser_login,"fragment_chooser_login").addToBackStack("fragment_chooser_login").commit();
+                fragmentManager.beginTransaction().setCustomAnimations(R.anim.dialog_enter,R.anim.dialog_exit).add(R.id.fragment_sign_in_container,fragment_chooser_login,"fragment_chooser_login").addToBackStack("fragment_chooser_login").commit();
 
             }
 
@@ -141,7 +142,7 @@ public class SignInActivity extends AppCompatActivity {
             fragmentManager.beginTransaction().show(fragment_phone).commit();
         }else
             {
-                fragmentManager.beginTransaction().add(R.id.fragment_sign_in_container,fragment_phone,"fragment_phone").addToBackStack("fragment_phone").commit();
+                fragmentManager.beginTransaction().setCustomAnimations(R.anim.dialog_enter,R.anim.dialog_exit).add(R.id.fragment_sign_in_container,fragment_phone,"fragment_phone").addToBackStack("fragment_phone").commit();
 
             }
 
@@ -162,7 +163,7 @@ public class SignInActivity extends AppCompatActivity {
 
         }else
             {
-                fragmentManager.beginTransaction().add(R.id.fragment_sign_in_container, fragment_signUp,"fragment_signUp").addToBackStack("fragment_signUp").commit();
+                fragmentManager.beginTransaction().setCustomAnimations(R.anim.dialog_enter,R.anim.dialog_exit).add(R.id.fragment_sign_in_container, fragment_signUp,"fragment_signUp").addToBackStack("fragment_signUp").commit();
 
             }
 
@@ -183,7 +184,7 @@ public class SignInActivity extends AppCompatActivity {
 
         }else
         {
-            fragmentManager.beginTransaction().add(R.id.fragment_sign_in_container, fragment_code_verification,"fragment_code_verification").addToBackStack("fragment_code_verification").commit();
+            fragmentManager.beginTransaction().setCustomAnimations(R.anim.dialog_enter,R.anim.dialog_exit).add(R.id.fragment_sign_in_container, fragment_code_verification,"fragment_code_verification").addToBackStack("fragment_code_verification").commit();
 
         }
 
