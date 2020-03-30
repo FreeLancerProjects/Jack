@@ -64,6 +64,9 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Paper.init(this);
         current_lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
+
+        overridePendingTransition(R.anim.slide_up, R.anim.slide_up);
+
         setContentView(R.layout.activity_sign_in);
         fragmentManager = getSupportFragmentManager();
         preferences = Preferences.getInstance();
