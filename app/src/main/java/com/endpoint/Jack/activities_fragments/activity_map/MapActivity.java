@@ -91,6 +91,8 @@ private Button bt_select;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(R.anim.slide_up, R.anim.slide_up);
+
         setContentView(R.layout.activity_map);
         initView();
     }

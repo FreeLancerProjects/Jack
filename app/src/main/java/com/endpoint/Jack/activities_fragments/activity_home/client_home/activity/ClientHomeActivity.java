@@ -1197,7 +1197,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
             fragmentManager.beginTransaction().show(fragment_delegate_add_offer).commit();
 
         } else {
-            fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_delegate_add_offer, "fragment_delegate_add_offer").addToBackStack("fragment_delegate_add_offer").commit();
+            fragmentManager.beginTransaction().setCustomAnimations(R.anim.dialog_enter,R.anim.dialog_exit).add(R.id.fragment_app_container, fragment_delegate_add_offer, "fragment_delegate_add_offer").addToBackStack("fragment_delegate_add_offer").commit();
         }
 
 
@@ -1213,7 +1213,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
             fragmentManager.beginTransaction().show(fragment_client_order_details).commit();
 
         } else {
-            fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_client_order_details, "fragment_client_order_details").addToBackStack("fragment_client_order_details").commit();
+            fragmentManager.beginTransaction().setCustomAnimations(R.anim.dialog_enter,R.anim.dialog_exit).add(R.id.fragment_app_container, fragment_client_order_details, "fragment_client_order_details").addToBackStack("fragment_client_order_details").commit();
         }
 
 
@@ -1245,7 +1245,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
             fragmentManager.beginTransaction().show(fragment_delegate_comments).commit();
 
         } else {
-            fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_delegate_comments, "fragment_delegate_comments").addToBackStack("fragment_delegate_comments").commit();
+            fragmentManager.beginTransaction().setCustomAnimations(R.anim.dialog_enter,R.anim.dialog_exit).add(R.id.fragment_app_container, fragment_delegate_comments, "fragment_delegate_comments").addToBackStack("fragment_delegate_comments").commit();
         }
 
 
@@ -1261,7 +1261,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
             fragmentManager.beginTransaction().show(fragment_delegate_current_order_details).commit();
 
         } else {
-            fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_delegate_current_order_details, "fragment_delegate_current_order_details").addToBackStack("fragment_delegate_current_order_details").commit();
+            fragmentManager.beginTransaction().setCustomAnimations(R.anim.dialog_enter,R.anim.dialog_exit).add(R.id.fragment_app_container, fragment_delegate_current_order_details, "fragment_delegate_current_order_details").addToBackStack("fragment_delegate_current_order_details").commit();
         }
 
 
@@ -1278,7 +1278,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
             fragmentManager.beginTransaction().show(fragment_map_location_details).commit();
 
         } else {
-            fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_map_location_details, "fragment_map_location_details").addToBackStack("fragment_map_location_details").commit();
+            fragmentManager.beginTransaction().setCustomAnimations(R.anim.dialog_enter,R.anim.dialog_exit).add(R.id.fragment_app_container, fragment_map_location_details, "fragment_map_location_details").addToBackStack("fragment_map_location_details").commit();
         }
 
 
@@ -1294,7 +1294,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
             fragmentManager.beginTransaction().show(fragment_map_follow_order).commit();
 
         } else {
-            fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_map_follow_order, "fragment_map_follow_order").addToBackStack("fragment_map_follow_order").commit();
+            fragmentManager.beginTransaction().setCustomAnimations(R.anim.dialog_enter,R.anim.dialog_exit).add(R.id.fragment_app_container, fragment_map_follow_order, "fragment_map_follow_order").addToBackStack("fragment_map_follow_order").commit();
         }
 
 
@@ -1312,7 +1312,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
             fragmentManager.beginTransaction().show(fragment_explain_courier).commit();
 
         } else {
-            fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_explain_courier, "fragment_explain_courier").addToBackStack("fragment_explain_courier").commit();
+            fragmentManager.beginTransaction().setCustomAnimations(R.anim.dialog_enter,R.anim.dialog_exit).add(R.id.fragment_app_container, fragment_explain_courier, "fragment_explain_courier").addToBackStack("fragment_explain_courier").commit();
         }
 
     }
@@ -1331,7 +1331,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
                 fragmentManager.beginTransaction().show(fragment_documentation_data).commit();
 
             } else {
-                fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_documentation_data, "fragment_documentation_data").addToBackStack("fragment_documentation_data").commit();
+                fragmentManager.beginTransaction().setCustomAnimations(R.anim.dialog_enter,R.anim.dialog_exit).add(R.id.fragment_app_container, fragment_documentation_data, "fragment_documentation_data").addToBackStack("fragment_documentation_data").commit();
             }
 
         }else
@@ -1354,7 +1354,7 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
             fragmentManager.beginTransaction().show(fragment_bank_account).commit();
 
         } else {
-            fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_bank_account, "fragment_bank_account").addToBackStack("fragment_bank_account").commit();
+            fragmentManager.beginTransaction().setCustomAnimations(R.anim.dialog_enter,R.anim.dialog_exit).add(R.id.fragment_app_container, fragment_bank_account, "fragment_bank_account").addToBackStack("fragment_bank_account").commit();
         }
 
     }

@@ -55,7 +55,9 @@ public class Add_Coupon_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_coupon);
-    initView();
+        overridePendingTransition(R.anim.slide_up, R.anim.slide_up);
+
+        initView();
     }
 
     private void initView()

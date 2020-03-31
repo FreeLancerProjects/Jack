@@ -44,6 +44,8 @@ public class TermsConditionsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(R.anim.slide_up, R.anim.slide_up);
+
         setContentView(R.layout.activity_terms_conditions);
         initView();
         getDataFromIntent();

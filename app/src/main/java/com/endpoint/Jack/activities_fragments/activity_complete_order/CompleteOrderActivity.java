@@ -32,6 +32,8 @@ public class CompleteOrderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(R.anim.slide_up, R.anim.slide_up);
+
         setContentView(R.layout.activity_complete_order);
         initview();
 
