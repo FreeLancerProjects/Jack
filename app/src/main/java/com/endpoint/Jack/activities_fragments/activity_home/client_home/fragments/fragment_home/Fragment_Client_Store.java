@@ -37,6 +37,8 @@ import com.endpoint.Jack.models.PhotosModel;
 import com.endpoint.Jack.models.PlaceModel;
 import com.endpoint.Jack.models.QuerySearchModel;
 import com.endpoint.Jack.models.SliderModel;
+import com.endpoint.Jack.models.UserModel;
+import com.endpoint.Jack.preferences.Preferences;
 import com.endpoint.Jack.remote.Api;
 import com.endpoint.Jack.tags.Tags;
 import com.google.android.material.tabs.TabLayout;
@@ -77,8 +79,8 @@ public class Fragment_Client_Store extends Fragment {
 private List<CategoryModel.Data>categoryModels;
     private int current_page = 1;
     private boolean isLoading = false;
-
-
+private Preferences preferences;
+private UserModel userModel;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -97,7 +99,8 @@ private List<CategoryModel.Data>categoryModels;
     private void initView(View view) {
 
         activity = (ClientHomeActivity) getActivity();
-
+preferences=Preferences.getInstance();
+userModel=preferences.getUserData(activity);
         Paper.init(activity);
         current_language = Paper.book().read("lang", Locale.getDefault().getLanguage());
         nearbyModelList = new ArrayList<>();
@@ -540,7 +543,8 @@ recviewcat.setAdapter(categoryAdapter);
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==2){
+            if(userModel!=null){
             activity.DisplayFragmentMyOrders();
-        }
+        }}
     }
 }

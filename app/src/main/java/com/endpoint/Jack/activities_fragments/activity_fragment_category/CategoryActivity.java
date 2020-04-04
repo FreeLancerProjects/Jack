@@ -139,8 +139,17 @@ private UserModel userModel;
         cons_add_coupon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(CategoryActivity.this,Add_Coupon_Activity.class);
-                startActivityForResult(intent,2);
+                if(userModel!=null){
+                    if (userModel.getData().getUser_type().equals(Tags.TYPE_DELEGATE))
+                    {
+                        Common.CreateSignAlertDialog(CategoryActivity.this,getString(R.string.serv_aval_client));
+                    }
+                    else {
+                    Intent intent=new Intent(CategoryActivity.this,Add_Coupon_Activity.class);
+                startActivityForResult(intent,2);}}
+                else {
+                    Common.CreateUserNotSignInAlertDialog(CategoryActivity.this);
+                }
             }
         });
 
@@ -178,7 +187,16 @@ private UserModel userModel;
         btnOrderNow.setOnClickListener(view -> {
 //            Intent intent = new Intent(CategoryActivity.this, CompleteOrderActivity.class);
 //            startActivity(intent);
-            CheckData();
+            if(userModel!=null){
+                if (userModel.getData().getUser_type().equals(Tags.TYPE_DELEGATE))
+                {
+                    Common.CreateSignAlertDialog(CategoryActivity.this,getString(R.string.serv_aval_client));
+                }
+                else {
+                CheckData();}}
+            else {
+                Common.CreateUserNotSignInAlertDialog(CategoryActivity.this);
+            }
 
         });
 
