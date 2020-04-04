@@ -184,7 +184,7 @@ public class Fragment_Reserve_Order extends Fragment {
                     {
                         if (!checkbox.isChecked())
                         {
-                            activity.DisplayFragmentMap("fragment_reserve_order");
+                          //  activity.DisplayFragmentMap("fragment_reserve_order");
 
                         }
                     }
@@ -194,7 +194,7 @@ public class Fragment_Reserve_Order extends Fragment {
         ll_fav_map_loc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                activity.DisplayFragmentMap("fragment_reserve_order");
+             //   activity.DisplayFragmentMap("fragment_reserve_order");
 
             }
         });

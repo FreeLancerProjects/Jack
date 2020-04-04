@@ -15,7 +15,6 @@
     <color name="gray5">#424242</color>
     <color name="gray6">#212121</color>
     <color name="gray7">#757575</color>
-    <color name="gray8">#FFE4A8</color>
 
     <color name="active">#43A047</color>
     <color name="distance">#FFFF00</color>
@@ -26,7 +25,6 @@
     <color name="gradient_end_color">#e7e01c</color>
     <color name="delete_color">#E21B1B</color>
     <color name="green_text">#93c83a</color>
-    <color name="gray_text">#cccccc</color>
 
 
     <color name="screen1">#F44336</color>

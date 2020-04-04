@@ -116,7 +116,7 @@ preferences=Preferences.getInstance();
             @Override
             public void onClick(View v) {
                 if(userModel!=null){
-                checkData();}
+                checkData("use");}
             }
         });
 
@@ -128,7 +128,7 @@ preferences=Preferences.getInstance();
 
                     edt_coupon.setError(null);
                 Common.CloseKeyBoard(Add_Coupon_Activity.this,edt_coupon);
-                SendCoupon(coupon,"check");}
+                checkData("check");}
 
             }
         });
@@ -142,14 +142,14 @@ finish();
 
 
     }
-    private void checkData()
+    private void checkData(String staus)
     {
         String coupon = edt_coupon.getText().toString().trim();
         if (!TextUtils.isEmpty(coupon))
         {
             edt_coupon.setError(null);
             Common.CloseKeyBoard(Add_Coupon_Activity.this,edt_coupon);
-            SendCoupon(coupon,"check");
+            SendCoupon(coupon,staus);
         }else
             {
                 edt_coupon.setError(getString(R.string.field_req));

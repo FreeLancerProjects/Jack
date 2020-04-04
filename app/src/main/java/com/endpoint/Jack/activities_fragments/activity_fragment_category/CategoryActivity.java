@@ -256,25 +256,6 @@ private UserModel userModel;
         }
     }
 
-    public void DisplayFragmentMap(String from) {
-
-        if (location != null) {
-            fragment_map = Fragment_Map.newInstance(location.getLatitude(), location.getLongitude(), from);
-
-        } else {
-            fragment_map = Fragment_Map.newInstance(0.0, 0.0, from);
-
-        }
-
-        if (fragment_map.isAdded()) {
-            fragmentManager.beginTransaction().show(fragment_map).commit();
-
-        } else {
-            fragmentManager.beginTransaction().add(R.id.fragment_app_container, fragment_map, "fragment_map").addToBackStack("fragment_map").commit();
-        }
-
-
-    }
     private void CreateTimeDialog()
     {
         final AlertDialog dialog = new AlertDialog.Builder(this)

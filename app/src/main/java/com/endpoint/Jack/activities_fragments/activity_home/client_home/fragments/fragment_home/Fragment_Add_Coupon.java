@@ -115,7 +115,7 @@ public class Fragment_Add_Coupon extends Fragment {
         btn_use_coupon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkData();
+                checkData("use");
             }
         });
 
@@ -139,14 +139,14 @@ public class Fragment_Add_Coupon extends Fragment {
 
 
     }
-    private void checkData()
+    private void checkData(String staus)
     {
         String coupon = edt_coupon.getText().toString().trim();
         if (!TextUtils.isEmpty(coupon))
         {
             edt_coupon.setError(null);
             Common.CloseKeyBoard(activity,edt_coupon);
-            SendCoupon(coupon,"check");
+            SendCoupon(coupon,staus);
         }else
             {
                 edt_coupon.setError(getString(R.string.field_req));

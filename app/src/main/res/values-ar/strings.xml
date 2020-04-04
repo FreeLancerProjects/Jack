@@ -2,7 +2,6 @@
 <resources>
     <string name="app_name">جاك</string>
     <string name="facebook_app_id">[APP_ID]</string>
-    <string name="fb_login_protocol_scheme">fb[APP_ID]</string>
     <string name="map_api_key">AIzaSyDz07XWgRsDTQtmA4IOvx-fSIc1d_Wrk9c</string>
     <string name="map_api_key2">AIzaSyArjmbYWTWZhDFFtPOLRLKYwjtBDkOEGrY</string>
     <string name="notifications">الإشعارات</string>
@@ -10,46 +9,22 @@
     <string name="ok">حسنا</string>
     <string name="sign_in">تسجيل الدخول</string>
     <string name="back">عودة</string>
-    <string name="sign_in_btn">دخول</string>
-    <string name="new_account">تسجيل جديد</string>
     <string name="field_req">الحقل مطلوب</string>
     <string name="inv_phone">رقم الجوال غير صحيح</string>
-    <string name="signning_in">جار تسجيل الدخول</string>
     <string name="full_name">الاسم</string>
-    <string name="phone">رقم الهاتف</string>
     <string name="email_address">البريد الالكتروني</string>
-    <string name="password">كلمة المرور</string>
     <string name="sign_up">سجل</string>
     <string name="perm_image_denied">لم يتمكن التطبيق للوصل الى الصور</string>
     <string name="upload_personal_photo">رفع الصورة الشخصية</string>
     <string name="wait">إنتظر قليلا...</string>
-    <string name="rsa">ر.س</string>
-    <string name="home">متجر</string>
-    <string name="offers">العروض</string>
     <string name="my_order">طلباتي</string>
-    <string name="fav">مفضلة</string>
 
-    <string name="me">حسابي</string>
     <string name="cancel">إلغاء</string>
-    <string name="message">الرسالة</string>
     <string name="send">إرسال</string>
-    <string name="update">تعديل</string>
-    <string name="contact_us">إتصل بنا</string>
-    <string name="delete">حذف</string>
 
-    <string name="update_password">تعديل كلمة المرور</string>
-    <string name="current_password">كلمة المرور الحالية</string>
-    <string name="new_password">كلمة المرور الجديدة</string>
-    <string name="update_phone">تعديل رقم الهاتف</string>
-    <string name="succ">تم بنجاح</string>
     <string name="failed">فشل حاول مرة اخرى لاحقا</string>
 
-    <string name="phone_number_not_exists">لم يتم التسجيل برقم الجوال من قبل</string>
-    <string name="sgin_out">جار تسجيل الخروج...</string>
-    <string name="sign_out">تسجيل الخروج</string>
     <string name="order_sent_successfully">تم إرسال الطلب بنجاح!</string>
-    <string name="updating_phone">جار تعديل رقم الجوال...</string>
-    <string name="incorrect_old_password">كلمة المرور القديمة غير صحيحة</string>
     <string name="sign_up_with_your_phone">التسجيل برقم الجوال</string>
     <string name="skip">ليس الآن</string>
     <string name="you_are_just_one_step_away">خطوة اخيرة...</string>
@@ -60,16 +35,10 @@
     <string name="stores">متاجر</string>
     <string name="my_orders">طلباتي</string>
     <string name="profile">حسابي</string>
-    <string name="new_order">الجديدة</string>
-    <string name="current">الحالية</string>
-    <string name="previous">السابقة</string>
     <string name="personal_information">المعلومات الشخصية</string>
     <string name="_500_500_pixel">500 * 500 بكسل (إختياري)</string>
-    <string name="country">المدينة</string>
 
-    <string name="pers_photo_req">الصورة الشخصية مطلوبة</string>
     <string name="inv_email">البريد الالكتروني غير صحيح</string>
-    <string name="inc_img_path">مسار الصورة غير صحيح</string>
     <string name="allow_mrsoolk_to_access_gps">السماح لجاك للوصول لل GPS</string>
     <string name="allow">السماح</string>
     <string name="deny">رفض</string>
@@ -88,7 +57,6 @@
     <string name="pending_order">طلبات في الانتظار</string>
     <string name="view_in_map">إطلع على الخريطة</string>
     <string name="km">كم</string>
-    <string name="nearby">الاقرب</string>
     <string name="florist">هدايا</string>
     <string name="bakery">حلويات</string>
     <string name="supermarket">سوبرماركت</string>
@@ -102,7 +70,6 @@
     <string name="all_day">طول اليوم</string>
     <string name="account_balance">رصيد الحساب</string>
     <string name="user_feedback">التعليقات</string>
-    <string name="logout">تسجيل الخروج</string>
     <string name="my_field_complains">قائمة الشكاوي المقدمة</string>
     <string name="edit_profile">تعديل الملف الشخصي</string>
     <string name="language_settings">إعدادات اللغة</string>
@@ -147,7 +114,6 @@
     <string name="gallery">البوم الصور</string>
     <string name="inc_em_phone">البريد الالكتروني او رقم الجوال غير صحيح</string>
     <string name="date_of_birth">تاريخ الميلاد</string>
-    <string name="no_courier_available">لا يوجد مندوب قريب منك</string>
     <string name="couriers">مندوب</string>
     <string name="go_to_order">متابعة طلبك</string>
     <string name="order_sent_successfully_order_number_is">تم إرسال طلبك بنجاح رقم طلبك هو</string>
@@ -177,7 +143,6 @@
     <string name="no_orders_to_display">لا توجد طلبات لعرضها</string>
     <string name="show_details">عرض التفاصيل</string>
     <string name="no_notifications_to_display">لا توجد إشعارات لعرضها</string>
-    <string name="order_accepted">تم الموافقة على طلبك</string>
     <string name="accepted">تم الموافقة</string>
     <string name="order_refused">تم رفض طلبك</string>
     <string name="refused">تم الرفض</string>
@@ -196,14 +161,12 @@
     <string name="we_are_pleased_to_serve_you">شكرا لك على طلبك من تطبيق جاك اسعدتنا خدمتك</string>
     <string name="courier">المندوب</string>
     <string name="no_comments_to_display">لا توجد تعليقات لعرضها</string>
-    <string name="update_order_state">تعديل حالة الطلب</string>
     <string name="client_name">إسم المستلم</string>
     <string name="show_address_on_map">عرض الموقع على الخريطة</string>
     <string name="collect_order">تجميع الطلب</string>
     <string name="collected_order">تم التجميع</string>
     <string name="deliver_order">جار التوصيل</string>
     <string name="delivered_order">تم التوصيل</string>
-    <string name="send_order_to_another_courier">إرسال الطلب لمندوب آخر ؟</string>
     <string name="type_a_message">اكتب رسالتك</string>
     <string name="new_order_sent">تم إرسال طلب جديد</string>
     <string name="offer_accepted">تم الموافقة على عرض التوصيل</string>
@@ -292,7 +255,6 @@
     <string name="active1">نشط</string>
     <string name="inactive1">غير نشط</string>
     <string name="all">الكل </string>
-    <string name="pharmacies">Pharmacies</string>
     <string name="change">تغيير</string>
     <string name="display_times">أوقات العرض</string>
     <string name="user_reviews">تقييمات المستخدمين</string>
@@ -300,7 +262,6 @@
     <string name="select_location_on_map">حدد موقعك على الخريطه</string>
     <string name="select_location">اختر الموقع</string>
     <string name="signup_with_google">Signup With Google</string>
-    <string name="signup_with_facebook">Signup With Facebook</string>
     <string name="normal">عادي</string>
     <string name="hybrid">هجين</string>
     <string name="terrain">تضاريس</string>

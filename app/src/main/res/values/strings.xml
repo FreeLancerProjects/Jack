@@ -3,7 +3,6 @@
 <!--    AIzaSyAeyMUJgKAhnNXbILHONb1um72CNzELFRY-->
     <!--AIzaSyArjmbYWTWZhDFFtPOLRLKYwjtBDkOEGrY-->
     <string name="facebook_app_id">[APP_ID]</string>
-    <string name="fb_login_protocol_scheme">fb[APP_ID]</string>
     <string name="map_api_key">AIzaSyDz07XWgRsDTQtmA4IOvx-fSIc1d_Wrk9c</string>
     <string name="map_api_key2">AIzaSyArjmbYWTWZhDFFtPOLRLKYwjtBDkOEGrY</string>
     <string name="notifications">Notifications</string>
@@ -11,44 +10,20 @@
     <string name="ok">Ok</string>
     <string name="sign_in">Sign In</string>
     <string name="back">Back</string>
-    <string name="sign_in_btn">Sign In</string>
-    <string name="new_account">New Account</string>
     <string name="field_req">Field required</string>
     <string name="inv_phone">Invalid phone</string>
-    <string name="signning_in">Signing In...</string>
     <string name="full_name">Full name</string>
-    <string name="phone">Phone</string>
     <string name="email_address">Email address</string>
-    <string name="password">Password</string>
     <string name="wait">Wait...</string>
     <string name="sign_up">Sign Up</string>
     <string name="perm_image_denied">Permission denied</string>
     <string name="upload_personal_photo">Upload personal photo</string>
-    <string name="rsa">SR</string>
-    <string name="home">Home</string>
-    <string name="offers">Offers</string>
     <string name="my_order">My orders</string>
-    <string name="fav">Favourite</string>
-    <string name="me">Me</string>
     <string name="cancel">Cancel</string>
-    <string name="message">Message</string>
     <string name="send">Send</string>
-    <string name="update">Update</string>
-    <string name="contact_us">Contact us</string>
-    <string name="delete">Delete</string>
 
-    <string name="update_password">Update password</string>
-    <string name="current_password">Current password</string>
-    <string name="new_password">New password</string>
-    <string name="update_phone">Update phone</string>
-    <string name="succ">Success</string>
     <string name="failed">Failed try again later</string>
-    <string name="phone_number_not_exists">Phone number not exists</string>
-    <string name="sgin_out">Signing out...</string>
-    <string name="sign_out">Sign Out</string>
     <string name="order_sent_successfully">Order sent successfully!</string>
-    <string name="updating_phone">Updating phone number...</string>
-    <string name="incorrect_old_password">incorrect old password</string>
     <string name="sign_up_with_your_phone">Sign up with your phone</string>
     <string name="skip">Skip</string>
 
@@ -61,18 +36,12 @@
     <string name="stores">Stores</string>
     <string name="my_orders">My Orders</string>
     <string name="profile">Profile</string>
-    <string name="new_order">New</string>
-    <string name="current">Current</string>
-    <string name="previous">Previous</string>
 
 
     <string name="personal_information">Personal information</string>
     <string name="_500_500_pixel">500 * 500 pixel (optional)</string>
-    <string name="country">Country</string>
 
-    <string name="pers_photo_req">Personal photo required</string>
     <string name="inv_email">Invalid email</string>
-    <string name="inc_img_path">incorrect image path</string>
     <string name="allow_mrsoolk_to_access_gps">Allow Jack To Access GPS</string>
     <string name="allow">Allow</string>
     <string name="deny">Deny</string>
@@ -91,7 +60,6 @@
     <string name="pending_order">Pending Orders</string>
     <string name="view_in_map">View in map</string>
     <string name="km">Km</string>
-    <string name="nearby">nearby</string>
     <string name="florist">florist</string>
     <string name="bakery">bakery</string>
     <string name="supermarket">supermarket</string>
@@ -104,7 +72,6 @@
     <string name="all_day">All day</string>
     <string name="account_balance">Account Balance</string>
     <string name="user_feedback">User Feedback</string>
-    <string name="logout">Logout</string>
     <string name="my_field_complains">My Field Complains</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="language_settings">Language Settings</string>
@@ -149,7 +116,6 @@
     <string name="gallery">Gallery</string>
     <string name="inc_em_phone">Incorrect email or phone</string>
     <string name="date_of_birth">Date of Birth</string>
-    <string name="no_courier_available">No courier available near you</string>
     <string name="couriers">Couriers</string>
     <string name="go_to_order">Follow order</string>
     <string name="order_sent_successfully_order_number_is">Order sent successfully order number is</string>
@@ -180,7 +146,6 @@
     <string name="no_orders_to_display">No orders to display</string>
     <string name="show_details">Show details</string>
     <string name="no_notifications_to_display">No notifications to display</string>
-    <string name="order_accepted">Order accepted</string>
     <string name="accepted">Accepted</string>
     <string name="order_refused">Order refused</string>
     <string name="refused">Refused</string>
@@ -199,14 +164,12 @@
     <string name="we_are_pleased_to_serve_you">We are pleased to serve you</string>
     <string name="courier">Courier</string>
     <string name="no_comments_to_display">No comments to display</string>
-    <string name="update_order_state">Update order state</string>
     <string name="client_name">Client name</string>
     <string name="show_address_on_map">Show address on map</string>
     <string name="collect_order">Collect order</string>
     <string name="collected_order">Collected order</string>
     <string name="deliver_order">Deliver order</string>
     <string name="delivered_order">Delivered order</string>
-    <string name="send_order_to_another_courier">Send order to another courier ?</string>
     <string name="type_a_message">Type a message</string>
     <string name="new_order_sent">New order sent</string>
     <string name="offer_accepted">Offer accepted</string>
@@ -295,7 +258,6 @@
     <string name="active1">Active</string>
     <string name="inactive1">Inactive</string>
     <string name="all">All</string>
-    <string name="pharmacies">Pharmacies</string>
     <string name="change">change</string>
     <string name="display_times">Display Times</string>
     <string name="user_reviews">User reviews</string>
@@ -303,7 +265,6 @@
     <string name="select_location_on_map">Select Location On Map</string>
     <string name="select_location">Select Location</string>
     <string name="signup_with_google">Signup With Google</string>
-    <string name="signup_with_facebook">Signup With Facebook</string>
     <string name="normal">Normal</string>
     <string name="hybrid">Hybrid</string>
     <string name="terrain">Terrain</string>
