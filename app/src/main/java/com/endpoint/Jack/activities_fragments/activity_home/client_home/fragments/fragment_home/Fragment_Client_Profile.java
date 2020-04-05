@@ -151,13 +151,13 @@ public class Fragment_Client_Profile extends Fragment {
                 activity.DisplayFragmentAddCoupon();
             }
         });
-       /* ll_telegram.setOnClickListener(new View.OnClickListener() {
+        ll_telegram.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse(""));
                 startActivity(intent);
             }
-        });*/
+        });
 
 
        /* image_twitter.setOnClickListener(new View.OnClickListener() {

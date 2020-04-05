@@ -152,7 +152,7 @@ public class Fragment_Client_Order_Details extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:" + order.getDriver_user_phone()));
+                intent.setData(Uri.parse("tel:" +order.getDriver_user_phone_code()+ order.getDriver_user_phone()));
                 activity.startActivity(intent);
             }
         });
