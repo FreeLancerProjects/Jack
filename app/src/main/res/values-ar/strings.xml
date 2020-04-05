@@ -272,5 +272,6 @@
     <string name="write_order_here">اكتب طلبك هنا</string>
     <string name="more_detials">تفاصيل اضافيه</string>
     <string name="client_rate_order">العميل قيم الطلب</string>
+    <string name="stcPay">Stc Pay</string>
 
 </resources>

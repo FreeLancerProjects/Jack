@@ -45,23 +45,51 @@
         </LinearLayout>
 
     </androidx.appcompat.widget.Toolbar>
-    <FrameLayout
+    <ScrollView android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="@string/stcPay"
+            android:textColor="@color/colorPrimary"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:padding="5dp"
 
-        >
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recView"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:src="@drawable/stc"/>
+
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            >
 
-        </androidx.recyclerview.widget.RecyclerView>
-        <ProgressBar
-            android:id="@+id/progBar"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            />
-    </FrameLayout>
+            >
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+            </androidx.recyclerview.widget.RecyclerView>
+            <ProgressBar
+                android:id="@+id/progBar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                />
+        </FrameLayout>
+
+    </LinearLayout>
+    </ScrollView>
 </LinearLayout>

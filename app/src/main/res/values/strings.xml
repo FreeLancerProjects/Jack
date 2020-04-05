@@ -275,5 +275,6 @@
     <string name="write_order_here">Write order Here</string>
     <string name="more_detials">More Detials</string>
     <string name="client_rate_order">Client Rate Order</string>
+    <string name="stcPay">Stc Pay</string>
 
 </resources>
