@@ -286,7 +286,7 @@ public interface Service {
                                @Field("client_comment") String client_comment
     );
     @FormUrlEncoded
-    @POST("/api/add-rate")
+    @POST("/app/categories/add-rate")
     Call<ResponseBody> addRate(@Field("user_id") String user_id,
                                @Field("category_id") String category_id,
                                @Field("rate") float rate,
