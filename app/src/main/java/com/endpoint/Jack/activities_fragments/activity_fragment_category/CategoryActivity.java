@@ -67,6 +67,8 @@ import java.util.TimerTask;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.paperdb.Paper;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -260,8 +262,14 @@ private UserModel userModel;
                 }*/
 
 
-        sendOrder();
+        if (uri==null)
+        {
+            sendOrder();
 
+        }else
+        {
+            sendOrderWithImage();
+        }
 
     }else {
             if (TextUtils.isEmpty(order_details)) {
@@ -742,5 +750,62 @@ finish();
 
 
     }
+    public void sendOrderWithImage()
+    {
+        //this.delegate_id = delegate_id;
+        int coupon_id=0;
+        if(userModel.getCoupon_data()!=null){
+            coupon_id=userModel.getCoupon_data().getId();
+        }
+        else {
+            coupon_id=-1;
+        }
+        RequestBody user_id_part = Common.getRequestBodyText(userModel.getData().getUser_id());
+        RequestBody client_address_part = Common.getRequestBodyText(selectedLocation.getAddress()+" "+selectedLocation.getAddress());
+        RequestBody client_lat_part = Common.getRequestBodyText(String.valueOf(selectedLocation.getLat()));
+        RequestBody client_lng_part = Common.getRequestBodyText(String.valueOf(selectedLocation.getLng()));
+        RequestBody order_details_part = Common.getRequestBodyText(order_details);
+        RequestBody place_id_part = Common.getRequestBodyText(singlecategory.getData().get(0).getPlace_id()+"");
+        RequestBody place_address_part = Common.getRequestBodyText(selectedLocation.getAddress());
+        RequestBody order_type_part = Common.getRequestBodyText("1");
+        RequestBody place_lat_part = Common.getRequestBodyText(String.valueOf(selectedLocation.getLat()));
+        RequestBody place_lng_part = Common.getRequestBodyText(String.valueOf(selectedLocation.getLng()));
+        RequestBody selected_time_part = Common.getRequestBodyText(String.valueOf(selected_time));
+        MultipartBody.Part image_part = Common.getMultiPart(this,uri,"order_image");
+        RequestBody copun_part = Common.getRequestBodyText(coupon_id+"");
 
+        final ProgressDialog dialog = Common.createProgressDialog(this,getString(R.string.wait));
+        dialog.show();
+        Api.getService(Tags.base_url)
+                .sendOrderWithImage(user_id_part,client_address_part,client_lat_part,client_lng_part,order_details_part,place_id_part,place_address_part,order_type_part,place_lat_part,place_lng_part,selected_time_part,copun_part,image_part)
+                .enqueue(new Callback<OrderIdDataModel>() {
+                    @Override
+                    public void onResponse(Call<OrderIdDataModel> call, Response<OrderIdDataModel> response) {
+                        dialog.dismiss();
+                        if (response.isSuccessful()&&response.body()!=null&&response.body().getData()!=null)
+                        {
+                            uri = null;
+                            CreateAlertDialog(response.body().getData().getOrder_id());
+                        }else
+                        {
+                            try {
+                                Log.e("Error_code",response.code()+""+response.errorBody().string());
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            Toast.makeText(CategoryActivity.this, R.string.failed, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<OrderIdDataModel> call, Throwable t) {
+                        try {
+                            dialog.dismiss();
+                            Toast.makeText(CategoryActivity.this, getString(R.string.something), Toast.LENGTH_SHORT).show();
+                            Log.e("Error",t.getMessage());
+                        }catch (Exception e){}
+                    }
+                });
+
+    }
 }
