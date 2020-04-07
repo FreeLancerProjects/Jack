@@ -273,5 +273,7 @@
     <string name="more_detials">تفاصيل اضافيه</string>
     <string name="client_rate_order">العميل قيم الطلب</string>
     <string name="stcPay">Stc Pay</string>
+    <string name="rate_of_category">Rate OF Category</string>
+    <string name="rate_this">Rate This</string>
 
 </resources>

@@ -40,6 +40,7 @@ import android.widget.Toast;
 import com.endpoint.Jack.R;
 import com.endpoint.Jack.activities_fragments.activity_home.client_home.fragments.fragment_home.Fragment_Map;
 import com.endpoint.Jack.activities_fragments.activity_map.MapActivity;
+import com.endpoint.Jack.activities_fragments.activity_reviews.ReviewsActivity;
 import com.endpoint.Jack.adapters.SliderCatogryAdapter;
 import com.endpoint.Jack.language.Language_Helper;
 import com.endpoint.Jack.models.CategoryModel;
@@ -78,6 +79,7 @@ public class CategoryActivity extends AppCompatActivity {
     private ImageView image_details;
     private SimpleRatingBar simpleRatingBar;
     private ConstraintLayout cons_add_coupon;
+    private LinearLayout llreview;
     private ViewPager pager;
     private TabLayout tab;
     private int current_page = 0, NUM_PAGES;
@@ -149,6 +151,7 @@ private UserModel userModel;
         fab = findViewById(R.id.fab);
         tv_address = findViewById(R.id.tv_address1);
         edt_order_details = findViewById(R.id.edt_order_details);
+        llreview=findViewById(R.id.ll_review);
         arrow1 = findViewById(R.id.arrow1);
         arrow2 = findViewById(R.id.arrow2);
         arrow3 = findViewById(R.id.arrow3);
@@ -171,6 +174,16 @@ private UserModel userModel;
                 else {
                     Common.CreateUserNotSignInAlertDialog(CategoryActivity.this);
                 }
+            }
+        });
+        llreview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                    Intent intent=new Intent(CategoryActivity.this, ReviewsActivity.class);
+                    intent.putExtra("datas",data);
+                    startActivityForResult(intent,2);
+
             }
         });
         fab.setOnClickListener(new View.OnClickListener() {

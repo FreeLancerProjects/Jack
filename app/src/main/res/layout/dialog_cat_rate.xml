@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+
+        >
+        <ImageView
+            android:id="@+id/img_close"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:src="@drawable/ic_close"
+            android:padding="12dp"
+            android:layout_centerVertical="true"
+            android:tint="@color/gray4"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="17sp"
+            android:textColor="@color/black"
+            android:text="@string/rate_of_category"
+            />
+    </RelativeLayout>
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:civ_border_width="1dp"
+        app:civ_border_color="@color/colorPrimary"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        />
+
+    <TextView
+        android:id="@+id/tv_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"
+        />
+    <com.iarcuschin.simpleratingbar.SimpleRatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:srb_starSize="20dp"
+        app:srb_stepSize=".5"
+        app:srb_starBorderWidth="2"
+        app:srb_starsSeparation="5dp"
+        android:clickable="false"
+        android:longClickable="false"
+android:layout_gravity="center"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/ll_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:orientation="vertical"
+        android:visibility="visible"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray4"
+            android:textSize="17sp"
+            android:text="@string/comment"
+            android:layout_marginBottom="8dp"
+            />
+        <EditText
+            android:id="@+id/edt_comment"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:background="@drawable/edt_sign_up_bg"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:layout_marginBottom="10dp"
+            />
+
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_rate"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_show_map"
+        android:textSize="20sp"
+        android:text="@string/add_rate"
+
+        />
+
+
+
+    </LinearLayout>
+

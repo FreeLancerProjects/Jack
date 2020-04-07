@@ -17,6 +17,7 @@ import com.endpoint.Jack.models.PlaceDetailsModel;
 import com.endpoint.Jack.models.PlaceDirectionModel;
 import com.endpoint.Jack.models.PlaceGeocodeData;
 import com.endpoint.Jack.models.PlaceMapDetailsData;
+import com.endpoint.Jack.models.ReviewsCategoryModel;
 import com.endpoint.Jack.models.SearchDataModel;
 import com.endpoint.Jack.models.SingleCategoryModel;
 import com.endpoint.Jack.models.SliderModel;
@@ -284,7 +285,13 @@ public interface Service {
                                @Field("type") String type,
                                @Field("client_comment") String client_comment
     );
-
+    @FormUrlEncoded
+    @POST("/api/add-rate")
+    Call<ResponseBody> addRate(@Field("user_id") String user_id,
+                               @Field("category_id") String category_id,
+                               @Field("rate") float rate,
+                               @Field("comment") String comment
+    );
     @GET("/api/comment")
     Call<CommentDataModel> getDelegateComment(@Query("user_id") String user_id, @Query("user_type") String user_type, @Query("page") int page);
 
@@ -398,6 +405,9 @@ public interface Service {
     Call<BankDataModel> getBankAccount();
     @GET("/app/place/categories")
     Call<CategoryModel> getcatogries(@Header("lang") String lang);
+    @GET("/app/categories/all-rate")
+    Call<ReviewsCategoryModel> getreview(@Query("category_id") String category_id)
+;
     @GET("/app/place/show")
     Call<SingleCategoryModel> getsinglecat(
             @Header("lang") String lang,

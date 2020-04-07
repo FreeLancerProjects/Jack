@@ -154,7 +154,7 @@ public class Fragment_Client_Profile extends Fragment {
         ll_telegram.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse(""));
+                Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse("https://web.telegram.org/#/im"));
                 startActivity(intent);
             }
         });
