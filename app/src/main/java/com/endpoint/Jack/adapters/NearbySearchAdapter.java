@@ -84,7 +84,7 @@ public class NearbySearchAdapter extends RecyclerView.Adapter<NearbySearchAdapte
         public void BindData(NearbyModel nearbyModel) {
             if (nearbyModel.getPhotos().size()>0)
             {
-                String url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+nearbyModel.getPhotos().get(0).getPhoto_reference()+"&key=AIzaSyCbc2Y5AIwZ8uUeHRUXiozGN3CnpjKT0oI";
+                String url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+nearbyModel.getPhotos().get(0).getPhoto_reference()+"&key=AIzaSyArjmbYWTWZhDFFtPOLRLKYwjtBDkOEGrY";
                 Picasso.with(context).load(Uri.parse(url)).fit().into(image);
 
             }else
