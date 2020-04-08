@@ -76,9 +76,9 @@ public class ReviewsCategoryAdapter extends RecyclerView.Adapter<ReviewsCategory
         }
 
         public void BindData(ReviewsCategoryModel.Data reviews) {
-
-            Picasso.with(context).load(Uri.parse(reviews.getUser().getUser_image())).fit().into(image);
-            tv_name.setText(reviews.getUser().getUser_full_name());
+if(reviews.getUser()!=null){
+            Picasso.with(context).load(Uri.parse(reviews.getUser().getUser_image())).fit().placeholder(R.drawable.logo).into(image);
+            tv_name.setText(reviews.getUser().getUser_full_name());}
             long d = reviews.getDate()*1000;
             String n_date = TimeAgo.getTimeAgo(d,context);
             tvDate.setText(n_date);
