@@ -1442,6 +1442,8 @@ public class ClientHomeActivity extends AppCompatActivity implements GoogleApiCl
                                 Toast.makeText(ClientHomeActivity.this,getString(R.string.done), Toast.LENGTH_SHORT).show();
                                 DisplayFragmentMyOrders();
                                 RefreshFragment_Order();
+                                getUserDataById(userModel.getData().getUser_id());
+
                                 new Handler()
                                         .postDelayed(new Runnable() {
                                             @Override
