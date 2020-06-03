@@ -446,7 +446,7 @@ public interface Service {
     );
 
     @FormUrlEncoded
-    @POST("http://sub.quick.com.sa/api/online-payment")
+    @POST("http://jacmart.net/api/online-payment")
     Call<PayPalLinkModel> getPayPalLink(
             @Field("user_id") String user_id,
             @Field("user_type") String user_type,
@@ -459,7 +459,7 @@ public interface Service {
             @Field("order_id") String order_id
     );
     @FormUrlEncoded
-    @POST("http://sub.quick.com.sa/api/online-payment-bill")
+    @POST("http://sub.jacmart.net/api/online-payment-bill")
     Call<PayPalLinkModel> getbillpay(
             @Field("user_id") String user_id,
             @Field("order_id") String order_id,

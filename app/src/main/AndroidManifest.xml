@@ -104,6 +104,7 @@
             android:excludeFromRecents="true"
             android:launchMode="singleTask"
             android:taskAffinity="" />
+
         <activity
             android:name="com.endpoint.Jack.activities_fragments.activity_chat.ChatActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"

@@ -70,8 +70,8 @@ public class Fragment_Home extends Fragment {
         if (userModel != null) {
             bottomNavigationView.setItemIconTintList(null); // this is important
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                bottomNavigationView.getMenu().getItem(4).setIconTintList(null);
-                bottomNavigationView.getMenu().getItem(4).setIconTintMode(null);
+                bottomNavigationView.getMenu().getItem(3).setIconTintList(null);
+                bottomNavigationView.getMenu().getItem(3).setIconTintMode(null);
             }
             Log.e("lflgllg", userModel.getData().getUser_image());
             Glide.with(getApplicationContext()).asBitmap().load(Tags.IMAGE_URL + userModel.getData().getUser_image())
@@ -105,7 +105,7 @@ public class Fragment_Home extends Fragment {
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
 
         final View iconView =
-                menuView.getChildAt(4).findViewById(com.google.android.material.R.id.icon);
+                menuView.getChildAt(3).findViewById(com.google.android.material.R.id.icon);
         final ViewGroup.LayoutParams layoutParams =
                 iconView.getLayoutParams();
         final DisplayMetrics displayMetrics =
