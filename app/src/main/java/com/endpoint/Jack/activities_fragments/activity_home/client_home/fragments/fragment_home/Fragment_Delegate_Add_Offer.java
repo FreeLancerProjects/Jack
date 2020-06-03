@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -33,11 +34,13 @@ import io.paperdb.Paper;
 
 public class Fragment_Delegate_Add_Offer extends Fragment {
 
-    private final static  String TAG = "Data";
-    private ImageView image_back,order_image;
+    private final static String TAG = "Data";
+    private ImageView image_back,order_image,image_arrow;
+    private FrameLayout fl_map;
     private LinearLayout ll_back,ll_client_container,ll_address,ll_shipment;
     private CircleImageView image;
-    private TextView tv_client_name,tv_order_details,tv_order_address,tv_location_pickup,tv_location_dropoff;
+    private TextView tv_client_name,rest_name,tv_order_details,tv_order_address,tv_location_pickup,tv_location_dropoff;
+    private TextView tv_delivery_cost;
     private EditText edt_delivery_cost;
     private Button btn_accept,btn_refused;
     private OrderDataModel.OrderModel orderModel;
@@ -76,10 +79,12 @@ public class Fragment_Delegate_Add_Offer extends Fragment {
         Paper.init(activity);
         current_language = Paper.book().read("lang", Locale.getDefault().getLanguage());
         image_back = view.findViewById(R.id.image_back);
+        image_arrow = view.findViewById(R.id.image_arrow);
 
         if (current_language.equals("ar"))
         {
             image_back.setImageResource(R.drawable.ic_right_arrow);
+            image_arrow.setRotation(180.0f);
         }else
         {
 
@@ -89,10 +94,14 @@ public class Fragment_Delegate_Add_Offer extends Fragment {
 
         ll_back = view.findViewById(R.id.ll_back);
         image = view.findViewById(R.id.image);
+        fl_map = view.findViewById(R.id.fl_map);
+
         tv_client_name = view.findViewById(R.id.tv_client_name);
         tv_order_details = view.findViewById(R.id.tv_order_details);
         tv_order_address = view.findViewById(R.id.tv_order_address);
-        edt_delivery_cost = view.findViewById(R.id.edt_delivery_cost);
+        tv_delivery_cost = view.findViewById(R.id.tv_delivery_cost);
+        rest_name = view.findViewById(R.id.tv_rest_name);
+
         btn_accept = view.findViewById(R.id.btn_accept);
         btn_refused = view.findViewById(R.id.btn_refused);
         ll_client_container = view.findViewById(R.id.ll_client_container);
@@ -102,6 +111,7 @@ public class Fragment_Delegate_Add_Offer extends Fragment {
         ll_shipment = view.findViewById(R.id.ll_shipment);
         tv_location_pickup = view.findViewById(R.id.tv_location_pickup);
         tv_location_dropoff = view.findViewById(R.id.tv_location_dropoff);
+        edt_delivery_cost = view.findViewById(R.id.edt_delivery_cost);
 
         app_bar = view.findViewById(R.id.app_bar);
 
@@ -136,6 +146,12 @@ public class Fragment_Delegate_Add_Offer extends Fragment {
             }
         });
 
+        fl_map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.DisplayFragmentMapLocationDetails(Double.parseDouble(orderModel.getPlace_lat()), Double.parseDouble(orderModel.getPlace_long()), Double.parseDouble(orderModel.getClient_lat()), Double.parseDouble(orderModel.getClient_long()),orderModel.getPlace_address());
+            }
+        });
 
         app_bar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
@@ -145,10 +161,10 @@ public class Fragment_Delegate_Add_Offer extends Fragment {
                 {
                     ll_client_container.setVisibility(View.GONE);
                 }else
-                    {
-                        ll_client_container.setVisibility(View.VISIBLE);
+                {
+                    ll_client_container.setVisibility(View.VISIBLE);
 
-                    }
+                }
             }
         });
 
@@ -160,11 +176,12 @@ public class Fragment_Delegate_Add_Offer extends Fragment {
     private void UpdateUI(OrderDataModel.OrderModel orderModel) {
         if (orderModel!=null)
         {
-            Picasso.with(activity).load(Tags.IMAGE_URL+orderModel.getClient_user_image()).placeholder(R.drawable.logo_only).fit().into(image);
+            Picasso.with(activity).load(Tags.IMAGE_URL+orderModel.getClient_user_image()).placeholder(R.drawable.logo).fit().into(image);
             tv_client_name.setText(orderModel.getClient_user_full_name());
             tv_order_details.setText(orderModel.getOrder_details());
+            rest_name.setText(orderModel.getPlace_name());
 
-            if (orderModel.getOrder_image().equals("0"))
+            if (orderModel.getOrder_image()==null||orderModel.getOrder_image().equals("0"))
             {
                 order_image.setVisibility(View.GONE);
             }else
@@ -206,9 +223,9 @@ public class Fragment_Delegate_Add_Offer extends Fragment {
             Common.CloseKeyBoard(activity,edt_delivery_cost);
             activity.delegateAcceptOrder(userModel.getData().getUser_id(),orderModel.getClient_id(),orderModel.getOrder_id(),m_cost);
         }else
-            {
-                edt_delivery_cost.setError(getString(R.string.field_req));
-            }
+        {
+            edt_delivery_cost.setError(getString(R.string.field_req));
+        }
     }
 
 

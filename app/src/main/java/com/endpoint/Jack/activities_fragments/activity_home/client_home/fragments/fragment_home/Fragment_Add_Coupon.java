@@ -75,10 +75,10 @@ public class Fragment_Add_Coupon extends Fragment {
         {
             arrow.setImageResource(R.drawable.ic_right_arrow);
         }else
-            {
-                arrow.setImageResource(R.drawable.ic_left_arrow);
+        {
+            arrow.setImageResource(R.drawable.ic_left_arrow);
 
-            }
+        }
 
 
         edt_coupon = view.findViewById(R.id.edt_coupon);
@@ -98,10 +98,10 @@ public class Fragment_Add_Coupon extends Fragment {
                 {
                     btn_check.setVisibility(View.VISIBLE);
                 }else
-                    {
-                        btn_check.setVisibility(View.GONE);
+                {
+                    btn_check.setVisibility(View.GONE);
 
-                    }
+                }
             }
 
             @Override
@@ -148,9 +148,9 @@ public class Fragment_Add_Coupon extends Fragment {
             Common.CloseKeyBoard(activity,edt_coupon);
             SendCoupon(coupon,staus);
         }else
-            {
-                edt_coupon.setError(getString(R.string.field_req));
-            }
+        {
+            edt_coupon.setError(getString(R.string.field_req));
+        }
     }
     private void SendCoupon(String coupon, final String type)
     {
@@ -170,32 +170,32 @@ public class Fragment_Add_Coupon extends Fragment {
                             {
                                 CreateAlertDialog(getString(R.string.coupon_found));
                             }else
-                                {
-                                    if (response.body()!=null)
-                                    {
-                                        CreateAlertDialog(getString(R.string.coupon_used));
-                                        edt_coupon.setText("");
-                                        updateUserData(response.body());
-                                    }
-                                }
-                        }else
                             {
-                                try {
-                                    Log.e("error_code",response.code()+"_"+response.errorBody().string());
-                                }catch (Exception e){}
-
-                                if (response.code()==404)
+                                if (response.body()!=null)
                                 {
-                                    CreateAlertDialog(getString(R.string.coupon_not_found));
-                                }else
-                                    {
-                                        Toast.makeText(activity, getString(R.string.something), Toast.LENGTH_SHORT).show();
+                                    CreateAlertDialog(getString(R.string.coupon_used));
+                                    edt_coupon.setText("");
+                                    updateUserData(response.body());
+                                }
+                            }
+                        }else
+                        {
+                            try {
+                                Log.e("error_code",response.code()+"_"+response.errorBody().string());
+                            }catch (Exception e){}
 
-
-                                    }
+                            if (response.code()==404)
+                            {
+                                CreateAlertDialog(getString(R.string.coupon_not_found));
+                            }else
+                            {
+                                Toast.makeText(activity, getString(R.string.something), Toast.LENGTH_SHORT).show();
 
 
                             }
+
+
+                        }
                     }
 
                     @Override
@@ -247,3 +247,5 @@ public class Fragment_Add_Coupon extends Fragment {
         dialog.show();
     }
 }
+
+

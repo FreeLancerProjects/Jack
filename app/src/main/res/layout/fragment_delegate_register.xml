@@ -115,6 +115,22 @@
 
 
                 />
+            <EditText
+                android:id="@+id/edt_banknumber"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/edt_bg"
+                android:hint="@string/bank_account_number"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:layout_marginTop="8dp"
+                android:textSize="14sp"
+                android:textColorHint="@color/gray4"
+
+
+                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

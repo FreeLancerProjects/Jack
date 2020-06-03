@@ -31,6 +31,7 @@ import com.endpoint.Jack.adapters.NearbyAdapter;
 import com.endpoint.Jack.adapters.QueryAdapter;
 import com.endpoint.Jack.adapters.SliderAdapter;
 import com.endpoint.Jack.models.CategoryModel;
+import com.endpoint.Jack.models.LocationModel;
 import com.endpoint.Jack.models.NearbyModel;
 import com.endpoint.Jack.models.NearbyStoreDataModel;
 import com.endpoint.Jack.models.PhotosModel;
@@ -45,6 +46,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Timer;
@@ -76,11 +78,11 @@ public class Fragment_Client_Store extends Fragment {
     private TimerTask timerTask;
     private SliderAdapter sliderAdapter;
     private String current_language;
-private List<CategoryModel.Data>categoryModels;
+    private List<CategoryModel.Data>categoryModels;
     private int current_page = 1;
     private boolean isLoading = false;
-private Preferences preferences;
-private UserModel userModel;
+    private Preferences preferences;
+    private UserModel userModel;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -99,15 +101,14 @@ private UserModel userModel;
     private void initView(View view) {
 
         activity = (ClientHomeActivity) getActivity();
-preferences=Preferences.getInstance();
-userModel=preferences.getUserData(activity);
+        preferences= Preferences.getInstance();
+        userModel=preferences.getUserData(activity);
         Paper.init(activity);
         current_language = Paper.book().read("lang", Locale.getDefault().getLanguage());
         nearbyModelList = new ArrayList<>();
         mainNearbyModelList = new ArrayList<>();
         categoryModels = new ArrayList<>();
         queriesList = new ArrayList<>();
-        queriesList.add("all");
 
         queriesList.add("restaurant");
         queriesList.add("bakery");
@@ -115,15 +116,16 @@ userModel=preferences.getUserData(activity);
         queriesList.add("cafe");
         queriesList.add("store");
         queriesList.add("florist");
+        queriesList.add("pharmacy");
 
         en_ar_queriesList = new ArrayList<>();
-        en_ar_queriesList.add(new QuerySearchModel(getString(R.string.all),R.drawable.map));
         en_ar_queriesList.add(new QuerySearchModel(getString(R.string.restaurant),R.drawable.ic_restaurant));
         en_ar_queriesList.add(new QuerySearchModel(getString(R.string.bakery),R.drawable.ic_sweet));
         en_ar_queriesList.add(new QuerySearchModel(getString(R.string.supermarket),R.drawable.ic_nav_store));
         en_ar_queriesList.add(new QuerySearchModel(getString(R.string.cafe),R.drawable.ic_cup));
         en_ar_queriesList.add(new QuerySearchModel(getString(R.string.store),R.drawable.ic_store));
         en_ar_queriesList.add(new QuerySearchModel(getString(R.string.florist),R.drawable.ic_gift));
+        en_ar_queriesList.add(new QuerySearchModel(getString(R.string.pharmacies),R.drawable.ic_pharmacy));
 
 
 
@@ -161,8 +163,8 @@ userModel=preferences.getUserData(activity);
         recViewQueries.setLayoutManager(managerQueries);
         queryAdapter = new QueryAdapter(en_ar_queriesList,activity,this);
         recViewQueries.setAdapter(queryAdapter);
-categoryAdapter=new CategoryAdapter(categoryModels,activity,this);
-recviewcat.setAdapter(categoryAdapter);
+        categoryAdapter=new CategoryAdapter(categoryModels,activity,this);
+        recviewcat.setAdapter(categoryAdapter);
         ll_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -197,36 +199,36 @@ recviewcat.setAdapter(categoryAdapter);
 //        }
 //    });
         getCatogries();
-}
+    }
 
     public void getCatogries() {
         //   Common.CloseKeyBoard(homeActivity, edt_name);
 
         // rec_sent.setVisibility(View.GONE);
-       // progBar.setVisibility(View.VISIBLE);
+        // progBar.setVisibility(View.VISIBLE);
         Api.getService(Tags.base_url)
                 .getcatogries(current_language)
                 .enqueue(new Callback<CategoryModel>() {
                     @Override
                     public void onResponse(Call<CategoryModel>  call, Response<CategoryModel> response) {
-                      //  progBar.setVisibility(View.GONE);
+                        //  progBar.setVisibility(View.GONE);
                         if (response.isSuccessful() && response.body() != null && response.body().getData() != null) {
                             categoryModels.clear();
                             categoryModels.addAll(response.body().getData());
-                       //     Log.e("lllll",response.body().getData().size()+"");
+                            //     Log.e("lllll",response.body().getData().size()+"");
                             if (response.body().getData().size() > 0) {
                                 // rec_sent.setVisibility(View.VISIBLE);
 
-                             //   ll_no_store.setVisibility(View.GONE);
+                                //   ll_no_store.setVisibility(View.GONE);
                                 categoryAdapter.notifyDataSetChanged();
                                 //   total_page = response.body().getMeta().getLast_page();
 
                             } else {
-                               // ll_no_store.setVisibility(View.VISIBLE);
+                                // ll_no_store.setVisibility(View.VISIBLE);
 
                             }
                         } else {
-                           // ll_no_store.setVisibility(View.VISIBLE);
+                            // ll_no_store.setVisibility(View.VISIBLE);
 
                             //  Toast.makeText(activity, getString(R.string.failed), Toast.LENGTH_SHORT).show();
                             try {
@@ -241,7 +243,7 @@ recviewcat.setAdapter(categoryAdapter);
                     public void onFailure(Call<CategoryModel> call, Throwable t) {
                         try {
 
-                          //  progBar.setVisibility(View.GONE);
+                            //  progBar.setVisibility(View.GONE);
                             //    Toast.makeText(activity, getString(R.string.something), Toast.LENGTH_SHORT).show();
                             Log.e("error", t.getMessage());
                         } catch (Exception e) {
@@ -266,12 +268,12 @@ recviewcat.setAdapter(categoryAdapter);
                         }else
                         {
 
-                                try {
-                                    Log.e("error_code",response.code()+"_"+response.errorBody().string());
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-                                pager.setVisibility(View.GONE);
+                            try {
+                                Log.e("error_code",response.code()+"_"+response.errorBody().string());
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            pager.setVisibility(View.GONE);
                             try {
                                 Log.e("error_code",response.code()+"_"+response.errorBody().string());
                             } catch (IOException e) {
@@ -323,7 +325,7 @@ recviewcat.setAdapter(categoryAdapter);
 
         }else
 
-                pager.setVisibility(View.GONE);
+            pager.setVisibility(View.GONE);
         {
             pager.setVisibility(View.GONE);
 
@@ -353,11 +355,11 @@ recviewcat.setAdapter(categoryAdapter);
             String loc = location.getLatitude()+","+location.getLongitude();
 
             Api.getService("https://maps.googleapis.com/maps/api/")
-                    .getNearbyStores(loc,15000,query,current_language,getString(R.string.map_api_key))
+                    .getNearbyStores(loc,5000,query,current_language,getString(R.string.map_api_key))
                     .enqueue(new Callback<NearbyStoreDataModel>() {
                         @Override
                         public void onResponse(Call<NearbyStoreDataModel> call, Response<NearbyStoreDataModel> response) {
-                        //    Log.e("jjjjjj",response.code()+"");
+                            //    Log.e("jjjjjj",response.code()+"");
 
                             if (response.isSuccessful()&&response.body()!=null)
                             {
@@ -410,6 +412,7 @@ recviewcat.setAdapter(categoryAdapter);
     private void updateUi(NearbyStoreDataModel nearbyStoreDataModel, Location location) {
 
 
+        LocationModel.setLocation(location);
 
 
         if (mainNearbyModelList.size()==0)
@@ -420,6 +423,7 @@ recviewcat.setAdapter(categoryAdapter);
         }
 
         nearbyModelList.addAll(getPlaceModelFromResult(nearbyStoreDataModel.getResults()));
+        Collections.sort(nearbyModelList,PlaceModel.distanceComparator);
 
 
         recViewQueries.setVisibility(View.VISIBLE);
@@ -544,7 +548,7 @@ recviewcat.setAdapter(categoryAdapter);
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==2){
             if(userModel!=null){
-            activity.DisplayFragmentMyOrders();
-        }}
+                activity.DisplayFragmentMyOrders();
+            }}
     }
 }

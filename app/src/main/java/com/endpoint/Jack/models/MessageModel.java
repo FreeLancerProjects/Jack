@@ -20,9 +20,9 @@ public class MessageModel implements Serializable {
     private String to_user_image;
     private String to_user_phone_code;
     private String to_user_phone;
-
-
-    public MessageModel(String id_message, String room_id_fk, String date, String message, String message_type, String file, String from_user, String from_user_full_name, String from_user_image, String from_user_phone_code, String from_user_phone, String to_user, String to_user_full_name, String to_user_image, String to_user_phone_code, String to_user_phone) {
+    private String bill_step;
+    private String total_cost;
+    public MessageModel(String id_message, String room_id_fk, String date, String message, String message_type, String file, String from_user, String from_user_full_name, String from_user_image, String from_user_phone_code, String from_user_phone, String to_user, String to_user_full_name, String to_user_image, String to_user_phone_code, String to_user_phone,String bill_step,String total_cost) {
         this.id_message = id_message;
         this.room_id_fk = room_id_fk;
         this.date = date;
@@ -39,6 +39,17 @@ public class MessageModel implements Serializable {
         this.to_user_image = to_user_image;
         this.to_user_phone_code = to_user_phone_code;
         this.to_user_phone = to_user_phone;
+        this.bill_step=bill_step;
+        this.total_cost=total_cost;
+    }
+
+    public String getBill_step() {
+
+        return bill_step;
+    }
+
+    public String getTotal_cost() {
+        return total_cost;
     }
 
     public String getId_message() {

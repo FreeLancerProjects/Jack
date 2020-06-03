@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.endpoint.Jack.R;
 import com.endpoint.Jack.models.PlaceDetailsModel;
 import com.iarcuschin.simpleratingbar.SimpleRatingBar;

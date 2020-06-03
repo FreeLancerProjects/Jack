@@ -49,37 +49,37 @@ public class Fragment_Home extends Fragment {
     private UserSingleTone userSingleTone;
     private UserModel userModel;
     private Preferences preferences;
-    private LinearLayout ll_progress,ll_container;
+    private LinearLayout ll_progress, ll_container;
     private ProgressBar progBar;
 
-    public static Fragment_Home newInstance()
-    {
+    public static Fragment_Home newInstance() {
         return new Fragment_Home();
     }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home,container,false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
         initView(view);
         setimage();
         return view;
     }
 
     public void setimage() {
-userModel=preferences.getUserData(activity);
-        if(userModel!=null){
+        userModel = preferences.getUserData(activity);
+        if (userModel != null) {
             bottomNavigationView.setItemIconTintList(null); // this is important
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                bottomNavigationView.getMenu().getItem(3).setIconTintList(null);
-                bottomNavigationView.getMenu().getItem(3).setIconTintMode(null);
+                bottomNavigationView.getMenu().getItem(4).setIconTintList(null);
+                bottomNavigationView.getMenu().getItem(4).setIconTintMode(null);
             }
-            Log.e("lflgllg",userModel.getData().getUser_image());
-            Glide.with(getApplicationContext()).asBitmap().load(Tags.IMAGE_URL+userModel.getData().getUser_image())
-                     .apply(RequestOptions.circleCropTransform()).into(new SimpleTarget<Bitmap>() {
+            Log.e("lflgllg", userModel.getData().getUser_image());
+            Glide.with(getApplicationContext()).asBitmap().load(Tags.IMAGE_URL + userModel.getData().getUser_image())
+                    .apply(RequestOptions.circleCropTransform()).into(new SimpleTarget<Bitmap>() {
 
                 @Override
                 public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
-                   // Log.e("lflgllg,";fllflf");
+                    // Log.e("lflgllg,";fllflf");
 
                     Drawable profileImage = new BitmapDrawable(getResources(), resource);
                     bottomNavigationView.getMenu().findItem(R.id.profile).setIcon(profileImage);
@@ -105,7 +105,7 @@ userModel=preferences.getUserData(activity);
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
 
         final View iconView =
-                menuView.getChildAt(3).findViewById(com.google.android.material.R.id.icon);
+                menuView.getChildAt(4).findViewById(com.google.android.material.R.id.icon);
         final ViewGroup.LayoutParams layoutParams =
                 iconView.getLayoutParams();
         final DisplayMetrics displayMetrics =
@@ -137,106 +137,96 @@ userModel=preferences.getUserData(activity);
         setimage();
     }
 
-    private void initView(View view)
-    {
+    private void initView(View view) {
         activity = (ClientHomeActivity) getActivity();
         preferences = Preferences.getInstance();
         userSingleTone = UserSingleTone.getInstance();
         String session = preferences.getSession(activity);
-        if (session.equals(Tags.session_login))
-        {
+        if (session.equals(Tags.session_login)) {
             userSingleTone.setUserModel(preferences.getUserData(activity));
         }
         userModel = userSingleTone.getUserModel();
         ah_bottom_nav = view.findViewById(R.id.ah_bottom_nav);
-bottomNavigationView=view.findViewById(R.id.bottom_nav);
+        bottomNavigationView = view.findViewById(R.id.bottom_nav);
         ll_container = view.findViewById(R.id.ll_container);
         ll_progress = view.findViewById(R.id.ll_progress);
         progBar = view.findViewById(R.id.progBar);
-        progBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(activity,R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
-bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        switch (menuItem.getItemId())
-        {
-            case R.id.store:
-                activity.DisplayFragmentStore();
+        progBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(activity, R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.store:
+                        activity.DisplayFragmentStore();
 
-                break;
+                        break;
 
-            case R.id.order:
-                if (userModel==null)
-                {
-                    Common.CreateUserNotSignInAlertDialog(activity);
+                    case R.id.order:
+                        if (userModel == null) {
+                            Common.CreateUserNotSignInAlertDialog(activity);
 
-                }else
-                {
+                        } else {
 
-                    activity.DisplayFragmentMyOrders();
-                    return true;
+                            activity.DisplayFragmentMyOrders();
+                            return true;
 
+                        }
+
+
+                        break;
+                    case R.id.naoti:
+
+                        if (userModel == null) {
+                            Common.CreateUserNotSignInAlertDialog(activity);
+
+                        } else {
+                            activity.DisplayFragmentNotification();
+                            return true;
+
+                        }
+
+
+                        break;
+//                    case R.id.blog:
+//
+//                            activity.DisplayFragmentBlog();
+//
+//                        break;
+                    case R.id.profile:
+                        if (userModel == null) {
+                            Common.CreateUserNotSignInAlertDialog(activity);
+                        } else {
+
+                            activity.DisplayFragmentProfile();
+                            return true;
+
+                        }
+                        break;
                 }
 
-
-                break;
-            case R.id.naoti:
-
-                if (userModel==null)
-                {
-                    Common.CreateUserNotSignInAlertDialog(activity);
-
-                }else
-                {
-                    activity.DisplayFragmentNotification();
-                    return true;
-
-                }
-
-
-
-                break;
-            case R.id.profile:
-                if (userModel==null)
-                {
-                    Common.CreateUserNotSignInAlertDialog(activity);
-                }else
-                {
-
-                    activity.DisplayFragmentProfile();
-                    return true;
-
-                }
-                break;
-        }
-
-        return true;
-    }
-});
+                return true;
+            }
+        });
         setUpBottomNavigation();
         ah_bottom_nav.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
             @Override
             public boolean onTabSelected(int position, boolean wasSelected) {
-                switch (position)
-                {
+                switch (position) {
                     case 0:
                         activity.DisplayFragmentStore();
                         break;
                     case 1:
-                        if (userModel==null)
-                        {
+                        if (userModel == null) {
                             Common.CreateUserNotSignInAlertDialog(activity);
-                        }else
-                        {
+                        } else {
                             activity.DisplayFragmentShipment();
 
                         }
                         break;
                     case 2:
-                        if (userModel==null)
-                        {
+                        if (userModel == null) {
                             Common.CreateUserNotSignInAlertDialog(activity);
-                        }else
-                        {
+                        } else {
                             activity.DisplayFragmentMyOrders();
 
                         }
@@ -245,24 +235,24 @@ bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationVie
                         break;
                     case 3:
 
-                        if (userModel==null)
-                        {
+                        if (userModel == null) {
                             Common.CreateUserNotSignInAlertDialog(activity);
-                        }else
-                        {
+                        } else {
                             activity.DisplayFragmentNotification();
 
                         }
 
 
-
                         break;
+//                    case 4:
+//
+//                            activity.DisplayFragmentBlog();
+//
+//                        break;
                     case 4:
-                        if (userModel==null)
-                        {
+                        if (userModel == null) {
                             Common.CreateUserNotSignInAlertDialog(activity);
-                        }else
-                        {
+                        } else {
                             activity.DisplayFragmentProfile();
 
                         }
@@ -274,52 +264,46 @@ bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationVie
 
     }
 
-    private void setUpBottomNavigation()
-    {
+    private void setUpBottomNavigation() {
 
-        AHBottomNavigationItem item1 = new AHBottomNavigationItem(getString(R.string.stores),R.drawable.ic_nav_store);
-        AHBottomNavigationItem item2 = new AHBottomNavigationItem(getString(R.string.shipment),R.drawable.ic_box);
-        AHBottomNavigationItem item3 = new AHBottomNavigationItem(getString(R.string.my_orders),R.drawable.ic_nav_order);
-        AHBottomNavigationItem item4 = new AHBottomNavigationItem(getString(R.string.notifications),R.drawable.ic_nav_notification);
-        AHBottomNavigationItem item5 = new AHBottomNavigationItem(getString(R.string.profile),R.drawable.ic_nav_user);
+        AHBottomNavigationItem item1 = new AHBottomNavigationItem(getString(R.string.stores), R.drawable.ic_nav_store);
+        AHBottomNavigationItem item2 = new AHBottomNavigationItem(getString(R.string.shipment), R.drawable.ic_box);
+        AHBottomNavigationItem item3 = new AHBottomNavigationItem(getString(R.string.my_orders), R.drawable.ic_nav_order);
+       // AHBottomNavigationItem item4 = new AHBottomNavigationItem(getString(R.string.notifications), R.drawable.ic_nav_notification);
+        AHBottomNavigationItem item4 = new AHBottomNavigationItem(getString(R.string.profile), R.drawable.ic_nav_user);
 
         ah_bottom_nav.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
-        ah_bottom_nav.setDefaultBackgroundColor(ContextCompat.getColor(activity,R.color.white));
-        ah_bottom_nav.setTitleTextSizeInSp(14,12);
+        ah_bottom_nav.setDefaultBackgroundColor(ContextCompat.getColor(activity, R.color.white));
+        ah_bottom_nav.setTitleTextSizeInSp(14, 12);
         ah_bottom_nav.setForceTint(true);
-        ah_bottom_nav.setAccentColor(ContextCompat.getColor(activity,R.color.colorPrimary));
-        ah_bottom_nav.setInactiveColor(ContextCompat.getColor(activity,R.color.gray4));
+        ah_bottom_nav.setAccentColor(ContextCompat.getColor(activity, R.color.colorPrimary));
+        ah_bottom_nav.setInactiveColor(ContextCompat.getColor(activity, R.color.gray4));
         ah_bottom_nav.addItem(item1);
         ah_bottom_nav.addItem(item2);
         ah_bottom_nav.addItem(item3);
         ah_bottom_nav.addItem(item4);
-        ah_bottom_nav.addItem(item5);
+      //  ah_bottom_nav.addItem(item5);
 
     }
 
-    public void updateBottomNavigationPosition(int pos)
-    {
-        ah_bottom_nav.setCurrentItem(pos,false);
+    public void updateBottomNavigationPosition(int pos) {
+        ah_bottom_nav.setCurrentItem(pos, false);
     }
 
-    public void updateNotificationCount(int count)
-    {
+    public void updateNotificationCount(int count) {
         AHNotification.Builder builder = new AHNotification.Builder();
-        builder.setTextColor(ContextCompat.getColor(activity,R.color.white));
-        builder.setBackgroundColor(ContextCompat.getColor(activity,R.color.golden_stars));
-        if (count>0)
-        {
-            builder.setText(count+"");
-            ah_bottom_nav.setNotification(builder.build(),3);
-        }else
-            {
-                builder.setText("");
-                ah_bottom_nav.setNotification(builder.build(),3);
-            }
+        builder.setTextColor(ContextCompat.getColor(activity, R.color.white));
+        builder.setBackgroundColor(ContextCompat.getColor(activity, R.color.golden_stars));
+        if (count > 0) {
+            builder.setText(count + "");
+            ah_bottom_nav.setNotification(builder.build(), 3);
+        } else {
+            builder.setText("");
+            ah_bottom_nav.setNotification(builder.build(), 3);
+        }
     }
 
-    public void DisplayFragmentView()
-    {
+    public void DisplayFragmentView() {
         ll_progress.setVisibility(View.GONE);
         ll_container.setVisibility(View.VISIBLE);
         ah_bottom_nav.setVisibility(View.GONE);

@@ -47,6 +47,7 @@ import net.cachapa.expandablelayout.ExpandableLayout;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -338,6 +339,8 @@ public class Fragment_Search extends Fragment
     private void updateAdapter(List<NearbyModel> results) {
 
         nearbyModelList.addAll(results);
+        Collections.sort(nearbyModelList,NearbyModel.distanceComparator);
+
         adapter.notifyDataSetChanged();
         queryModelList.clear();
         queryModelList.addAll(preferences.getAllQueries(activity));

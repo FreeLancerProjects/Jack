@@ -129,6 +129,7 @@
                         android:orientation="horizontal"
                         >
                         <TextView
+                            android:id="@+id/tvTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -220,7 +221,9 @@
                    app:LoadingDots_loop_duration="800"
                    app:LoadingDots_loop_start_delay="100"
                    app:LoadingDots_jump_duration="200"
-                   ></com.eyalbira.loadingdots.LoadingDots>
+                   >
+
+               </com.eyalbira.loadingdots.LoadingDots>
             </FrameLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -297,12 +300,144 @@
                         android:tint="@color/gray4"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintTop_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/imageMic"
                         android:layout_marginEnd="8dp"
                         tools:ignore="RtlCompat" />
+                    <ImageView
+                        android:id="@+id/imageMic"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_mic"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintTop_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+
+                        />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
+<!--            <pl.droidsonroids.gif.GifImageView-->
+<!--                android:id="@+id/images"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="20dp"-->
+
+<!--                android:src="@drawable/sound"-->
+<!--                android:scaleType="fitXY"-->
+<!--                android:layout_marginEnd="50dp"-->
+<!--                android:layout_marginStart="50dp"-->
+<!--                android:visibility="gone"-->
+<!--              />-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="3dp"
+                app:contentPadding="8dp"
+                android:visibility="gone"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageDelete"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:padding="5dp"
+                        android:src="@drawable/ic_cancel"
+                        android:tint="@color/colorPrimary" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/imagePlay"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:padding="5dp"
+                            android:src="@drawable/ic_play"
+                            android:tint="@color/black"
+                            app:layout_constraintBottom_toTopOf="@id/tvName"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/ll" />
+
+                        <LinearLayout
+                            android:id="@+id/ll"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+
+                            >
+
+<!--                            <FrameLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content">-->
+
+<!--                                <ImageView-->
+<!--                                    android:id="@+id/imageHead"-->
+<!--                                    android:layout_width="25dp"-->
+<!--                                    android:layout_height="25dp"-->
+<!--                                    android:src="@drawable/ic_headphones" />-->
+
+<!--                            </FrameLayout>-->
+
+                            <TextView
+                                android:id="@+id/recordDuration"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:text="00:00"
+                                android:textColor="@color/black"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+
+                        <SeekBar
+                            android:id="@+id/seekBar"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            app:layout_constraintBottom_toBottomOf="@id/imagePlay"
+                            app:layout_constraintEnd_toStartOf="@id/ll"
+                            app:layout_constraintStart_toEndOf="@id/imagePlay"
+                            app:layout_constraintTop_toTopOf="@id/imagePlay" />
+
+                        <TextView
+                            android:id="@+id/tvName"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toBottomOf="@id/ll"
+                            app:layout_constraintEnd_toStartOf="@id/ll"
+                            app:layout_constraintStart_toStartOf="@id/imagePlay"
+
+
+                            />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
         </LinearLayout>
 
         <ProgressBar

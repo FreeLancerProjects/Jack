@@ -40,7 +40,7 @@ public class Fragment_Settings extends Fragment {
 
     private ClientHomeActivity activity;
     private ConstraintLayout cons_back,cons_alert,cons_complains,cons_edit_profile,cons_language,cons_terms,cons_privacy,cons_rate,cons_about,cons_banks;
-    private ImageView arrow_back,arrow1,arrow2,arrow3,arrow4,arrow5,arrow6,arrow7,arrow8;
+    private ImageView arrow_back,arrow1,arrow2,arrow3,arrow4,arrow5,arrow6,arrow7;
     private String current_language;
     private String [] language_array;
     private ToggleButton toggle_btn;
@@ -76,7 +76,6 @@ public class Fragment_Settings extends Fragment {
         arrow5 = view.findViewById(R.id.arrow5);
         arrow6 = view.findViewById(R.id.arrow6);
         arrow7 = view.findViewById(R.id.arrow7);
-        arrow8 = view.findViewById(R.id.arrow8);
 
         language_array = new String[]{"English","العربية"};
 
@@ -91,7 +90,6 @@ public class Fragment_Settings extends Fragment {
             arrow5.setImageResource(R.drawable.ic_left_arrow);
             arrow6.setImageResource(R.drawable.ic_left_arrow);
             arrow7.setImageResource(R.drawable.ic_left_arrow);
-            arrow8.setImageResource(R.drawable.ic_left_arrow);
 
         }else
             {
@@ -103,7 +101,6 @@ public class Fragment_Settings extends Fragment {
                 arrow5.setImageResource(R.drawable.ic_right_arrow);
                 arrow6.setImageResource(R.drawable.ic_right_arrow);
                 arrow7.setImageResource(R.drawable.ic_right_arrow);
-                arrow8.setImageResource(R.drawable.ic_right_arrow);
 
 
             }
@@ -118,7 +115,7 @@ public class Fragment_Settings extends Fragment {
         cons_rate = view.findViewById(R.id.cons_rate);
         cons_about = view.findViewById(R.id.cons_about);
         cons_back = view.findViewById(R.id.cons_back);
-        cons_banks = view.findViewById(R.id.cons_banks);
+      //  cons_banks = view.findViewById(R.id.cons_banks);
 
         toggle_btn = view.findViewById(R.id.toggle_btn);
         v_alert = view.findViewById(R.id.v_alert);
@@ -151,7 +148,7 @@ public class Fragment_Settings extends Fragment {
         cons_about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                activity.NavigateToTermsActivity(Tags.APPABOUT);
+                activity.NavigateToAboutActivity(Tags.APPABOUT);
             }
         });
 
@@ -196,12 +193,12 @@ public class Fragment_Settings extends Fragment {
             }
         });
 
-        cons_banks.setOnClickListener(new View.OnClickListener() {
+     /*   cons_banks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 activity.DisplayFragmentBankAccount();
             }
-        });
+        });*/
 
 
 

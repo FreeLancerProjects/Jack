@@ -9,22 +9,46 @@
     <string name="ok">حسنا</string>
     <string name="sign_in">تسجيل الدخول</string>
     <string name="back">عودة</string>
+    <string name="sign_in_btn">دخول</string>
+    <string name="new_account">تسجيل جديد</string>
     <string name="field_req">الحقل مطلوب</string>
     <string name="inv_phone">رقم الجوال غير صحيح</string>
+    <string name="signning_in">جار تسجيل الدخول</string>
     <string name="full_name">الاسم</string>
+    <string name="phone">رقم الهاتف</string>
     <string name="email_address">البريد الالكتروني</string>
+    <string name="password">كلمة المرور</string>
     <string name="sign_up">سجل</string>
     <string name="perm_image_denied">لم يتمكن التطبيق للوصل الى الصور</string>
     <string name="upload_personal_photo">رفع الصورة الشخصية</string>
     <string name="wait">إنتظر قليلا...</string>
+    <string name="rsa">ر.س</string>
+    <string name="home">متجر</string>
+    <string name="offers">العروض</string>
     <string name="my_order">طلباتي</string>
+    <string name="fav">مفضلة</string>
 
+    <string name="me">حسابي</string>
     <string name="cancel">إلغاء</string>
+    <string name="message">الرسالة</string>
     <string name="send">إرسال</string>
+    <string name="update">تعديل</string>
+    <string name="contact_us">إتصل بنا</string>
+    <string name="delete">حذف</string>
 
-    <string name="failed">فشل حاول مرة اخرى لاحقا</string>
+    <string name="update_password">تعديل كلمة المرور</string>
+    <string name="current_password">كلمة المرور الحالية</string>
+    <string name="new_password">كلمة المرور الجديدة</string>
+    <string name="update_phone">تعديل رقم الهاتف</string>
+    <string name="succ">تم بنجاح</string>
+    <string name="failed">البيانات غير مكتمله حاول مره اخري</string>
 
+    <string name="phone_number_not_exists">لم يتم التسجيل برقم الجوال من قبل</string>
+    <string name="sgin_out">جار تسجيل الخروج...</string>
+    <string name="sign_out">تسجيل الخروج</string>
     <string name="order_sent_successfully">تم إرسال الطلب بنجاح!</string>
+    <string name="updating_phone">جار تعديل رقم الجوال...</string>
+    <string name="incorrect_old_password">كلمة المرور القديمة غير صحيحة</string>
     <string name="sign_up_with_your_phone">التسجيل برقم الجوال</string>
     <string name="skip">ليس الآن</string>
     <string name="you_are_just_one_step_away">خطوة اخيرة...</string>
@@ -35,11 +59,17 @@
     <string name="stores">متاجر</string>
     <string name="my_orders">طلباتي</string>
     <string name="profile">حسابي</string>
+    <string name="new_order">الجديدة</string>
+    <string name="current">الحالية</string>
+    <string name="previous">السابقة</string>
     <string name="personal_information">المعلومات الشخصية</string>
     <string name="_500_500_pixel">500 * 500 بكسل (إختياري)</string>
+    <string name="country">المدينة</string>
 
+    <string name="pers_photo_req">الصورة الشخصية مطلوبة</string>
     <string name="inv_email">البريد الالكتروني غير صحيح</string>
-    <string name="allow_mrsoolk_to_access_gps">السماح لجاك للوصول لل GPS</string>
+    <string name="inc_img_path">مسار الصورة غير صحيح</string>
+    <string name="allow_mrsoolk_to_access_gps">السماح لسريع ون للوصول لل GPS</string>
     <string name="allow">السماح</string>
     <string name="deny">رفض</string>
     <string name="rate">التقييم</string>
@@ -57,6 +87,7 @@
     <string name="pending_order">طلبات في الانتظار</string>
     <string name="view_in_map">إطلع على الخريطة</string>
     <string name="km">كم</string>
+    <string name="nearby">الاقرب</string>
     <string name="florist">هدايا</string>
     <string name="bakery">حلويات</string>
     <string name="supermarket">سوبرماركت</string>
@@ -70,6 +101,7 @@
     <string name="all_day">طول اليوم</string>
     <string name="account_balance">رصيد الحساب</string>
     <string name="user_feedback">التعليقات</string>
+    <string name="logout">تسجيل الخروج</string>
     <string name="my_field_complains">قائمة الشكاوي المقدمة</string>
     <string name="edit_profile">تعديل الملف الشخصي</string>
     <string name="language_settings">إعدادات اللغة</string>
@@ -85,7 +117,7 @@
     <string name="choose_delivery_location">إختر عنوان التوصيل</string>
     <string name="delivery_time">وقت التوصيل</string>
     <string name="check_here_to_choose_delivery_time">إضغط هنا لاختيار وقت التوصيل</string>
-    <string name="write_order_details">إكتب هنا تفاصيل طلبك من المحل مثلا: 1 هامبرجر بالجبنةو 1 بطاطس كبير ونرجو منك كتابة القيمة التقديرية للطلب حتى يتسنى للمندوب خدمتك.</string>
+    <string name="write_order_details">إكتب هنا تفاصيل طلبك حتى يتسنى للمندوب خدمتك.</string>
     <string name="set_location_on_map">حدد الموقع على الخريطة</string>
     <string name="save_favorite_location">حفظ الموقع في المفضلة</string>
     <string name="name">الاسم</string>
@@ -114,10 +146,11 @@
     <string name="gallery">البوم الصور</string>
     <string name="inc_em_phone">البريد الالكتروني او رقم الجوال غير صحيح</string>
     <string name="date_of_birth">تاريخ الميلاد</string>
+    <string name="no_courier_available">لا يوجد مندوب قريب منك</string>
     <string name="couriers">مندوب</string>
     <string name="go_to_order">متابعة طلبك</string>
     <string name="order_sent_successfully_order_number_is">تم إرسال طلبك بنجاح رقم طلبك هو</string>
-    <string name="national_number">رقم السجل/الإقامة</string>
+    <string name="national_number">رقم الهوية</string>
     <string name="address">العنوان</string>
     <string name="identity_card_image">صورة البطاقة الشخصية</string>
     <string name="license_image">صورة رخصة القيادة</string>
@@ -143,6 +176,7 @@
     <string name="no_orders_to_display">لا توجد طلبات لعرضها</string>
     <string name="show_details">عرض التفاصيل</string>
     <string name="no_notifications_to_display">لا توجد إشعارات لعرضها</string>
+    <string name="order_accepted">تم الموافقة على طلبك</string>
     <string name="accepted">تم الموافقة</string>
     <string name="order_refused">تم رفض طلبك</string>
     <string name="refused">تم الرفض</string>
@@ -158,20 +192,22 @@
     <string name="delivering_order">جار توصيل طلبك</string>
     <string name="delivering_order_to_your_destination">جار توصيل طلبك للوجهة المحددة</string>
     <string name="order_delivered_successfully">تم توصيل طلبك بنجاح</string>
-    <string name="we_are_pleased_to_serve_you">شكرا لك على طلبك من تطبيق جاك اسعدتنا خدمتك</string>
+    <string name="we_are_pleased_to_serve_you">شكرا لك على طلبك من تطبيق سريع ون اسعدتنا خدمتك</string>
     <string name="courier">المندوب</string>
     <string name="no_comments_to_display">لا توجد تعليقات لعرضها</string>
+    <string name="update_order_state">تعديل حالة الطلب</string>
     <string name="client_name">إسم المستلم</string>
     <string name="show_address_on_map">عرض الموقع على الخريطة</string>
     <string name="collect_order">تجميع الطلب</string>
     <string name="collected_order">تم التجميع</string>
     <string name="deliver_order">جار التوصيل</string>
     <string name="delivered_order">تم التوصيل</string>
+    <string name="send_order_to_another_courier">إرسال الطلب لمندوب آخر ؟</string>
     <string name="type_a_message">اكتب رسالتك</string>
     <string name="new_order_sent">تم إرسال طلب جديد</string>
     <string name="offer_accepted">تم الموافقة على عرض التوصيل</string>
-    <string name="shipment">طرد جاك</string>
-    <string name="do_you_have_a_purpose_that_you_want_to_be_assigned_to_any_place_in_your_city_the_shipment_provide_this_service">عندك غرض ودك ترسلة لاي مكان في مدينتك ؟ طرد جاك يقدم لك هالخدمة</string>
+    <string name="shipment">طرد سريع ون</string>
+    <string name="do_you_have_a_purpose_that_you_want_to_be_assigned_to_any_place_in_your_city_the_shipment_provide_this_service">عندك غرض ودك ترسلة لاي مكان في مدينتك ؟ طرد سريع ون يقدم لك هالخدمة</string>
     <string name="receiving_and_delivery_location">موقع الاستلام والتسليم</string>
     <string name="receiving_location">موقع الاستلام</string>
     <string name="choose">إختر</string>
@@ -207,7 +243,7 @@
     <string name="coupon_not_found">لم أعثر على كوبون!</string>
     <string name="coupon_found">تم العثور على رقم الكوبون!</string>
     <string name="coupon_used">تم إستخدام الكوبون بنجاح</string>
-    <string name="how_to_become_a_courier_in_marsoolk">نموذج توثيق مندوب في تطبيق جاك</string>
+    <string name="how_to_become_a_courier_in_marsoolk">نموذج توثيق مندوب في تطبيق سريع ون</string>
     <string name="click_here">إضغط هنا!</string>
     <string name="doc_form_txt">قبل تعبئة الاستمارة نرجو منكم الاطلاع على الصور التالية.الان بإمكانك توثيق حسابك والحصول على الشارة الزرقاء في ملفك الشخصي. يستخدم التوثيق لإثبات هوية الموصلين وذلك حتى يتم التعامل معهم بكل امان!</string>
     <string name="previous2">السابق</string>
@@ -232,7 +268,9 @@
     <string name="follow_your_order">تتبع طلبك</string>
     <string name="remaining_time">الوقت المتبقي</string>
     <string name="min2">دقيقة</string>
-    <string name="Admin">إدارة جاك</string>
+    <string name="Admin">إدارة سريع ون</string>
+    <string name="Admins">نسعد بانضمامك لفريق "سريع ون ".
+ونفيدك بأن عمولة التطبيق (٢٠٪) تحسب على المشوار الواحد ، يتم تحويلها على حساباتنا البنكية الموضحة في التطبيق.</string>
     <string name="req_acc_as_cour">تم قبول طلبك كمندوب</string>
     <string name="rej_as_cour">عفوا، تم رفض طلبك كمندوب.</string>
     <string name="req_sent">عفوا ، تم إرسال طلبك من قبل نرجو انتظار الرد من قبل الادارة</string>
@@ -246,7 +284,7 @@
     <string name="account_name">إسم الحساب</string>
     <string name="all_products">كل المنتجات</string>
     <string name="Just_decide">فقط حدد مكان استلام المنتج ومكان التسليم ودع الامر الينا</string>
-    <string name="Welcome_to_Jack">اهلا بك فى جاك</string>
+    <string name="Welcome_to_Jack">اهلا بك فى سريع ون</string>
     <string name="We_deliver_orders_anytime_anywhere">نقوم بتوصيل الطلبات فى اى وقت والى اى مكان</string>
     <string name="best_offer">افضل العروض</string>
     <string name="We_show">نعرض لك افضل العروض على العديد من المنتجات وفى كثير من التصنيفات</string>
@@ -255,6 +293,7 @@
     <string name="active1">نشط</string>
     <string name="inactive1">غير نشط</string>
     <string name="all">الكل </string>
+    <string name="pharmacies">صيدليات</string>
     <string name="change">تغيير</string>
     <string name="display_times">أوقات العرض</string>
     <string name="user_reviews">تقييمات المستخدمين</string>
@@ -262,6 +301,7 @@
     <string name="select_location_on_map">حدد موقعك على الخريطه</string>
     <string name="select_location">اختر الموقع</string>
     <string name="signup_with_google">Signup With Google</string>
+    <string name="signup_with_facebook">Signup With Facebook</string>
     <string name="normal">عادي</string>
     <string name="hybrid">هجين</string>
     <string name="terrain">تضاريس</string>
@@ -270,10 +310,27 @@
     <string name="map_style">نوع الخريطة</string>
     <string name="cust_rate">تقييم العملاء</string>
     <string name="write_order_here">اكتب طلبك هنا</string>
-    <string name="more_detials">تفاصيل اضافيه</string>
+    <string name="more_detials">تفاصيل اكثر</string>
     <string name="client_rate_order">العميل قيم الطلب</string>
     <string name="stcPay">Stc Pay</string>
     <string name="rate_of_category">تقييم القسم</string>
     <string name="rate_this">قيم هذا</string>
+    <string name="blog">مدونة</string>
+    <string name="social_media">وسائل التواصل</string>
+    <string name="not_av">غير متاح حاليا</string>
+    <string name="contact_email_address">تواصل معنا عبر البريد الالكترونى</string>
+    <string name="contact_instgram">تواصل معنا عبر الأنستجرام</string>
+    <string name="contact_twitter">تواصل معنا عبر تويتر</string>
+    <string name="contact_facebook">تواصل معنا عبر الفيس بوك</string>
+    <string name="contact_whats">تواصل معنا عبر الواتس اب</string>
+    <string name="contact_snap">تواصل معنا عبر سناب شات</string>
+    <string name="place_name">اسم المكان</string>
+    <string name="pls_upload_img_bill">قم برفع صورة الفاتورة</string>
+    <string name="bank_account_number">رقم الحساب البنكى</string>
+    <string name="rechager">سداد الرصيد</string>
+    <string name="you_pay">سوف تدفع</string>
+    <string name="pay">دفع</string>
+    <string name="order_delete">العميل حذف الطلب</string>
+    <string name="you_cant">لا يمكنك ان تشحن بقيمه صفر</string>
 
 </resources>

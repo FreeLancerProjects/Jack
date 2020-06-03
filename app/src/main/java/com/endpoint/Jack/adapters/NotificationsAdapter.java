@@ -3,6 +3,7 @@ package com.endpoint.Jack.adapters;
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.endpoint.Jack.R;
 import com.endpoint.Jack.activities_fragments.activity_home.client_home.fragments.fragment_home.Fragment_Client_Notifications;
 import com.endpoint.Jack.models.NotificationModel;
+import com.endpoint.Jack.preferences.Preferences;
 import com.endpoint.Jack.share.TimeAgo;
 import com.endpoint.Jack.tags.Tags;
 import com.squareup.picasso.Picasso;
@@ -85,6 +87,14 @@ public class NotificationsAdapter extends RecyclerView.Adapter<RecyclerView.View
                 }
 
             });
+            myHolder.imageDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    notificationModelList.remove(0);
+                    Preferences.getInstance().saveVisitdelegete(context,0);
+                    notifyDataSetChanged();
+                }
+            });
 
         } else {
             LoadMoreHolder loadMoreHolder = (LoadMoreHolder) holder;
@@ -99,8 +109,8 @@ public class NotificationsAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     public class MyHolder extends RecyclerView.ViewHolder {
         private CircleImageView image;
-        private ImageView image_state;
-        private TextView tv_name, tv_order_num, tv_notification_date, tv_order_state,tv_add_rate;
+        private ImageView image_state,imageDelete;
+        private TextView tv_name, tv_order_num, tv_notification_date, tv_order_state,tv_add_rate,order_num,order_state;
 
         public MyHolder(View itemView) {
             super(itemView);
@@ -112,15 +122,19 @@ public class NotificationsAdapter extends RecyclerView.Adapter<RecyclerView.View
             tv_order_state = itemView.findViewById(R.id.tv_order_state);
             tv_name = itemView.findViewById(R.id.tv_name);
             tv_add_rate = itemView.findViewById(R.id.tv_add_rate);
-
-
+            order_num=itemView.findViewById(R.id.order_num);
+            order_state=itemView.findViewById(R.id.order_state);
+            imageDelete=itemView.findViewById(R.id.imageDelete);
         }
 
         public void BindData(NotificationModel notificationModel) {
-            tv_order_num.setText("#" + notificationModel.getOrder_id());
-            tv_notification_date.setText(TimeAgo.getTimeAgo(Long.parseLong(notificationModel.getDate_notification()) * 1000, context));
+          Log.e("nfnfnfn",notificationModel.getOrder_status());
+            if(!notificationModel.getOrder_status().equals("sss")) {
+                tv_order_num.setText("#" + notificationModel.getOrder_id());
+                tv_notification_date.setText(TimeAgo.getTimeAgo(Long.parseLong(notificationModel.getDate_notification()) * 1000, context));
 
 
+            }
             if (notificationModel.getOrder_status().equals(String.valueOf(Tags.STATE_ORDER_NEW)))
             {
                 if (user_type.equals(Tags.TYPE_CLIENT))
@@ -160,6 +174,7 @@ public class NotificationsAdapter extends RecyclerView.Adapter<RecyclerView.View
                     tv_order_state.setText(context.getString(R.string.offer_accepted));
                     Picasso.with(context).load(Uri.parse(Tags.IMAGE_URL + notificationModel.getFrom_user_image())).placeholder(R.drawable.logo_only).fit().into(image);
                     tv_name.setText(notificationModel.getFrom_user_full_name());
+                    tv_add_rate.setVisibility(View.GONE);
 
                 }
 
@@ -186,10 +201,11 @@ public class NotificationsAdapter extends RecyclerView.Adapter<RecyclerView.View
                     tv_order_state.setText(R.string.offer_refused);
 
                 }
-            }else if (notificationModel.getOrder_status().equals(String.valueOf(Tags.STATE_DELEGATE_DELIVERED_ORDER)))
+            }
+            else if (notificationModel.getOrder_status().equals(String.valueOf(Tags.STATE_DELEGATE_DELIVERED_ORDER)))
+
             {
-                if (user_type.equals(Tags.TYPE_CLIENT))
-                {
+
                     Picasso.with(context).load(Uri.parse(Tags.IMAGE_URL + notificationModel.getFrom_user_image())).placeholder(R.drawable.logo_only).fit().into(image);
                     tv_name.setText(notificationModel.getFrom_user_full_name());
                     tv_order_state.setText(context.getString(R.string.done));
@@ -199,8 +215,60 @@ public class NotificationsAdapter extends RecyclerView.Adapter<RecyclerView.View
                     tv_add_rate.setVisibility(View.VISIBLE);
                     image_state.setVisibility(View.VISIBLE);
                     image_state.setVisibility(View.VISIBLE);
+                    if(notificationModel.getFrom_user_type().equals(Tags.TYPE_CLIENT)){
+                        tv_add_rate.setVisibility(View.GONE);
+                    }
+
+            }
+            else if (notificationModel.getOrder_status().equals(String.valueOf(Tags.STATE_DELEGATE_COLLECTING_ORDER)) || notificationModel.getOrder_status().equals(String.valueOf(Tags.STATE_DELEGATE_COLLECTED_ORDER))) {
+
+
+
+image_state.setVisibility(View.GONE);
+                image_state.setVisibility(View.VISIBLE);
+                image_state.setVisibility(View.VISIBLE);
+                tv_add_rate.setVisibility(View.GONE);
+
+                if (user_type.equals(Tags.TYPE_CLIENT))
+                {
+                    tv_order_state.setText(notificationModel.getTitle_notification());
+                    tv_name.setText(notificationModel.getOrder_details());
+
+                }else
+
+                {
+                    Picasso.with(context).load(Uri.parse(Tags.IMAGE_URL + notificationModel.getFrom_user_image())).placeholder(R.drawable.logo_only).fit().into(image);
+                    tv_name.setText(notificationModel.getOrder_details());
+                    tv_order_state.setText(notificationModel.getTitle_notification());
+
                 }
             }
+            else if (notificationModel.getOrder_status().equals(String.valueOf(Tags.STATE_DELEGATE_DELIVERING_ORDER)))
+            {
+
+                    Picasso.with(context).load(Uri.parse(Tags.IMAGE_URL + notificationModel.getFrom_user_image())).placeholder(R.drawable.logo_only).fit().into(image);
+                tv_name.setText(notificationModel.getOrder_details());
+                    tv_order_state.setText(notificationModel.getTitle_notification());
+
+                    image_state.setBackgroundResource(R.drawable.finish_bg);
+                    image_state.setImageResource(R.drawable.ic_correct);
+                    tv_add_rate.setVisibility(View.VISIBLE);
+                    image_state.setVisibility(View.VISIBLE);
+                    image_state.setVisibility(View.VISIBLE);
+
+            }
+
+            else {
+                tv_name.setText(notificationModel.getTitle_notification());
+order_num.setVisibility(View.GONE);
+order_state.setVisibility(View.GONE);
+tv_notification_date.setVisibility(View.GONE);
+tv_add_rate.setVisibility(View.GONE);
+tv_order_num.setVisibility(View.GONE);
+tv_order_state.setVisibility(View.GONE);
+imageDelete.setVisibility(View.VISIBLE);
+tv_name.setLineSpacing(1.5f,1.5f);
+           }
 
         }
     }

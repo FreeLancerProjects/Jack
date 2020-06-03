@@ -29,6 +29,7 @@ import com.endpoint.Jack.adapters.NotificationsAdapter;
 import com.endpoint.Jack.models.NotificationDataModel;
 import com.endpoint.Jack.models.NotificationModel;
 import com.endpoint.Jack.models.UserModel;
+import com.endpoint.Jack.preferences.Preferences;
 import com.endpoint.Jack.remote.Api;
 import com.endpoint.Jack.singletone.UserSingleTone;
 import com.endpoint.Jack.tags.Tags;
@@ -164,6 +165,8 @@ public class Fragment_Client_Notifications extends Fragment {
 
                     if (response.body() != null && response.body().getData().size() > 0) {
                         ll_not.setVisibility(View.GONE);
+                        if(Preferences.getInstance().getVisitVisitdelegete(activity)==1&&userModel.getData().getUser_type().equals(Tags.TYPE_DELEGATE)){
+                        notificationModelList.add(new NotificationModel(activity.getResources().getString(R.string.Admins),"sss"));}
                         notificationModelList.addAll(response.body().getData());
                         adapter.notifyDataSetChanged();
                         isFirstTime = false;

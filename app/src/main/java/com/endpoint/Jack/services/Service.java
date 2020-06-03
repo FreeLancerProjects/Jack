@@ -13,6 +13,8 @@ import com.endpoint.Jack.models.NotificationCountModel;
 import com.endpoint.Jack.models.NotificationDataModel;
 import com.endpoint.Jack.models.OrderDataModel;
 import com.endpoint.Jack.models.OrderIdDataModel;
+import com.endpoint.Jack.models.OrderModel;
+import com.endpoint.Jack.models.PayPalLinkModel;
 import com.endpoint.Jack.models.PlaceDetailsModel;
 import com.endpoint.Jack.models.PlaceDirectionModel;
 import com.endpoint.Jack.models.PlaceGeocodeData;
@@ -56,6 +58,7 @@ public interface Service {
                                                      @Query(value = "language") String language,
                                                      @Query(value = "key") String key
     );
+
     @GET("place/nearbysearch/json")
     Call<NearbyStoreDataModel> getNearbySearchStores(@Query(value = "location") String location,
                                                      @Query(value = "radius") int radius,
@@ -162,7 +165,8 @@ public interface Service {
                                      @Field("place_lat") double place_lat,
                                      @Field("place_long") double place_long,
                                      @Field("order_time_arrival") long order_time_arrival,
-                                     @Field("coupon_id") String coupon_id
+                                     @Field("coupon_id") String coupon_id,
+                                     @Field("place_name") String place_name
 
     );
 
@@ -174,6 +178,7 @@ public interface Service {
                                               @Part("client_long") RequestBody client_long,
                                               @Part("order_details") RequestBody order_details,
                                               @Part("place_google_id") RequestBody place_google_id,
+                                              @Part("place_name") RequestBody place_google_name,
                                               @Part("place_address") RequestBody place_address,
                                               @Part("order_type") RequestBody order_type,
                                               @Part("place_lat") RequestBody place_lat,
@@ -192,6 +197,7 @@ public interface Service {
     Call<UserModel> registerDelegate(@Part("user_id") RequestBody user_id,
                                      @Part("user_card_id") RequestBody user_card_id,
                                      @Part("user_address") RequestBody user_address,
+                                     @Part("account_num") RequestBody account_num,
                                      @Part MultipartBody.Part user_card_id_image,
                                      @Part MultipartBody.Part user_driving_license,
                                      @Part MultipartBody.Part image_car_front,
@@ -232,6 +238,8 @@ public interface Service {
 
     @GET("/api/clientOrders")
     Call<OrderDataModel> getClientOrders(@Query("user_id") String user_id, @Query("order_type") String order_type, @Query("page") int page);
+    @GET("/api/clientOrders")
+    Call<OrderModel> getClientOrders(@Query("order_id") String order_id);
 
 
     @GET("/api/driverOrders")
@@ -285,6 +293,7 @@ public interface Service {
                                @Field("type") String type,
                                @Field("client_comment") String client_comment
     );
+
     @FormUrlEncoded
     @POST("/app/categories/add-rate")
     Call<ResponseBody> addRate(@Field("user_id") String user_id,
@@ -292,6 +301,7 @@ public interface Service {
                                @Field("rate") float rate,
                                @Field("comment") String comment
     );
+
     @GET("/api/comment")
     Call<CommentDataModel> getDelegateComment(@Query("user_id") String user_id, @Query("user_type") String user_type, @Query("page") int page);
 
@@ -340,6 +350,21 @@ public interface Service {
 
     );
 
+    @Multipart
+    @POST("/api/attachBill")
+    Call<MessageModel> sendbillWithImage(@Part("room_id_fk") RequestBody room_id_fk,
+                                         @Part("from_user") RequestBody from_user_id,
+                                         @Part("to_user") RequestBody to_user_id,
+                                         @Part("message") RequestBody message,
+                                         @Part("message_type") RequestBody message_type,
+                                         @Part("bill_amount") RequestBody bill_amount,
+                                         @Part("order_id") RequestBody order_id,
+                                         @Part("network_value") RequestBody network_value,
+                                         @Part MultipartBody.Part messagefile_type
+
+
+    );
+
     @FormUrlEncoded
     @POST("/api/Typing")
     Call<MessageModel> typing(@Field("room_id_fk") String room_id_fk,
@@ -382,8 +407,8 @@ public interface Service {
 
     @FormUrlEncoded
     @POST("/api/availableStatus")
-    Call<UserModel> updateDelegateAvailable(@Field("user_id") String  user_id,
-                                            @Field("available") String  available
+    Call<UserModel> updateDelegateAvailable(@Field("user_id") String user_id,
+                                            @Field("available") String available
     );
 
     @GET("directions/json")
@@ -396,18 +421,21 @@ public interface Service {
 
     @FormUrlEncoded
     @POST("/api/followingDriver")
-    Call<FollowModel> getFollowData(@Field("order_id")String order_id,
-                                    @Field("driver_id")String driver_id,
-                                    @Field("client_id")String client_id
+    Call<FollowModel> getFollowData(@Field("order_id") String order_id,
+                                    @Field("driver_id") String driver_id,
+                                    @Field("client_id") String client_id
     );
 
     @GET("/api/banks")
     Call<BankDataModel> getBankAccount();
+
     @GET("/app/place/categories")
     Call<CategoryModel> getcatogries(@Header("lang") String lang);
+
     @GET("/app/categories/all-rate")
     Call<ReviewsCategoryModel> getreview(@Query("category_id") String category_id)
-;
+            ;
+
     @GET("/app/place/show")
     Call<SingleCategoryModel> getsinglecat(
             @Header("lang") String lang,
@@ -415,6 +443,27 @@ public interface Service {
             @Query("page") int page,
             @Query("limit_per_page") int limit_per_page
 
+    );
+
+    @FormUrlEncoded
+    @POST("http://sub.quick.com.sa/api/online-payment")
+    Call<PayPalLinkModel> getPayPalLink(
+            @Field("user_id") String user_id,
+            @Field("user_type") String user_type,
+            @Field("amount") double amount
+    );
+    @FormUrlEncoded
+    @POST("/api/deleteOrder")
+    Call<ResponseBody> DelteOrder(
+            @Field("user_id") String user_id,
+            @Field("order_id") String order_id
+    );
+    @FormUrlEncoded
+    @POST("http://sub.quick.com.sa/api/online-payment-bill")
+    Call<PayPalLinkModel> getbillpay(
+            @Field("user_id") String user_id,
+            @Field("order_id") String order_id,
+            @Field("bill_amount") String bill_amount
     );
 }
 

@@ -10,20 +10,44 @@
     <string name="ok">Ok</string>
     <string name="sign_in">Sign In</string>
     <string name="back">Back</string>
+    <string name="sign_in_btn">Sign In</string>
+    <string name="new_account">New Account</string>
     <string name="field_req">Field required</string>
     <string name="inv_phone">Invalid phone</string>
+    <string name="signning_in">Signing In...</string>
     <string name="full_name">Full name</string>
+    <string name="phone">Phone</string>
     <string name="email_address">Email address</string>
+    <string name="password">Password</string>
     <string name="wait">Wait...</string>
     <string name="sign_up">Sign Up</string>
     <string name="perm_image_denied">Permission denied</string>
     <string name="upload_personal_photo">Upload personal photo</string>
+    <string name="rsa">SR</string>
+    <string name="home">Home</string>
+    <string name="offers">Offers</string>
     <string name="my_order">My orders</string>
+    <string name="fav">Favourite</string>
+    <string name="me">Me</string>
     <string name="cancel">Cancel</string>
+    <string name="message">Message</string>
     <string name="send">Send</string>
+    <string name="update">Update</string>
+    <string name="contact_us">Contact us</string>
+    <string name="delete">Delete</string>
 
-    <string name="failed">Failed try again later</string>
+    <string name="update_password">Update password</string>
+    <string name="current_password">Current password</string>
+    <string name="new_password">New password</string>
+    <string name="update_phone">Update phone</string>
+    <string name="succ">Success</string>
+    <string name="failed">data not completed try again later</string>
+    <string name="phone_number_not_exists">Phone number not exists</string>
+    <string name="sgin_out">Signing out...</string>
+    <string name="sign_out">Sign Out</string>
     <string name="order_sent_successfully">Order sent successfully!</string>
+    <string name="updating_phone">Updating phone number...</string>
+    <string name="incorrect_old_password">incorrect old password</string>
     <string name="sign_up_with_your_phone">Sign up with your phone</string>
     <string name="skip">Skip</string>
 
@@ -36,13 +60,19 @@
     <string name="stores">Stores</string>
     <string name="my_orders">My Orders</string>
     <string name="profile">Profile</string>
+    <string name="new_order">New</string>
+    <string name="current">Current</string>
+    <string name="previous">Previous</string>
 
 
     <string name="personal_information">Personal information</string>
     <string name="_500_500_pixel">500 * 500 pixel (optional)</string>
+    <string name="country">Country</string>
 
+    <string name="pers_photo_req">Personal photo required</string>
     <string name="inv_email">Invalid email</string>
-    <string name="allow_mrsoolk_to_access_gps">Allow Jack To Access GPS</string>
+    <string name="inc_img_path">incorrect image path</string>
+    <string name="allow_mrsoolk_to_access_gps">Allow Fast One To Access GPS</string>
     <string name="allow">Allow</string>
     <string name="deny">Deny</string>
     <string name="rate">Rate</string>
@@ -60,6 +90,7 @@
     <string name="pending_order">Pending Orders</string>
     <string name="view_in_map">View in map</string>
     <string name="km">Km</string>
+    <string name="nearby">nearby</string>
     <string name="florist">florist</string>
     <string name="bakery">bakery</string>
     <string name="supermarket">supermarket</string>
@@ -72,6 +103,7 @@
     <string name="all_day">All day</string>
     <string name="account_balance">Account Balance</string>
     <string name="user_feedback">User Feedback</string>
+    <string name="logout">Logout</string>
     <string name="my_field_complains">My Field Complains</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="language_settings">Language Settings</string>
@@ -87,7 +119,7 @@
     <string name="choose_delivery_location">Choose Delivery Location</string>
     <string name="delivery_time">Delivery Time</string>
     <string name="check_here_to_choose_delivery_time">Check here to choose Delivery Time</string>
-    <string name="write_order_details">Write here the details of your order for example i want 1 Cheeseburger,1 Large Fries.Please write also how much is approximate cost of your order.</string>
+    <string name="write_order_details">Write here the details of your order </string>
     <string name="set_location_on_map">Set location on map</string>
     <string name="save_favorite_location">Save Favorite Location</string>
     <string name="name">Name</string>
@@ -116,6 +148,7 @@
     <string name="gallery">Gallery</string>
     <string name="inc_em_phone">Incorrect email or phone</string>
     <string name="date_of_birth">Date of Birth</string>
+    <string name="no_courier_available">No courier available near you</string>
     <string name="couriers">Couriers</string>
     <string name="go_to_order">Follow order</string>
     <string name="order_sent_successfully_order_number_is">Order sent successfully order number is</string>
@@ -146,6 +179,7 @@
     <string name="no_orders_to_display">No orders to display</string>
     <string name="show_details">Show details</string>
     <string name="no_notifications_to_display">No notifications to display</string>
+    <string name="order_accepted">Order accepted</string>
     <string name="accepted">Accepted</string>
     <string name="order_refused">Order refused</string>
     <string name="refused">Refused</string>
@@ -164,17 +198,19 @@
     <string name="we_are_pleased_to_serve_you">We are pleased to serve you</string>
     <string name="courier">Courier</string>
     <string name="no_comments_to_display">No comments to display</string>
+    <string name="update_order_state">Update order state</string>
     <string name="client_name">Client name</string>
     <string name="show_address_on_map">Show address on map</string>
     <string name="collect_order">Collect order</string>
     <string name="collected_order">Collected order</string>
     <string name="deliver_order">Deliver order</string>
     <string name="delivered_order">Delivered order</string>
+    <string name="send_order_to_another_courier">Send order to another courier ?</string>
     <string name="type_a_message">Type a message</string>
     <string name="new_order_sent">New order sent</string>
     <string name="offer_accepted">Offer accepted</string>
-    <string name="shipment">Jack package</string>
-    <string name="do_you_have_a_purpose_that_you_want_to_be_assigned_to_any_place_in_your_city_the_shipment_provide_this_service">Got a small package that you want to send somewhere in your city? Jack package allows you to do just that!</string>
+    <string name="shipment">Fast One package</string>
+    <string name="do_you_have_a_purpose_that_you_want_to_be_assigned_to_any_place_in_your_city_the_shipment_provide_this_service">Got a small package that you want to send somewhere in your city? Fast One package allows you to do just that!</string>
     <string name="receiving_and_delivery_location">Dropoff &amp; Pickup</string>
     <string name="receiving_location">Pickup location</string>
     <string name="choose">Choose</string>
@@ -210,7 +246,7 @@
     <string name="coupon_not_found">Coupon not found!</string>
     <string name="coupon_found">Coupon found!</string>
     <string name="coupon_used">Coupon used successfully</string>
-    <string name="how_to_become_a_courier_in_marsoolk">How to become a Courier in Jack ?</string>
+    <string name="how_to_become_a_courier_in_marsoolk">How to become a Courier in Fast One ?</string>
     <string name="click_here">Click here</string>
     <string name="doc_form_txt">Before filling in the form, please see the following pictures. You can document your account and get the blue badge on your profile. Authentication is used to prove the identity of the conductors so that they are dealt with safely!</string>
     <string name="previous2">Previous</string>
@@ -236,6 +272,8 @@
     <string name="remaining_time">Remaining time</string>
     <string name="min2">min</string>
     <string name="Admin">Admin</string>
+    <string name="Admins">We are glad to have you joined the "Fast One" team.
+We inform you that the application commission (20%) is calculated on a single trip, and is transferred to our bank accounts shown in the application.</string>
     <string name="req_acc_as_cour">Your request has been accepted as a Courier</string>
     <string name="rej_as_cour">Sorry, your request was rejected as a Courier</string>
     <string name="req_sent">Sorry, your request has been sent. Please wait for a response from the admin</string>
@@ -249,7 +287,7 @@
     <string name="account_name">Account Name</string>
     <string name="all_products">All products</string>
     <string name="Just_decide">Just decide where to receive the product and where to deliver and leave it to us</string>
-    <string name="Welcome_to_Jack">Welcome to Jack</string>
+    <string name="Welcome_to_Jack">Welcome to Fast One</string>
     <string name="We_deliver_orders_anytime_anywhere">We deliver orders anytime, anywhere</string>
     <string name="best_offer">Best Offer</string>
     <string name="We_show">We show you the best offers on many products and in many categories</string>
@@ -258,6 +296,7 @@
     <string name="active1">Active</string>
     <string name="inactive1">Inactive</string>
     <string name="all">All</string>
+    <string name="pharmacies">Pharmacies</string>
     <string name="change">change</string>
     <string name="display_times">Display Times</string>
     <string name="user_reviews">User reviews</string>
@@ -265,6 +304,7 @@
     <string name="select_location_on_map">Select Location On Map</string>
     <string name="select_location">Select Location</string>
     <string name="signup_with_google">Signup With Google</string>
+    <string name="signup_with_facebook">Signup With Facebook</string>
     <string name="normal">Normal</string>
     <string name="hybrid">Hybrid</string>
     <string name="terrain">Terrain</string>
@@ -278,5 +318,22 @@
     <string name="stcPay">Stc Pay</string>
     <string name="rate_of_category">Rate OF Category</string>
     <string name="rate_this">Rate This</string>
+    <string name="blog">Blog</string>
+    <string name="social_media">Social  Media</string>
+    <string name="not_av">Not Available now</string>
+    <string name="contact_email_address">Connect with us on gmail account</string>
+    <string name="contact_instgram">Connect with us on Instgram</string>
+    <string name="contact_twitter">Connect with us on Twitter</string>
+    <string name="contact_facebook">Connect with us on Facebook</string>
+    <string name="contact_whats">Connect with us on whats Up</string>
+    <string name="contact_snap">Connect with us on Snap chat</string>
+    <string name="place_name">place name</string>
+    <string name="pls_upload_img_bill">Please Upload Bill Image.</string>
+    <string name="bank_account_number">Bank Account Number</string>
+    <string name="rechager">Pay Amount</string>
+    <string name="you_pay">You Will Pay</string>
+    <string name="pay">Pay</string>
+    <string name="order_delete">Client Delete Order</string>
+    <string name="you_cant">You Can,t Charge Zero</string>
 
 </resources>

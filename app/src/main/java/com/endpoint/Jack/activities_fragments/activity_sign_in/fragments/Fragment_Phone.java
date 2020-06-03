@@ -155,7 +155,8 @@ public class Fragment_Phone extends Fragment implements OnCountryPickerListener 
             Common.CloseKeyBoard(activity, edt_phone);
             if (type.equals("signup"))
             {
-                CreateAlertDialog(phone);
+                //CreateAlertDialog(phone);
+                ((SignInActivity)activity).DisplayFragmentCodeVerification(code.replace("+","00"),phone,country_code);
 
                 //sendSMSCode(code,phone);
                 //((SignInActivity)activity).signIn(phone,country_code,code);
@@ -199,7 +200,9 @@ public class Fragment_Phone extends Fragment implements OnCountryPickerListener 
                         if (response.isSuccessful())
                         {
                             Log.e("body",response.body()+"__");
-                            CreateAlertDialog(phone);
+                          //  CreateAlertDialog(phone);
+                            ((SignInActivity)activity).DisplayFragmentCodeVerification(code.replace("+","00"),phone,country_code);
+
                         }else
                         {
                             try {

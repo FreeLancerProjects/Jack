@@ -20,7 +20,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.endpoint.Jack.R;
-import com.endpoint.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity;
 import com.endpoint.Jack.language.Language_Helper;
 import com.endpoint.Jack.models.UserModel;
 import com.endpoint.Jack.preferences.Preferences;
@@ -44,7 +43,7 @@ public class Add_Coupon_Activity extends AppCompatActivity {
     private String current_language;
     private UserSingleTone userSingleTone;
     private UserModel userModel;
-private Preferences preferences;
+    private Preferences preferences;
 
     @Override
     protected void attachBaseContext(Context base) {
@@ -64,7 +63,7 @@ private Preferences preferences;
     {
         userSingleTone = UserSingleTone.getInstance();
         userModel = userSingleTone.getUserModel();
-preferences=Preferences.getInstance();
+        preferences= Preferences.getInstance();
 
         Paper.init(this);
         current_language = Paper.book().read("lang", Locale.getDefault().getLanguage());
@@ -75,10 +74,10 @@ preferences=Preferences.getInstance();
         {
             arrow.setImageResource(R.drawable.ic_right_arrow);
         }else
-            {
-                arrow.setImageResource(R.drawable.ic_left_arrow);
+        {
+            arrow.setImageResource(R.drawable.ic_left_arrow);
 
-            }
+        }
 
 
         edt_coupon =findViewById(R.id.edt_coupon);
@@ -98,10 +97,10 @@ preferences=Preferences.getInstance();
                 {
                     btn_check.setVisibility(View.VISIBLE);
                 }else
-                    {
-                        btn_check.setVisibility(View.GONE);
+                {
+                    btn_check.setVisibility(View.GONE);
 
-                    }
+                }
             }
 
             @Override
@@ -116,7 +115,7 @@ preferences=Preferences.getInstance();
             @Override
             public void onClick(View v) {
                 if(userModel!=null){
-                checkData("use");}
+                    checkData("use");}
             }
         });
 
@@ -127,8 +126,8 @@ preferences=Preferences.getInstance();
                 if(userModel!=null){
 
                     edt_coupon.setError(null);
-                Common.CloseKeyBoard(Add_Coupon_Activity.this,edt_coupon);
-                checkData("check");}
+                    Common.CloseKeyBoard(Add_Coupon_Activity.this,edt_coupon);
+                    checkData("check");}
 
             }
         });
@@ -136,7 +135,7 @@ preferences=Preferences.getInstance();
         ll_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-finish();
+                finish();
             }
         });
 
@@ -151,9 +150,9 @@ finish();
             Common.CloseKeyBoard(Add_Coupon_Activity.this,edt_coupon);
             SendCoupon(coupon,staus);
         }else
-            {
-                edt_coupon.setError(getString(R.string.field_req));
-            }
+        {
+            edt_coupon.setError(getString(R.string.field_req));
+        }
     }
     private void SendCoupon(String coupon, final String type)
     {
@@ -173,32 +172,32 @@ finish();
                             {
                                 CreateAlertDialog(getString(R.string.coupon_found));
                             }else
-                                {
-                                    if (response.body()!=null)
-                                    {
-                                        CreateAlertDialog(getString(R.string.coupon_used));
-                                        edt_coupon.setText("");
-                                        updateUserData(response.body());
-                                    }
-                                }
-                        }else
                             {
-                                try {
-                                    Log.e("error_code",response.code()+"_"+response.errorBody().string());
-                                }catch (Exception e){}
-
-                                if (response.code()==404)
+                                if (response.body()!=null)
                                 {
-                                    CreateAlertDialog(getString(R.string.coupon_not_found));
-                                }else
-                                    {
-                                        Toast.makeText(Add_Coupon_Activity.this, getString(R.string.something), Toast.LENGTH_SHORT).show();
+                                    CreateAlertDialog(getString(R.string.coupon_used));
+                                    edt_coupon.setText("");
+                                    updateUserData(response.body());
+                                }
+                            }
+                        }else
+                        {
+                            try {
+                                Log.e("error_code",response.code()+"_"+response.errorBody().string());
+                            }catch (Exception e){}
 
-
-                                    }
+                            if (response.code()==404)
+                            {
+                                CreateAlertDialog(getString(R.string.coupon_not_found));
+                            }else
+                            {
+                                Toast.makeText(Add_Coupon_Activity.this, getString(R.string.something), Toast.LENGTH_SHORT).show();
 
 
                             }
+
+
+                        }
                     }
 
                     @Override

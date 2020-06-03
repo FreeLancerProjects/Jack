@@ -20,7 +20,6 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-
 import com.endpoint.Jack.R;
 import com.endpoint.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity;
 import com.endpoint.Jack.models.NearDelegateDataModel;
@@ -167,13 +166,13 @@ public class Fragment_Details extends Fragment implements OnMapReadyCallback {
                 String path = "http://maps.google.com/maps?saddr="+sAdd+"&daddr="+dAdd;
 
                 try {
-                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(path));
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(path));
                     intent.setPackage("com.google.android.apps.maps");
                     startActivity(intent);
 
                 }catch (Exception e)
                 {
-                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(path));
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(path));
                     startActivity(intent);
 
                 }

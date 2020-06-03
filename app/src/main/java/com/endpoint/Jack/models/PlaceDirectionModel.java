@@ -2,6 +2,7 @@ package com.endpoint.Jack.models;
 
 import java.io.Serializable;
 import java.util.List;
+
 public class PlaceDirectionModel implements Serializable {
 
     private List<Route> routes;

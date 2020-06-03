@@ -63,7 +63,7 @@ public class Fragment_Shipment extends Fragment {
     private EditText edt_order_details;
     private UserSingleTone userSingleTone;
     private UserModel userModel;
-    private String place_id = "", place_pickup_address = "", place_dropoff_address = "", order_details = "";
+    private String place_id = "",place_name="", place_pickup_address = "", place_dropoff_address = "", order_details = "";
     private double place_pickup_lat = 0.0, place_pickup_long = 0.0, place_dropoff_lat = 0.0, place_dropoff_long = 0.0;
     private long selected_time = 0;
     private String delegate_id = "";
@@ -297,7 +297,7 @@ public class Fragment_Shipment extends Fragment {
         final ProgressDialog dialog = Common.createProgressDialog(activity, getString(R.string.wait));
         dialog.show();
         Api.getService(Tags.base_url)
-                .sendOrder(userModel.getData().getUser_id(),place_dropoff_address, place_dropoff_lat, place_dropoff_long, order_details, place_id, place_pickup_address, "2", place_pickup_lat, place_pickup_long, selected_time,coupon_id+"")
+                .sendOrder(userModel.getData().getUser_id(),place_dropoff_address, place_dropoff_lat, place_dropoff_long, order_details, place_id, place_pickup_address, "2", place_pickup_lat, place_pickup_long, selected_time,coupon_id+"",place_name)
                 .enqueue(new Callback<OrderIdDataModel>() {
                     @Override
                     public void onResponse(Call<OrderIdDataModel> call, Response<OrderIdDataModel> response) {
@@ -343,6 +343,8 @@ public class Fragment_Shipment extends Fragment {
         RequestBody place_dropoff_long_part = Common.getRequestBodyText(String.valueOf(place_dropoff_long));
         RequestBody order_details_part = Common.getRequestBodyText(order_details);
         RequestBody place_id_part = Common.getRequestBodyText(place_id);
+        RequestBody place_name_part = Common.getRequestBodyText(place_name);
+
         RequestBody place_pickup_address_part = Common.getRequestBodyText(place_pickup_address);
         RequestBody order_type_part = Common.getRequestBodyText("2");
         RequestBody place_pickup_lat_part = Common.getRequestBodyText(String.valueOf(place_pickup_lat));
@@ -357,7 +359,7 @@ public class Fragment_Shipment extends Fragment {
         final ProgressDialog dialog = Common.createProgressDialog(activity, getString(R.string.wait));
         dialog.show();
         Api.getService(Tags.base_url)
-                .sendOrderWithImage(user_id_part,place_dropoff_address_part, place_dropoff_lat_part, place_dropoff_long_part, order_details_part, place_id_part, place_pickup_address_part, order_type_part, place_pickup_lat_part, place_pickup_long_part, selected_time_part,copun_part,image_part)
+                .sendOrderWithImage(user_id_part,place_dropoff_address_part, place_dropoff_lat_part, place_dropoff_long_part, order_details_part, place_id_part, place_name_part,place_pickup_address_part, order_type_part, place_pickup_lat_part, place_pickup_long_part, selected_time_part,copun_part,image_part)
                 .enqueue(new Callback<OrderIdDataModel>() {
                     @Override
                     public void onResponse(Call<OrderIdDataModel> call, Response<OrderIdDataModel> response) {
@@ -386,12 +388,13 @@ public class Fragment_Shipment extends Fragment {
                 });
 
     }
-    public void setLocationData(String place_id, String place_address, double place_lat, double place_long, String type) {
+    public void setLocationData(String place_id, String place_name,String place_address, double place_lat, double place_long, String type) {
         if (type.equals("pickup_location")) {
             this.place_pickup_address = place_address;
             this.place_pickup_lat = place_lat;
             this.place_pickup_long = place_long;
             this.place_id = place_id;
+            this.place_name=place_name;
             tv_location_pickup.setText(place_address);
             tv_location_pickup.setError(null);
             img_delete1.setVisibility(View.VISIBLE);
@@ -401,6 +404,7 @@ public class Fragment_Shipment extends Fragment {
             this.place_dropoff_lat = place_lat;
             this.place_dropoff_long = place_long;
             this.place_id = place_id;
+            this.place_name=place_name;
             tv_location_dropoff.setText(place_address);
             tv_location_dropoff.setError(null);
             img_delete2.setVisibility(View.VISIBLE);
@@ -535,6 +539,7 @@ public class Fragment_Shipment extends Fragment {
         tv_location_dropoff.setText("");
         tv_location_dropoff.setHint(getString(R.string.dropoff_location));
         place_id = "";
+        place_name="";
         place_pickup_address = "";
         place_dropoff_address = "";
         order_details = "";

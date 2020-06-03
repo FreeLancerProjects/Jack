@@ -242,6 +242,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
+                android:visibility="gone"
                 android:background="@color/gray5"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -252,6 +253,7 @@
                 tools:ignore="RtlCompat,RtlSymmetry"
                 android:background="@color/white"
 
+                android:visibility="gone"
                 >
                 <TextView
                     android:layout_width="wrap_content"
@@ -283,48 +285,9 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
+                android:visibility="gone"
                 android:background="@color/gray5"/>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cons_banks"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:paddingStart="16dp"
-                tools:ignore="RtlCompat,RtlSymmetry"
-                android:background="@color/white"
-
-                >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:text="@string/bank_accounts"
-                    android:clickable="false"
-                    android:longClickable="false"
-                    />
-
-                <ImageView
-                    android:id="@+id/arrow8"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:src="@drawable/ic_right_arrow"
-                    android:clickable="false"
-                    android:longClickable="false"
-                    android:padding="13dp"
-                    />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/gray5"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cons_privacy"
@@ -333,6 +296,7 @@
                 android:paddingStart="16dp"
                 tools:ignore="RtlCompat,RtlSymmetry"
                 android:background="@color/white"
+                android:visibility="gone"
 
                 >
                 <TextView
@@ -413,6 +377,7 @@
                 android:gravity="center_vertical"
                 android:text="@string/help"
                 android:textSize="16sp"
+                android:visibility="gone"
                 android:textStyle="bold"
                 />
 
@@ -424,6 +389,7 @@
                 tools:ignore="RtlCompat,RtlSymmetry"
                 android:background="@color/white"
 
+                android:visibility="visible"
                 >
                 <TextView
                     android:layout_width="wrap_content"

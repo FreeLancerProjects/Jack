@@ -213,7 +213,7 @@ public class SignInActivity extends AppCompatActivity {
     public void NavigateToTermsActivity()
     {
         Intent intent = new Intent(this, TermsConditionsActivity.class);
-        intent.putExtra("type",1);
+        intent.putExtra("type",3);
         startActivity(intent);
         if (current_lang.equals("ar"))
         {

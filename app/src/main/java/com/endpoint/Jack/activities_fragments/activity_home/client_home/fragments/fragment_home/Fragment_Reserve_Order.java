@@ -573,6 +573,8 @@ public class Fragment_Reserve_Order extends Fragment {
         RequestBody client_lng_part = Common.getRequestBodyText(String.valueOf(selected_location.getLng()));
         RequestBody order_details_part = Common.getRequestBodyText(order_details);
         RequestBody place_id_part = Common.getRequestBodyText(placeModel.getPlace_id());
+        RequestBody place_name_part = Common.getRequestBodyText(placeModel.getName());
+
         RequestBody place_address_part = Common.getRequestBodyText(placeModel.getAddress());
         RequestBody order_type_part = Common.getRequestBodyText("1");
         RequestBody place_lat_part = Common.getRequestBodyText(String.valueOf(placeModel.getLat()));
@@ -584,7 +586,7 @@ public class Fragment_Reserve_Order extends Fragment {
         final ProgressDialog dialog = Common.createProgressDialog(activity,getString(R.string.wait));
         dialog.show();
         Api.getService(Tags.base_url)
-                .sendOrderWithImage(user_id_part,client_address_part,client_lat_part,client_lng_part,order_details_part,place_id_part,place_address_part,order_type_part,place_lat_part,place_lng_part,selected_time_part,copun_part,image_part)
+                .sendOrderWithImage(user_id_part,client_address_part,client_lat_part,client_lng_part,order_details_part,place_id_part,place_name_part,place_address_part,order_type_part,place_lat_part,place_lng_part,selected_time_part,copun_part,image_part)
                 .enqueue(new Callback<OrderIdDataModel>() {
                     @Override
                     public void onResponse(Call<OrderIdDataModel> call, Response<OrderIdDataModel> response) {
@@ -630,7 +632,7 @@ public class Fragment_Reserve_Order extends Fragment {
         final ProgressDialog dialog = Common.createProgressDialog(activity,getString(R.string.wait));
         dialog.show();
         Api.getService(Tags.base_url)
-                .sendOrder(userModel.getData().getUser_id(),selected_location.getStreet()+" "+selected_location.getAddress(),selected_location.getLat(),selected_location.getLng(),order_details,placeModel.getPlace_id(),placeModel.getAddress(),"1",placeModel.getLat(),placeModel.getLng(),selected_time,coupon_id+"")
+                .sendOrder(userModel.getData().getUser_id(),selected_location.getStreet()+" "+selected_location.getAddress(),selected_location.getLat(),selected_location.getLng(),order_details,placeModel.getPlace_id(),placeModel.getAddress(),"1",placeModel.getLat(),placeModel.getLng(),selected_time,coupon_id+"",placeModel.getName())
                 .enqueue(new Callback<OrderIdDataModel>() {
                     @Override
                     public void onResponse(Call<OrderIdDataModel> call, Response<OrderIdDataModel> response) {
@@ -978,6 +980,6 @@ public class Fragment_Reserve_Order extends Fragment {
     public void updateUserData(UserModel userModel) {
         this.userModel=userModel;
         userSingleTone.setUserModel(userModel);
-        cons_add_coupon.setVisibility(View.GONE);
+     //   cons_add_coupon.setVisibility(View.GONE);
     }
 }

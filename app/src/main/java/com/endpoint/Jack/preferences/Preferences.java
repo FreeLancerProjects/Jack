@@ -216,7 +216,21 @@ public class Preferences {
         return preferences.getString("time","");
     }
 
+    public void saveVisitdelegete(Context context,int accept)
+    {
+        SharedPreferences preferences = context.getSharedPreferences("visitdelegete",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("delegete",accept);
+        editor.apply();
+    }
 
+
+
+    public int getVisitVisitdelegete(Context context)
+    {
+        SharedPreferences preferences = context.getSharedPreferences("visitdelegete",Context.MODE_PRIVATE);
+        return preferences.getInt("delegete",1);
+    }
     public void saveChatUserData(Context context, ChatUserModel chatUserModel)
     {
         SharedPreferences preferences = context.getSharedPreferences("chat_user",Context.MODE_PRIVATE);

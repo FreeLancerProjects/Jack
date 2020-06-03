@@ -28,8 +28,10 @@ public class NotificationModel implements Serializable {
     private String order_image;
     private List<Drivers> driver_list;
 
-
-
+    public NotificationModel(String title_notification, String order_status) {
+        this.title_notification = title_notification;
+        this.order_status = order_status;
+    }
 
     public String getId_notification() {
         return id_notification;

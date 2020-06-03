@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,14 +21,11 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.endpoint.Jack.R;
-import com.endpoint.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity;
 import com.endpoint.Jack.adapters.ReviewsAdapter;
 import com.endpoint.Jack.adapters.ReviewsCategoryAdapter;
 import com.endpoint.Jack.language.Language_Helper;
 import com.endpoint.Jack.models.CategoryModel;
-import com.endpoint.Jack.models.NotificationModel;
 import com.endpoint.Jack.models.PlaceDetailsModel;
 import com.endpoint.Jack.models.ReviewsCategoryModel;
 import com.endpoint.Jack.models.UserModel;
@@ -38,7 +34,6 @@ import com.endpoint.Jack.remote.Api;
 import com.endpoint.Jack.share.Common;
 import com.endpoint.Jack.tags.Tags;
 import com.iarcuschin.simpleratingbar.SimpleRatingBar;
-import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -53,7 +48,7 @@ import retrofit2.Response;
 
 public class ReviewsActivity extends AppCompatActivity {
     private CategoryModel.Data data;
-private List<ReviewsCategoryModel.Data> rDataList;
+    private List<ReviewsCategoryModel.Data> rDataList;
     private ImageView arrow;
     private LinearLayout ll_back;
     private String current_lang;
@@ -119,14 +114,14 @@ private List<ReviewsCategoryModel.Data> rDataList;
         recView.setLayoutManager(new LinearLayoutManager(this));
         if(data!=null){
             if(userModel!=null){
-            tv_rate.setVisibility(View.VISIBLE);}
+                tv_rate.setVisibility(View.VISIBLE);}
             reviewsCategoryAdapter=new ReviewsCategoryAdapter(rDataList,this);
             recView.setAdapter(reviewsCategoryAdapter);
             getRevuews();
         }
         else {
-        adapter = new ReviewsAdapter(placeDetails.getReviews(),this);
-        recView.setAdapter(adapter);}
+            adapter = new ReviewsAdapter(placeDetails.getReviews(),this);
+            recView.setAdapter(adapter);}
         tv_rate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -152,14 +147,14 @@ private List<ReviewsCategoryModel.Data> rDataList;
     public void getRevuews() {
         //   Common.CloseKeyBoard(homeActivity, edt_name);
         rDataList.clear();
-reviewsCategoryAdapter.notifyDataSetChanged();
+        reviewsCategoryAdapter.notifyDataSetChanged();
         // rec_sent.setVisibility(View.GONE);
         // progBar.setVisibility(View.VISIBLE);
         Api.getService(Tags.base_url)
                 .getreview(data.getCategory_id()+"")
                 .enqueue(new Callback<ReviewsCategoryModel>() {
                     @Override
-                    public void onResponse(Call<ReviewsCategoryModel>  call, Response<ReviewsCategoryModel> response) {
+                    public void onResponse(Call<ReviewsCategoryModel> call, Response<ReviewsCategoryModel> response) {
                         //  progBar.setVisibility(View.GONE);
                         if (response.isSuccessful() && response.body() != null && response.body().getData() != null) {
                             rDataList.clear();
@@ -217,7 +212,7 @@ reviewsCategoryAdapter.notifyDataSetChanged();
         final EditText edt_comment = view.findViewById(R.id.edt_comment);
         final TextView tv_rate = view.findViewById(R.id.tv_rate);
         final Button btn_rate = view.findViewById(R.id.btn_rate);
-      //  Picasso.with(this).load(Uri.parse(Tags.IMAGE_URL+notificationModel.getFrom_user_image())).fit().into(image);
+        //  Picasso.with(this).load(Uri.parse(Tags.IMAGE_URL+notificationModel.getFrom_user_image())).fit().into(image);
         tv_name.setText(data.getWord().getTitle());
 
 
@@ -228,7 +223,7 @@ reviewsCategoryAdapter.notifyDataSetChanged();
             @Override
             public void onClick(View v) {
                 String comment = edt_comment.getText().toString().trim();
-               float rate=simpleRatingBar.getRating();
+                float rate=simpleRatingBar.getRating();
                 AddRate(dialog,data,rate,comment);
             }
         });

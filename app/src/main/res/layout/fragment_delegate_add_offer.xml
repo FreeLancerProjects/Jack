@@ -62,7 +62,7 @@
                                 android:longClickable="false"
                                 android:padding="8dp"
                                 android:src="@drawable/ic_left_arrow"
-                                android:tint="@color/white" />
+                                android:tint="@color/black" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -71,7 +71,7 @@
                                 android:clickable="false"
                                 android:longClickable="false"
                                 android:text="@string/back"
-                                android:textColor="@color/white"
+                                android:textColor="@color/black"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
@@ -115,7 +115,7 @@
                             android:gravity="center"
                             android:textSize="15sp"
                             android:textStyle="bold"
-                            android:textColor="@color/white"
+                            android:textColor="@color/black"
 
 
                             />
@@ -142,6 +142,50 @@
                 android:paddingRight="30dp"
 
                 >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    android:layout_marginTop="5dp"
+                    >
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
+                        >
+                        <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:src="@drawable/ic_restaurant"
+                            android:padding="8dp"
+                            android:tint="@color/black"
+                            />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/place_name"
+                            android:textColor="@color/black"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+
+                            />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_rest_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.8"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:layout_gravity="center_vertical"
+                        />
+                </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -153,7 +197,7 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/ic_details"
-                        android:tint="@color/colorPrimary" />
+                        android:tint="@color/black" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -161,7 +205,7 @@
                         android:layout_marginLeft="3dp"
                         android:layout_marginRight="3dp"
                         android:text="@string/order_details"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/black"
                         android:textSize="15sp" />
                 </LinearLayout>
 
@@ -186,7 +230,7 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/ic_map"
-                        android:tint="@color/colorPrimary" />
+                        android:tint="@color/black" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -194,7 +238,7 @@
                         android:layout_marginLeft="3dp"
                         android:layout_marginRight="3dp"
                         android:text="@string/address"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/black"
                         android:textSize="15sp" />
                 </LinearLayout>
 
@@ -237,7 +281,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/colorPrimary"
+                                android:textColor="@color/black"
                                 android:textStyle="bold"
                                 android:textSize="13sp"
                                 android:text="@string/receiving_location"
@@ -318,14 +362,13 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/ic_delivery"
-                        android:tint="@color/colorPrimary" />
+                        android:tint="@color/black" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -333,7 +376,7 @@
                         android:layout_marginLeft="3dp"
                         android:layout_marginRight="3dp"
                         android:text="@string/delivery_cost"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/black"
                         android:textSize="15sp" />
                 </LinearLayout>
 
@@ -351,6 +394,53 @@
                     android:textColor="@color/colorPrimary"
                     android:textColorHint="@color/gray4"
                     android:textSize="14sp" />
+                <FrameLayout
+                    android:id="@+id/fl_map"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/btn_show_map"
+                    android:layout_marginBottom="15dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+
+                    >
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal"
+                        android:clickable="false"
+                        android:longClickable="false"
+
+                        >
+                        <ImageView
+                            android:id="@+id/image_arrow"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:src="@drawable/ic_left_arrow"
+                            android:padding="7dp"
+                            android:clickable="false"
+                            android:longClickable="false"
+                            android:tint="@color/white"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:clickable="false"
+                            android:longClickable="false"
+                            android:paddingStart="5dp"
+                            android:paddingEnd="5dp"
+                            android:text="@string/show_address_on_map"
+                            android:textColor="@color/white"
+                            android:textSize="15sp"
+                            android:gravity="center_vertical"
+
+                            />
+                    </LinearLayout>
+                </FrameLayout>
 
             </LinearLayout>
 
@@ -369,19 +459,22 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/colorPrimary"
+            android:background="@color/active"
             android:text="@string/accept"
             android:textColor="@color/white"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+
+            />
 
         <Button
             android:id="@+id/btn_refused"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/gray1"
+            android:background="@color/white"
             android:text="@string/refuse"
             android:textColor="@color/delete_color"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

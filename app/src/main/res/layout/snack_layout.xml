@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="3"
+    android:background="#FDD835"
+    android:padding="5dp"
+    >
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_weight=".4"
+        android:layout_height="45dp"
+        android:src="@drawable/ic_info"
+        android:tint="@color/white"
+        android:padding="10dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_msg"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="13sp"
+        />
+    <Button
+        android:id="@+id/btn_undo"
+        android:layout_width="0dp"
+        android:layout_weight=".6"
+        android:layout_height="35dp"
+        android:layout_gravity="center_vertical"
+        android:background="@color/transparent"
+        android:textSize="13sp"
+        android:textColor="@color/colorPrimary"
+        android:text="Undo"
+        />
+</LinearLayout>

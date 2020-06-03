@@ -1,14 +1,5 @@
 package com.endpoint.Jack.activities_fragments.activity_fragment_category;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentManager;
-import androidx.viewpager.widget.ViewPager;
-
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -36,6 +27,15 @@ import android.widget.NumberPicker;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.ViewPager;
 
 import com.endpoint.Jack.R;
 import com.endpoint.Jack.activities_fragments.activity_home.client_home.fragments.fragment_home.Fragment_Map;
@@ -98,8 +98,8 @@ public class CategoryActivity extends AppCompatActivity {
     private String [] timesList;
     private SingleCategoryModel singlecategory;
     private EditText edt_order_details;
-private Preferences preference;
-private UserModel userModel;
+    private Preferences preference;
+    private UserModel userModel;
     private String order_details;
     private FloatingActionButton fab;
     private final int IMG1=3,IMG2=4;
@@ -171,8 +171,8 @@ private UserModel userModel;
                         Common.CreateSignAlertDialog(CategoryActivity.this,getString(R.string.serv_aval_client));
                     }
                     else {
-                    Intent intent=new Intent(CategoryActivity.this,Add_Coupon_Activity.class);
-                startActivityForResult(intent,2);}}
+                        Intent intent=new Intent(CategoryActivity.this,Add_Coupon_Activity.class);
+                        startActivityForResult(intent,2);}}
                 else {
                     Common.CreateUserNotSignInAlertDialog(CategoryActivity.this);
                 }
@@ -182,9 +182,9 @@ private UserModel userModel;
             @Override
             public void onClick(View view) {
 
-                    Intent intent=new Intent(CategoryActivity.this, ReviewsActivity.class);
-                    intent.putExtra("datas",data);
-                    startActivityForResult(intent,2);
+                Intent intent=new Intent(CategoryActivity.this, ReviewsActivity.class);
+                intent.putExtra("datas",data);
+                startActivityForResult(intent,2);
 
             }
         });
@@ -235,7 +235,7 @@ private UserModel userModel;
                     Common.CreateSignAlertDialog(CategoryActivity.this,getString(R.string.serv_aval_client));
                 }
                 else {
-                CheckData();}}
+                    CheckData();}}
             else {
                 Common.CreateUserNotSignInAlertDialog(CategoryActivity.this);
             }
@@ -245,14 +245,14 @@ private UserModel userModel;
     }
     private void CheckData() {
 
-    order_details = edt_order_details.getText().toString().trim();
+        order_details = edt_order_details.getText().toString().trim();
         if(!TextUtils.isEmpty(order_details)&&selectedLocation!=null&&!selectedLocation.getAddress().isEmpty()&&selected_time!=0)
 
-    {
-        edt_order_details.setError(null);
-        tv_time.setError(null);
-        tv_address.setError(null);
-        Common.CloseKeyBoard(this, edt_order_details);
+        {
+            edt_order_details.setError(null);
+            tv_time.setError(null);
+            tv_address.setError(null);
+            Common.CloseKeyBoard(this, edt_order_details);
             /*if (TextUtils.isEmpty(delegate_id))
             {
                 activity.DisplayFragmentDelegates(placeModel.getLat(),placeModel.getLng(),"reserve_order","","");
@@ -262,16 +262,16 @@ private UserModel userModel;
                 }*/
 
 
-        if (uri==null)
-        {
-            sendOrder();
+            if (uri==null)
+            {
+                sendOrder();
 
-        }else
-        {
-            sendOrderWithImage();
-        }
+            }else
+            {
+                sendOrderWithImage();
+            }
 
-    }else {
+        }else {
             if (TextUtils.isEmpty(order_details)) {
                 edt_order_details.setError(getString(R.string.field_req));
 
@@ -431,8 +431,8 @@ private UserModel userModel;
         tv_rate.setText(body.getData().get(0).getRate() + "");
         simpleRatingBar.setIndicator(false);
         simpleRatingBar.setRating(body.getData().get(0).getRate());
-        tv_time.setText(body.getData().get(0).getDays().get(0).getFrom_time() + ":" + body.getData().get(0).getDays().get(0).getTo_time());
-      //    tv_status.setText(body.getData().get(0).getDays().get(0).getStatus());
+         //   tv_time.setText(body.getData().get(0).getDays().get(0).getFrom_time() + ":" + body.getData().get(0).getDays().get(0).getTo_time());
+        //    tv_status.setText(body.getData().get(0).getDays().get(0).getStatus());
 
     }
 
@@ -468,7 +468,7 @@ private UserModel userModel;
         final ProgressDialog dialog = Common.createProgressDialog(this,getString(R.string.wait));
         dialog.show();
         Api.getService(Tags.base_url)
-                .sendOrder(userModel.getData().getUser_id(),selectedLocation.getAddress()+" "+selectedLocation.getAddress(),selectedLocation.getLat(),selectedLocation.getLng(),order_details,singlecategory.getData().get(0).getPlace_id()+"",singlecategory.getData().get(0).getAddress(),"1",singlecategory.getData().get(0).getGoogle_lat(),singlecategory.getData().get(0).getGoogle_long(),selected_time,coupon_id+"")
+                .sendOrder(userModel.getData().getUser_id(),selectedLocation.getAddress()+" "+selectedLocation.getAddress(),selectedLocation.getLat(),selectedLocation.getLng(),order_details,singlecategory.getData().get(0).getPlace_id()+"",singlecategory.getData().get(0).getAddress(),"1",singlecategory.getData().get(0).getGoogle_lat(),singlecategory.getData().get(0).getGoogle_long(),selected_time,coupon_id+"",singlecategory.getData().get(0).getCategory_id())
                 .enqueue(new Callback<OrderIdDataModel>() {
                     @Override
                     public void onResponse(Call<OrderIdDataModel> call, Response<OrderIdDataModel> response) {
@@ -507,9 +507,9 @@ private UserModel userModel;
                 selectedLocation = (SelectedLocation) data.getSerializableExtra("location");
                 if (selectedLocation != null) {
                     if(selectedLocation.getAddress()!=null&&!selectedLocation.getAddress().isEmpty()){
-                    tv_address.setText(selectedLocation.getAddress());
-                    tv_addess.setText(selectedLocation.getAddress().substring(0,selectedLocation.getAddress().length()/2 ));
-                }}
+                        tv_address.setText(selectedLocation.getAddress());
+                        tv_addess.setText(selectedLocation.getAddress().substring(0,selectedLocation.getAddress().length()/2 ));
+                    }}
             }
         }
         else if(requestCode==2){
@@ -612,7 +612,7 @@ private UserModel userModel;
             public void onClick(View v) {
                 dialog.dismiss();
                 //  activity.FollowOrder();
-finish();
+                finish();
 
 
 
@@ -766,6 +766,8 @@ finish();
         RequestBody client_lng_part = Common.getRequestBodyText(String.valueOf(selectedLocation.getLng()));
         RequestBody order_details_part = Common.getRequestBodyText(order_details);
         RequestBody place_id_part = Common.getRequestBodyText(singlecategory.getData().get(0).getPlace_id()+"");
+        RequestBody place_name_part = Common.getRequestBodyText(singlecategory.getData().get(0).getCategory_id()+"");
+
         RequestBody place_address_part = Common.getRequestBodyText(selectedLocation.getAddress());
         RequestBody order_type_part = Common.getRequestBodyText("1");
         RequestBody place_lat_part = Common.getRequestBodyText(String.valueOf(selectedLocation.getLat()));
@@ -777,7 +779,7 @@ finish();
         final ProgressDialog dialog = Common.createProgressDialog(this,getString(R.string.wait));
         dialog.show();
         Api.getService(Tags.base_url)
-                .sendOrderWithImage(user_id_part,client_address_part,client_lat_part,client_lng_part,order_details_part,place_id_part,place_address_part,order_type_part,place_lat_part,place_lng_part,selected_time_part,copun_part,image_part)
+                .sendOrderWithImage(user_id_part,client_address_part,client_lat_part,client_lng_part,order_details_part,place_id_part,place_name_part,place_address_part,order_type_part,place_lat_part,place_lng_part,selected_time_part,copun_part,image_part)
                 .enqueue(new Callback<OrderIdDataModel>() {
                     @Override
                     public void onResponse(Call<OrderIdDataModel> call, Response<OrderIdDataModel> response) {

@@ -46,37 +46,9 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <fr.castorflex.android.smoothprogressbar.SmoothProgressBar
-        android:id="@+id/smoothprogressbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:spb_mirror_mode="false"
-        app:spb_reversed="false"
-        app:spb_interpolator="spb_interpolator_decelerate"
-        app:spb_color="@color/colorPrimary"
-        app:spb_sections_count="4"
-        android:indeterminate="true"
-        app:spb_speed="1.0"
-        app:spb_stroke_width="4dp"
-        app:spb_progressiveStart_speed="1.0"
-        app:spb_progressiveStop_speed="3.4"
-        app:spb_progressiveStart_activated="true"
+    <WebView  xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/webview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         />
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none"
-        android:fitsSystemWindows="true"
-        android:fillViewport="true"
-        >
-        <TextView
-            android:id="@+id/tv_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textColor="@color/black"
-            android:textSize="17sp"
-            />
-
-    </ScrollView>
 </LinearLayout>

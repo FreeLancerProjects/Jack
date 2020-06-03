@@ -1,6 +1,10 @@
 package com.endpoint.Jack.models;
 
+import com.google.android.gms.maps.model.LatLng;
+import com.google.maps.android.SphericalUtil;
+
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.List;
 
 public class PlaceModel implements Serializable {
@@ -15,7 +19,13 @@ public class PlaceModel implements Serializable {
     private boolean isOpenNow;
     private List<String> weekday_text;
     private List<PhotosModel> photosList;
-
+    public static Comparator<PlaceModel> distanceComparator = new Comparator<PlaceModel>() {
+        @Override
+        public int compare(PlaceModel jc1, PlaceModel jc2) {
+            return (SphericalUtil.computeDistanceBetween(new LatLng(LocationModel.getLocation().getLatitude(),LocationModel.getLocation().getLongitude()),new LatLng(jc2.getLat(),jc2.getLng())) < SphericalUtil.computeDistanceBetween(new LatLng(LocationModel.getLocation().getLatitude(),LocationModel.getLocation().getLongitude()),new LatLng(jc1.getLat(),jc1.getLng())) ? 1 :
+                    (SphericalUtil.computeDistanceBetween(new LatLng(LocationModel.getLocation().getLatitude(),LocationModel.getLocation().getLongitude()),new LatLng(jc2.getLat(),jc2.getLng())) == SphericalUtil.computeDistanceBetween(new LatLng(LocationModel.getLocation().getLatitude(),LocationModel.getLocation().getLongitude()),new LatLng(jc1.getLat(),jc1.getLng()))? 0 : -1));
+        }
+    };
     public PlaceModel(String id, String place_id, String name, String icon, List<PhotosModel> photosList, float rating, double lat, double lng, String address) {
         this.id = id;
         this.place_id = place_id;
