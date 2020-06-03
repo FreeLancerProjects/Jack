@@ -99,6 +99,12 @@
             android:launchMode="singleTask"
             android:taskAffinity="" />
         <activity
+            android:name=".activities_fragments.about.AboutActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:taskAffinity="" />
+        <activity
             android:name="com.endpoint.Jack.activities_fragments.activity_chat.ChatActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:excludeFromRecents="true"
