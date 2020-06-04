@@ -1346,6 +1346,11 @@ getOrder();
 
                                 }else
                                 {
+                                    try {
+                                        Log.e("jhhhhhh",response.errorBody().string());
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
                                     Toast.makeText(ChatActivity.this,R.string.failed, Toast.LENGTH_SHORT).show();
                                 }
 
