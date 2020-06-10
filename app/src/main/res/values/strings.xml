@@ -72,7 +72,7 @@
     <string name="pers_photo_req">Personal photo required</string>
     <string name="inv_email">Invalid email</string>
     <string name="inc_img_path">incorrect image path</string>
-    <string name="allow_mrsoolk_to_access_gps">Allow Fast One To Access GPS</string>
+    <string name="allow_mrsoolk_to_access_gps">Allow Jack To Access GPS</string>
     <string name="allow">Allow</string>
     <string name="deny">Deny</string>
     <string name="rate">Rate</string>
@@ -209,8 +209,8 @@
     <string name="type_a_message">Type a message</string>
     <string name="new_order_sent">New order sent</string>
     <string name="offer_accepted">Offer accepted</string>
-    <string name="shipment">Fast One package</string>
-    <string name="do_you_have_a_purpose_that_you_want_to_be_assigned_to_any_place_in_your_city_the_shipment_provide_this_service">Got a small package that you want to send somewhere in your city? Fast One package allows you to do just that!</string>
+    <string name="shipment">Jack package</string>
+    <string name="do_you_have_a_purpose_that_you_want_to_be_assigned_to_any_place_in_your_city_the_shipment_provide_this_service">Got a small package that you want to send somewhere in your city? Jack package allows you to do just that!</string>
     <string name="receiving_and_delivery_location">Dropoff &amp; Pickup</string>
     <string name="receiving_location">Pickup location</string>
     <string name="choose">Choose</string>
@@ -246,7 +246,7 @@
     <string name="coupon_not_found">Coupon not found!</string>
     <string name="coupon_found">Coupon found!</string>
     <string name="coupon_used">Coupon used successfully</string>
-    <string name="how_to_become_a_courier_in_marsoolk">How to become a Courier in Fast One ?</string>
+    <string name="how_to_become_a_courier_in_marsoolk">How to become a Courier in Jack ?</string>
     <string name="click_here">Click here</string>
     <string name="doc_form_txt">Before filling in the form, please see the following pictures. You can document your account and get the blue badge on your profile. Authentication is used to prove the identity of the conductors so that they are dealt with safely!</string>
     <string name="previous2">Previous</string>
@@ -272,7 +272,7 @@
     <string name="remaining_time">Remaining time</string>
     <string name="min2">min</string>
     <string name="Admin">Admin</string>
-    <string name="Admins">We are glad to have you joined the "Fast One" team.
+    <string name="Admins">We are glad to have you joined the "Jack" team.
 We inform you that the application commission (20%) is calculated on a single trip, and is transferred to our bank accounts shown in the application.</string>
     <string name="req_acc_as_cour">Your request has been accepted as a Courier</string>
     <string name="rej_as_cour">Sorry, your request was rejected as a Courier</string>
@@ -287,7 +287,7 @@ We inform you that the application commission (20%) is calculated on a single tr
     <string name="account_name">Account Name</string>
     <string name="all_products">All products</string>
     <string name="Just_decide">Just decide where to receive the product and where to deliver and leave it to us</string>
-    <string name="Welcome_to_Jack">Welcome to Fast One</string>
+    <string name="Welcome_to_Jack">Welcome to Jack</string>
     <string name="We_deliver_orders_anytime_anywhere">We deliver orders anytime, anywhere</string>
     <string name="best_offer">Best Offer</string>
     <string name="We_show">We show you the best offers on many products and in many categories</string>

@@ -69,7 +69,7 @@
     <string name="pers_photo_req">الصورة الشخصية مطلوبة</string>
     <string name="inv_email">البريد الالكتروني غير صحيح</string>
     <string name="inc_img_path">مسار الصورة غير صحيح</string>
-    <string name="allow_mrsoolk_to_access_gps">السماح لسريع ون للوصول لل GPS</string>
+    <string name="allow_mrsoolk_to_access_gps">السماح لجاك للوصول لل GPS</string>
     <string name="allow">السماح</string>
     <string name="deny">رفض</string>
     <string name="rate">التقييم</string>
@@ -192,7 +192,7 @@
     <string name="delivering_order">جار توصيل طلبك</string>
     <string name="delivering_order_to_your_destination">جار توصيل طلبك للوجهة المحددة</string>
     <string name="order_delivered_successfully">تم توصيل طلبك بنجاح</string>
-    <string name="we_are_pleased_to_serve_you">شكرا لك على طلبك من تطبيق سريع ون اسعدتنا خدمتك</string>
+    <string name="we_are_pleased_to_serve_you">شكرا لك على طلبك من تطبيق جاك اسعدتنا خدمتك</string>
     <string name="courier">المندوب</string>
     <string name="no_comments_to_display">لا توجد تعليقات لعرضها</string>
     <string name="update_order_state">تعديل حالة الطلب</string>
@@ -206,8 +206,8 @@
     <string name="type_a_message">اكتب رسالتك</string>
     <string name="new_order_sent">تم إرسال طلب جديد</string>
     <string name="offer_accepted">تم الموافقة على عرض التوصيل</string>
-    <string name="shipment">طرد سريع ون</string>
-    <string name="do_you_have_a_purpose_that_you_want_to_be_assigned_to_any_place_in_your_city_the_shipment_provide_this_service">عندك غرض ودك ترسلة لاي مكان في مدينتك ؟ طرد سريع ون يقدم لك هالخدمة</string>
+    <string name="shipment">طرد جاك</string>
+    <string name="do_you_have_a_purpose_that_you_want_to_be_assigned_to_any_place_in_your_city_the_shipment_provide_this_service">عندك غرض ودك ترسلة لاي مكان في مدينتك ؟ طرد جاك يقدم لك هالخدمة</string>
     <string name="receiving_and_delivery_location">موقع الاستلام والتسليم</string>
     <string name="receiving_location">موقع الاستلام</string>
     <string name="choose">إختر</string>
@@ -243,7 +243,7 @@
     <string name="coupon_not_found">لم أعثر على كوبون!</string>
     <string name="coupon_found">تم العثور على رقم الكوبون!</string>
     <string name="coupon_used">تم إستخدام الكوبون بنجاح</string>
-    <string name="how_to_become_a_courier_in_marsoolk">نموذج توثيق مندوب في تطبيق سريع ون</string>
+    <string name="how_to_become_a_courier_in_marsoolk">نموذج توثيق مندوب في تطبيق جاك</string>
     <string name="click_here">إضغط هنا!</string>
     <string name="doc_form_txt">قبل تعبئة الاستمارة نرجو منكم الاطلاع على الصور التالية.الان بإمكانك توثيق حسابك والحصول على الشارة الزرقاء في ملفك الشخصي. يستخدم التوثيق لإثبات هوية الموصلين وذلك حتى يتم التعامل معهم بكل امان!</string>
     <string name="previous2">السابق</string>
@@ -268,8 +268,8 @@
     <string name="follow_your_order">تتبع طلبك</string>
     <string name="remaining_time">الوقت المتبقي</string>
     <string name="min2">دقيقة</string>
-    <string name="Admin">إدارة سريع ون</string>
-    <string name="Admins">نسعد بانضمامك لفريق "سريع ون ".
+    <string name="Admin">إدارة جاك</string>
+    <string name="Admins">نسعد بانضمامك لفريق "جاك ".
 ونفيدك بأن عمولة التطبيق (٢٠٪) تحسب على المشوار الواحد ، يتم تحويلها على حساباتنا البنكية الموضحة في التطبيق.</string>
     <string name="req_acc_as_cour">تم قبول طلبك كمندوب</string>
     <string name="rej_as_cour">عفوا، تم رفض طلبك كمندوب.</string>
@@ -284,7 +284,7 @@
     <string name="account_name">إسم الحساب</string>
     <string name="all_products">كل المنتجات</string>
     <string name="Just_decide">فقط حدد مكان استلام المنتج ومكان التسليم ودع الامر الينا</string>
-    <string name="Welcome_to_Jack">اهلا بك فى سريع ون</string>
+    <string name="Welcome_to_Jack">اهلا بك فى جاك</string>
     <string name="We_deliver_orders_anytime_anywhere">نقوم بتوصيل الطلبات فى اى وقت والى اى مكان</string>
     <string name="best_offer">افضل العروض</string>
     <string name="We_show">نعرض لك افضل العروض على العديد من المنتجات وفى كثير من التصنيفات</string>
