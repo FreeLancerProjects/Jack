@@ -27,6 +27,7 @@ import com.endpoint.Jack.activities_fragments.telr_activity.TelrActivity;
 import com.endpoint.Jack.models.PayPalLinkModel;
 import com.endpoint.Jack.models.SocialMediaModel;
 import com.endpoint.Jack.models.UserModel;
+import com.endpoint.Jack.preferences.Preferences;
 import com.endpoint.Jack.remote.Api;
 import com.endpoint.Jack.share.Common;
 import com.endpoint.Jack.singletone.UserSingleTone;
@@ -354,8 +355,10 @@ cons_pay.setOnClickListener(new View.OnClickListener() {
     }
 
     public void updateUserData(UserModel userModel) {
+        Preferences.getInstance().create_update_userData(activity,userModel);
         this.userModel = userModel;
         userSingleTone.setUserModel(userModel);
+
         updateUI(userModel);
     }
 
@@ -411,7 +414,12 @@ if(userModel.getData().getAccount_balance()!=0.0) {
 
 
                         } else {
+                            try {
 
+                                Log.e("error", response.code() + "_" + response.errorBody().string());
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                             if (response.code() == 500) {
                                 Toast.makeText(activity, "Server Error", Toast.LENGTH_SHORT).show();
 
