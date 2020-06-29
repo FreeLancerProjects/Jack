@@ -238,6 +238,7 @@ public interface Service {
 
     @GET("/api/clientOrders")
     Call<OrderDataModel> getClientOrders(@Query("user_id") String user_id, @Query("order_type") String order_type, @Query("page") int page);
+
     @GET("/api/clientOrders")
     Call<OrderModel> getClientOrders(@Query("order_id") String order_id);
 
@@ -446,18 +447,20 @@ public interface Service {
     );
 
     @FormUrlEncoded
-    @POST("http://jacmart.net/api/online-payment")
+    @POST("http://sub.jacmart.net/api/online-payment")
     Call<PayPalLinkModel> getPayPalLink(
             @Field("user_id") String user_id,
             @Field("user_type") String user_type,
             @Field("amount") double amount
     );
+
     @FormUrlEncoded
     @POST("/api/deleteOrder")
     Call<ResponseBody> DelteOrder(
             @Field("user_id") String user_id,
             @Field("order_id") String order_id
     );
+
     @FormUrlEncoded
     @POST("http://sub.jacmart.net/api/online-payment-bill")
     Call<PayPalLinkModel> getbillpay(
