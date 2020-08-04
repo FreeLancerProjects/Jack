@@ -733,8 +733,6 @@
                                 android:padding="12dp"
                                 android:src="@drawable/ic_checked"
                                 android:visibility="visible"
-
-
                                 />
                         </LinearLayout>
 
