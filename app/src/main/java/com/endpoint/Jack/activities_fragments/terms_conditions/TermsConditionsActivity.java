@@ -83,11 +83,11 @@ public class TermsConditionsActivity extends AppCompatActivity {
 
     private void updateTermsContent() {
         if (current_lang.equals("ar")) {
-            url = "http://quick.com.sa/Web/appDetails?type=3&lang=ar";
+            url = "http://jacmart.net/Web/appDetails?type=3&lang=ar";
             tv_title.setText("الشروط والأحكام");
 
         } else {
-            url="http://quick.com.sa/Web/appDetails?type=3&lang=en";
+            url="http://jacmart.net/Web/appDetails?type=3&lang=en";
             tv_title.setText("Terms & Condition");
         }
     }

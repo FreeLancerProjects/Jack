@@ -232,7 +232,7 @@ public class Fragment_Map extends Fragment implements OnMapReadyCallback {
         String fields = "id,place_id,name,geometry,formatted_address";
 
         Api.getService("https://maps.googleapis.com/maps/api/")
-                .searchOnMap("textquery", query, fields, current_language, getString(R.string.map_api_key))
+                .searchOnMap("textquery", query, fields, current_language, getString(R.string.map_api_key2))
                 .enqueue(new Callback<PlaceMapDetailsData>() {
                     @Override
                     public void onResponse(Call<PlaceMapDetailsData> call, Response<PlaceMapDetailsData> response) {

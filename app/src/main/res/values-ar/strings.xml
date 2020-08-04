@@ -2,8 +2,8 @@
 <resources>
     <string name="app_name">جاك</string>
     <string name="facebook_app_id">[APP_ID]</string>
-    <string name="map_api_key">AIzaSyDz07XWgRsDTQtmA4IOvx-fSIc1d_Wrk9c</string>
-    <string name="map_api_key2">AIzaSyArjmbYWTWZhDFFtPOLRLKYwjtBDkOEGrY</string>
+    <string name="map_api_key">AIzaSyA6QI378BHt9eqBbiJKtqWHTSAZxcSwN3Q</string>
+    <string name="map_api_key2">AIzaSyAeyMUJgKAhnNXbILHONb1um72CNzELFRY</string>
     <string name="notifications">الإشعارات</string>
     <string name="si_su">قم بتسجيل الدخول أو إنشاء حساب جديد .</string>
     <string name="ok">حسنا</string>
@@ -332,5 +332,6 @@
     <string name="pay">دفع</string>
     <string name="order_delete">العميل حذف الطلب</string>
     <string name="you_cant">لا يمكنك ان تشحن بقيمه صفر</string>
-
+    <string name="visa">الكترونى</string>
+    <string name="cash_on_delivery">الدفع عند الاستلام</string>
 </resources>

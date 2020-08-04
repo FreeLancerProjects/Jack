@@ -3,8 +3,8 @@
 <!--    AIzaSyAeyMUJgKAhnNXbILHONb1um72CNzELFRY-->
     <!--AIzaSyArjmbYWTWZhDFFtPOLRLKYwjtBDkOEGrY-->
     <string name="facebook_app_id">[APP_ID]</string>
-    <string name="map_api_key">AIzaSyDz07XWgRsDTQtmA4IOvx-fSIc1d_Wrk9c</string>
-    <string name="map_api_key2">AIzaSyArjmbYWTWZhDFFtPOLRLKYwjtBDkOEGrY</string>
+    <string name="map_api_key">AIzaSyA6QI378BHt9eqBbiJKtqWHTSAZxcSwN3Q</string>
+    <string name="map_api_key2">AIzaSyAeyMUJgKAhnNXbILHONb1um72CNzELFRY</string>
     <string name="notifications">Notifications</string>
     <string name="si_su">Please Sign in or sign up .</string>
     <string name="ok">Ok</string>
@@ -335,5 +335,6 @@ We inform you that the application commission (20%) is calculated on a single tr
     <string name="pay">Pay</string>
     <string name="order_delete">Client Delete Order</string>
     <string name="you_cant">You Can,t Charge Zero</string>
-
+    <string name="visa">Visa</string>
+    <string name="cash_on_delivery">Cash On Delivery</string>
 </resources>

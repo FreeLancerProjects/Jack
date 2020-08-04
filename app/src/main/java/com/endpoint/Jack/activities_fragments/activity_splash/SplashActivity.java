@@ -3,14 +3,21 @@ package com.endpoint.Jack.activities_fragments.activity_splash;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.endpoint.Jack.R;
+import com.endpoint.Jack.activities_fragments.activity_home.client_home.activity.ClientHomeActivity;
+import com.endpoint.Jack.activities_fragments.activity_sign_in.activity.SignInActivity;
 import com.endpoint.Jack.activities_fragments.intro_slider.MainScreen;
 import com.endpoint.Jack.language.Language_Helper;
+import com.endpoint.Jack.models.UserModel;
 import com.endpoint.Jack.preferences.Preferences;
+import com.endpoint.Jack.singletone.UserSingleTone;
+import com.endpoint.Jack.tags.Tags;
 
 
 public class SplashActivity extends AppCompatActivity {
@@ -22,14 +29,17 @@ public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void attachBaseContext(Context base) {
-        super.attachBaseContext(Language_Helper.updateResources(base,Language_Helper.getLanguage(base)));
+        super.attachBaseContext(Language_Helper.updateResources(base, Language_Helper.getLanguage(base)));
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        Thread myThread = new Thread()
+
+
+       /* Thread myThread = new Thread()
         {
             @Override
             public void run() {
@@ -44,13 +54,13 @@ public class SplashActivity extends AppCompatActivity {
                 }
             }
         };
-        myThread.start();
+        myThread.start();*/
 
 
 
-       /* preferences = Preferences.getInstance();
+        preferences = Preferences.getInstance();
         fl = findViewById(R.id.fl);
-        Animation animation = AnimationUtils.loadAnimation(this,R.anim.fade);
+        Animation animation = AnimationUtils.loadAnimation(this,R.anim.dialog_congratulation_enter);
         fl.startAnimation(animation);
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -84,6 +94,6 @@ public class SplashActivity extends AppCompatActivity {
             public void onAnimationRepeat(Animation animation) {
 
             }
-        });*/
+        });
     }
 }

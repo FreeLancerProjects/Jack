@@ -29,6 +29,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -74,11 +75,12 @@ public class Fragment_Reserve_Order extends Fragment {
     private static final String TAG2 = "DATA2";
 
     private ClientHomeActivity activity;
-    private ImageView image, arrow,arrow2, image_reserve,image_details;
+    private ImageView image, arrow,arrow2, image_reserve,image_details,img1,img3;
     private TextView tv_place_name, tv_place_address, tv_address;
     private LinearLayout ll_back, ll_delivery_location, ll_fav_address, ll_fav_map_loc, ll_choose_delivery_time;
     private ConstraintLayout cons_add_coupon;
     private CheckBox checkbox;
+    private CardView cardmaster,cardcash;
     private ExpandableLayout expandLayout;
     private TextView tv_fav_address_title, tv_fav_address, tv_delivery_time,tvRate,tvReview;
     private SimpleRatingBar ratingBar;
@@ -137,7 +139,8 @@ public class Fragment_Reserve_Order extends Fragment {
         Paper.init(activity);
         current_language = Paper.book().read("lang", Locale.getDefault().getLanguage());
 
-        timesList = new String[]{getString(R.string.hour1)};
+        timesList = new String[]{getString(R.string.hour1),getString(R.string.hour2),
+                getString(R.string.hour3)};
         cons_add_coupon = view.findViewById(R.id.cons_add_coupon);
 
        /* getString(R.string.hour2),
@@ -149,7 +152,29 @@ public class Fragment_Reserve_Order extends Fragment {
 
         arrow = view.findViewById(R.id.arrow);
         arrow2 = view.findViewById(R.id.arrow2);
+        cardcash=view.findViewById(R.id.cardcash);
+        cardmaster=view.findViewById(R.id.cardmaster);
+        img1=view.findViewById(R.id.img1);
+        img3=view.findViewById(R.id.img3);
 
+        cardmaster.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               img1.setVisibility(View.VISIBLE);
+               img3.setVisibility(View.GONE);
+
+
+            }
+        });
+        cardcash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                img3.setVisibility(View.VISIBLE);
+                img1.setVisibility(View.GONE);
+
+
+            }
+        });
         if (current_language.equals("ar")) {
             arrow.setImageResource(R.drawable.ic_right_arrow);
             arrow.setColorFilter(ContextCompat.getColor(activity, R.color.white), PorterDuff.Mode.SRC_IN);
