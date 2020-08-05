@@ -31,6 +31,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -78,7 +79,8 @@ public class CategoryActivity extends AppCompatActivity {
     private String lang;
     private TextView tv_name, tv_content, tv_rate, tv_addess, tv_address, tv_time, tv_status;
     private CircleImageView imageView;
-    private ImageView image_details;
+    private CardView cardmaster,cardcash;
+    private ImageView image_details,img1,img3;
     private SimpleRatingBar simpleRatingBar;
     private ConstraintLayout cons_add_coupon;
     private LinearLayout llreview;
@@ -162,6 +164,29 @@ public class CategoryActivity extends AppCompatActivity {
         btnOrderNow = findViewById(R.id.btnOrderNow);
         cons_add_coupon = findViewById(R.id.cons_add_coupon);
         image_details = findViewById(R.id.image_details);
+        img1 = findViewById(R.id.img1);
+        img3 = findViewById(R.id.img3);
+        cardcash=findViewById(R.id.cardcash);
+        cardmaster=findViewById(R.id.cardmaster);
+
+        cardmaster.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                img1.setVisibility(View.VISIBLE);
+                img3.setVisibility(View.GONE);
+
+
+            }
+        });
+        cardcash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                img3.setVisibility(View.VISIBLE);
+                img1.setVisibility(View.GONE);
+
+
+            }
+        });
         cons_add_coupon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

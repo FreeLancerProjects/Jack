@@ -118,10 +118,7 @@ public class Fragment_Reserve_Order extends Fragment {
 
         timesList = new String[]{getString(R.string.hour1),
                 getString(R.string.hour2),
-                getString(R.string.hour3),
-                getString(R.string.day1),
-                getString(R.string.day2),
-                getString(R.string.day3)
+                getString(R.string.hour3)
 
         };
 
