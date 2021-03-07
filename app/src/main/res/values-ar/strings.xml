@@ -2,8 +2,8 @@
 <resources>
     <string name="app_name">جاك</string>
     <string name="facebook_app_id">[APP_ID]</string>
-    <string name="map_api_key">AIzaSyA6QI378BHt9eqBbiJKtqWHTSAZxcSwN3Q</string>
-    <string name="map_api_key2">AIzaSyAeyMUJgKAhnNXbILHONb1um72CNzELFRY</string>
+    <string name="map_api_key">AIzaSyAlkfKDqzBg1p0fOcunoxP_OUlKSlDqZzc</string>
+    <string name="map_api_key2">AIzaSyAlkfKDqzBg1p0fOcunoxP_OUlKSlDqZzc</string>
     <string name="notifications">الإشعارات</string>
     <string name="si_su">قم بتسجيل الدخول أو إنشاء حساب جديد .</string>
     <string name="ok">حسنا</string>

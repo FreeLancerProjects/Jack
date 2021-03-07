@@ -35,7 +35,7 @@ public class SliderStoreDetailsAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         View view = LayoutInflater.from(context).inflate(R.layout.slider,container,false);
         ImageView image = view.findViewById(R.id.image);
-        String url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+imgList.get(position).getPhoto_reference()+"&key=AIzaSyA6QI378BHt9eqBbiJKtqWHTSAZxcSwN3Q";
+        String url = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+imgList.get(position).getPhoto_reference()+"&key=AIzaSyAlkfKDqzBg1p0fOcunoxP_OUlKSlDqZzc";
         Uri path = Uri.parse(url);
         Picasso.with(context).load(path).fit().into(image);
         container.addView(view);
